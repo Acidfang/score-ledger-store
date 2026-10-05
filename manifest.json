@@ -1,0 +1,23 @@
+{
+  "format": "addressed-game-records",
+  "version": 1,
+  "sources": [
+    {
+      "address": "sources/60c418899d9a0c8adee4d5b628a5f0ec0c4ac13a9259ca31fe30212fcc589bf4",
+      "sha256": "60c418899d9a0c8adee4d5b628a5f0ec0c4ac13a9259ca31fe30212fcc589bf4",
+      "gameFilter": "darts",
+      "nativeRecords": 2395,
+      "derivedEvents": 15281
+    }
+  ],
+  "rules": {
+    "game": "Optional filter; no game defines the storage structure.",
+    "values": "Preserve source values and units; any JSON value is permitted. No universal numeric score is assumed.",
+    "identity": "Source-scoped native identity. Cross-device player identity requires evidence; names alone do not establish it.",
+    "relations": "Addressed links; shared events appear once and player ledgers reference them.",
+    "time": "Retain timestamp, timezone, precision and ordering scope. Unknown values remain null.",
+    "history": "Append observations and corrections with references to the records they amend; do not overwrite the retained source.",
+    "extensions": "Game rules, nesting, outcomes, teams and score dimensions are carried as source payload or addressed relations, without a fixed match/leg hierarchy.",
+    "void": "Existing source addresses retained. Void-specific codec remains unresolved."
+  }
+}
