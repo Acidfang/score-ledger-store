@@ -118,6 +118,7 @@ html:has(dialog[data-board-frame][open]),body:has(dialog[data-board-frame][open]
 #player-filter-preview .dart-rail-row{flex-wrap:wrap}
 #player-filter-preview .dart-rail-row>div{width:100%;display:flex;gap:6px}
 @media(min-width:800px){#player-filter-preview .live-score-panel,#player-filter-preview .replay-score-panel{grid-auto-flow:row dense}}
+@media(min-width:800px){#player-filter-preview .live-score-panel>:not(svg):not([data-dart-rail]),#player-filter-preview .replay-score-panel>:not(svg):not([data-dart-rail]){grid-column:3!important}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
 <script>
