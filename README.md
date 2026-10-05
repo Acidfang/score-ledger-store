@@ -2,7 +2,7 @@
 
 This repository records game history. Darts is the first game filter, not the storage model.
 
-`records/` contains source-addressed JSONL records. `sources/` retains complete immutable source snapshots and player ledgers. `manifest.json` states the carrier rules. Every score retains its original value, source and game context; there is no forced numeric score, fixed number of players, fixed hierarchy, or weekly schedule.
+The root `.jsonl` snapshot contains source-addressed records. `source-history.zip` retains the complete `sources/` directory with immutable database snapshots and player ledgers. `manifest.json` states the carrier rules. Every score retains its original value, source and game context; there is no forced numeric score, fixed number of players, fixed hierarchy, or weekly schedule.
 
 A player ledger references shared events rather than making separate copies of the same play. Dates sort only at their known precision. Unknown completion, per-score timestamps and individual team throwers stay unknown. Cross-device records retain separate source identities until an evidenced link joins them.
 
