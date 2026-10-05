@@ -12,5 +12,5 @@ Future game capture can retain arbitrary JSON payloads and addressed relations i
 
 New captures append source snapshots. Corrections refer to previous records and preserve their history. A Git commit records a write batch; an import must validate its complete reference set before publishing it. Concurrent writers must reconcile against the current branch rather than overwrite it.
 
-The repository is intended to be private. GitHub repository: https://github.com/Acidfang/score-ledger-store. The complete sources directory is also available in source-history.zip; extract it to restore the reference paths in manifest.json. APK and viewer development remain outside this score-recording store.
+The repository is public, as explicitly authorized by Joe. GitHub repository: https://github.com/Acidfang/score-ledger-store. The complete sources directory is also available in source-history.zip; extract it to restore the reference paths in manifest.json. The filterable player viewer is index.html, hosted through GitHub Pages at https://acidfang.github.io/score-ledger-store/. APK work is deferred.
 
