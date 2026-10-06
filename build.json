@@ -1,1 +1,12 @@
-{"builtAt":"2026-10-06T23:30:50.135Z","viewerVersion":"a58c4ebc8104bdd5b2ba4aa9efefeb469add1d451a61585e4b63cdd58cf2abdc","artifactSha256":"c29c8ed34faa27fad6c6ff63c665953bdad34842cca0f9fb82aa14f126400b03","scope":"Native match setup restored with training dependency; one startup scene construction; model load counters; provisional reconstructed history","source":"fresh-tablet.sqlite","apkViewerVersion":"137e17bdbeb7cc5659aeccb565de4bc89475f689d61306cf6940bb892471909f"}
+{
+  "viewer": "4ceabde70f951fbc0eca4a6876589a370041302ca8ffe39068becccadaf80456",
+  "artifactSHA256": "d1505738b186cb3fb47cb8042be1809f400c018f05f472603c3536c41bdc9de9",
+  "sourceSQLiteSHA256": "60c418899d9a0c8adee4d5b628a5f0ec0c4ac13a9259ca31fe30212fcc589bf4",
+  "scope": "Menu-first X01 setup, named/nicknamed participants, persistent saved teams, independent comparison selection and custom-rule identity.",
+  "boundary": "Derived historical totals remain unreconciled; broader terrain/grain navigation and accuracy integration remain separate. APK does not match this viewer.",
+  "modules": {
+    "participantDirectory": "1.0.0",
+    "gameTypeRegistry": "1.0.0"
+  },
+  "releasedAt": "2026-10-07"
+}
