@@ -1,12 +1,7 @@
 {
-  "viewer": "4ceabde70f951fbc0eca4a6876589a370041302ca8ffe39068becccadaf80456",
-  "artifactSHA256": "d1505738b186cb3fb47cb8042be1809f400c018f05f472603c3536c41bdc9de9",
+  "viewer": "18c3fa4213cc289b733815fd8904b5a5ca6ca22bc2190c13d0574d190c23d9f5",
+  "artifactSHA256": "5eb70dd74dcacbc6ddf1aeea10343e126815db14cc51e1e2aa1c1a9db1551129",
   "sourceSQLiteSHA256": "60c418899d9a0c8adee4d5b628a5f0ec0c4ac13a9259ca31fe30212fcc589bf4",
-  "scope": "Menu-first X01 setup, named/nicknamed participants, persistent saved teams, independent comparison selection and custom-rule identity.",
-  "boundary": "Derived historical totals remain unreconciled; broader terrain/grain navigation and accuracy integration remain separate. APK does not match this viewer.",
-  "modules": {
-    "participantDirectory": "1.0.0",
-    "gameTypeRegistry": "1.0.0"
-  },
-  "releasedAt": "2026-10-07"
+  "scope": "Named participants/saved teams and direct setup controls; debug-only temporary bots with selected spreads and seed; human debug simulation one/two/three darts through legal commit/turn.",
+  "boundary": "Historical candidate totals remain unreconciled. Full-game autoplay, wider terrain/grain navigation and combined whole-history accuracy/profile derivation remain separate. Existing games without seed retain no claimed user-selected seed; sampler fallback is selected implementation parameter73151. APK is older."
 }
