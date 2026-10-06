@@ -342,6 +342,23 @@ window.addEventListener('score-games-loaded',event=>{games=event.detail;options(
 <style>@media(orientation:portrait) and (max-width:799px),(orientation:landscape) and (max-height:600px){#player-filter-preview [data-dart-picture]{height:14px}#player-filter-preview [data-dart-picture] [data-dart-image]{height:14px!important}#player-filter-preview [data-dart-picture][data-vertical="true"] [data-dart-image]{width:12px!important;height:70px!important}#player-filter-preview .dart-statistics-frame{font-size:9px;padding:3px;line-height:1.25}}</style>
 <style>#player-filter-preview .dart-statistics-frame select{font:inherit;padding:1px;width:100%;margin:3px 0}</style>
 <style>@media(orientation:landscape) and (max-height:600px){#player-filter-preview [data-dart-rail]{gap:1px;padding:2px}#player-filter-preview .dart-rail-row{padding:1px}#player-filter-preview [data-dart-picture]{height:10px!important}#player-filter-preview [data-dart-rail]>[data-commit]{min-height:26px;margin-top:0}#player-filter-preview .dart-statistics-frame{font-size:9px}}</style>
+<style>
+@media(orientation:portrait){
+#player-filter-preview .live-score-panel,#player-filter-preview .replay-score-panel{grid-template-rows:clamp(180px,22dvh,280px) minmax(0,1fr) clamp(110px,18dvh,230px)!important}
+#player-filter-preview [data-dart-rail]{padding:clamp(4px,1dvw,12px);gap:clamp(4px,1dvw,12px);font-size:clamp(10px,1.7dvw,16px);align-items:stretch}
+#player-filter-preview [data-dart-rail] .dart-statistics-frame{max-width:23%;display:flex;flex-direction:column;justify-content:space-evenly;font-size:inherit}
+#player-filter-preview .dart-rail-row{padding:clamp(3px,1dvw,10px);gap:clamp(3px,.8dvw,8px);align-content:space-evenly}
+#player-filter-preview [data-dart-picture]{height:clamp(14px,4dvh,50px)!important}
+#player-filter-preview [data-dart-picture] [data-dart-image]{height:90%!important}
+#player-filter-preview [data-dart-rail] button{font-size:inherit;min-height:28px}
+#player-filter-preview [data-dart-rail]>[data-commit]{width:clamp(48px,8dvw,80px);align-self:center}
+#player-filter-preview [data-board-controls]{padding:clamp(4px,1dvw,12px);font-size:clamp(12px,1.8dvw,18px)}
+}
+</style>
+<style>
+#player-filter-preview .live-score-panel,#player-filter-preview .replay-score-panel{grid-template-columns:16% minmax(0,1fr) 28%!important}
+@media(orientation:portrait){#player-filter-preview .live-score-panel,#player-filter-preview .replay-score-panel{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:28% minmax(0,1fr) 16%!important}}
+</style>
 <script>let stamp=null;setInterval(async()=>{try{const r=await fetch("/version");const v=await r.text();if(stamp!==null&&stamp!==v)location.reload();stamp=v;}catch{}},1200);</script><script>window.readDartDraft=address=>JSON.parse(localStorage.getItem('dart-draft:'+address)||'null');
 window.saveDartDraft=(address,state)=>localStorage.setItem('dart-draft:'+address,JSON.stringify(state));
 window.commitDartVisit=async record=>{const res=await fetch('/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(record)});const receipt=await res.json();if(!res.ok||!receipt.saved)throw Error(receipt.reason||'Score was not retained');return receipt;};
