@@ -1,14 +1,15 @@
 {
-  "revision": "76ecc977404c5673287b275f51f1337b889b2162b564b7334a6a00ffb7e5a864",
-  "viewerVersion": "b2ace6965f41cd25b0ac238190faae35e2531a9ed4296dd5afe6574fc261f8f8",
-  "selectedSourceSha256": "6e1ac418f4c2a7d14569e4af0c78d80cf3b90a38ecb880f71018b7c0f52365fe",
-  "builtAt": "2026-10-07T05:17:21.044Z",
-  "scope": "Selected active model checkpoint; recorded and provisional derived history",
-  "packagingDifference": "Removed unverified localhost release-continuity poller; application model modules unchanged",
+  "revision": "8d6d3a6bfe17f2ce2da5c6bfa2fd99bd488f7c30af3432e1a4f90e42a5f36bac",
+  "viewerVersion": "626b3ac8b1c316d6e1e6e5c9bd5b677ab435c43f685f2a5e296de05dcee2be8a",
+  "selectedSourceSha256": "c03694d65a433a07cd5f5c05c565e812c2b1761e20fff0dfb21e2f3513df63ed",
+  "builtAt": "2026-10-07T05:56:25.890Z",
+  "stage": "Alpha test",
+  "scope": "Owner-selected visible alpha checkpoint; recorded and provisional derived history",
+  "packagingDifference": "Same alpha status wrapper; no local profiling instrumentation, shared-client injection, browser QA data or localhost update bridge",
   "knownLimitations": [
-    "Reported moving-scene trails",
-    "Derived history totals remain unreconciled",
-    "Whole-page shared-state and all requested relations are not closed"
-  ],
-  "debugSourceGames": 0
+    "Actual reference pixel discrepancies under investigation",
+    "Opponent-ring guide classification remains to correct",
+    "Slow initial load and frame costs remain under measurement",
+    "Derived history totals and original requested Whole remain open"
+  ]
 }
