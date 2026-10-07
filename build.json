@@ -1,13 +1,13 @@
 {
-  "revision": "565c2f42034b13331a7b9d8dad0d87bd44a4dfd1fd0f9395ab44a21d40b16a5e",
-  "sha256": "565c2f42034b13331a7b9d8dad0d87bd44a4dfd1fd0f9395ab44a21d40b16a5e",
-  "viewerVersion": "a60922a73e50695e7d62ebc8a5e17278f608dbd83c476a3b67dd723cd7d599a0",
-  "viewer": "a60922a73e50695e7d62ebc8a5e17278f608dbd83c476a3b67dd723cd7d599a0",
+  "revision": "04a8b914b30f963d457bdfe01a9bcc3693ff855a8d9955e1b2f20ca49eb9347f",
+  "sha256": "04a8b914b30f963d457bdfe01a9bcc3693ff855a8d9955e1b2f20ca49eb9347f",
+  "viewerVersion": "daee86b85dab8bcb7711228cbea819dd7b6d2325a73ae9ea2178ee17ff2b9a5c",
+  "viewer": "daee86b85dab8bcb7711228cbea819dd7b6d2325a73ae9ea2178ee17ff2b9a5c",
   "modules": {
     "x01-rules": "9825f135c664ffcef64f6bfd0b37e75c7d6bcb7e1d4021c2b31fd083cb116a51",
     "metric-shells": "30d9d9436b964f4545435b57af1ad8fd1c60024ccdfe1f45a3df7e03d796ab96",
     "retained-leg-history": "cced77b3aebedcd6e461a51def12c1f27bd496f5bba74cbe5f429d4625a2add5",
-    "score-frame": "451b2a070f047bee7860b7a8b2703b582b36e4e7988ed38589f89302fd7220d8",
+    "score-frame": "81da4d093bfe67bfa23c6fad43923378b689c70d954e4feda80b00663a4b22c1",
     "import-validation": "005f6854d9a8cbedb6ae9614a61d002e67b63b96b0a95e74215f1d65d9ae189d",
     "player-improvement": "b7cb3a2e3d2013b01ba8b279ae76cecd8913e92e89c6d1eef5cc2f51d6f5e1b2",
     "cloud-history-filter": "ecbd2f44bbf75a4fb5cb231f94524a77daf13e4300379f2a5c7aa1b4dac6251d",
@@ -17,7 +17,7 @@
     "game-type-registry": "37a7c4580bdfc0f42e436edf155bcc1b6204318b2d1d1c30af730eab627ff67e",
     "match-session": "b084072cb5c171a048526c8e297663595632f0bcc137dc66fc3c7a6e4cbda6cb",
     "match-setup-visuals": "30faa603514be407f45fa0a33ae7eff9f69c65248796258bd658de6a0fcf6f2f",
-    "score-navigation": "21962963325a78e88be1b8481327170704eda8b231d2563555975e9a33280f75",
+    "score-navigation": "ad034a68c6fdffe15526a1bd029192dc400bd6ded440d66cc7fd6c91b9a629b4",
     "participant-gallery": "bd4a93dd1a8d3638b7f5a58bd18731f1cc129b8678fbd06c94069899580b8662",
     "player-overlay": "323d66be19460305de22a103a37dade0382e4a72073747fbbaa5053405fca6a7",
     "player-galaxy": "9fb8e027a39a68dbe298fecbfd858fa7094c39a813a5ea181afa8a26a4786a5b",
@@ -36,7 +36,7 @@
     "modeled-opportunity-field": "2170e1ed35e895f357ffa2d8083b56612d4d15a1a4ae1dce96a0bba84014043a",
     "favorable-moon-field": "b369e2f243165c96c9c0a3860ebcff7e5f04f3b52e397a41eea6d655be8d5d1d",
     "creator-technical-display": "074b4f41e5e9c36ce7bf12bc557778ad0b23eee4ae1c401d2a1d20c12474ebd1",
-    "interface-navigation": "155f6d0e8b36934757d0c5daa85ffbde01ba21b731c4ab9fc1cbecd948007b0d",
+    "interface-navigation": "8d5dbec99851c2e79a81c5f898e1944b6284169087db45b0f951bf2bc896cea9",
     "interface-metric-references": "9ee7719c582c4ea6bc626ec62f8063e4ec99fdce82e2e15778a5aceab6cf74a8",
     "local-score-ledger-adapter": "b68446bcad1a92bba462d39b3b7108d8acced37a575b6e166a1896de73b63459",
     "selection-transcription": "7c6e1944d1a9b86c1c7dbecf0a64459241b95dbe97e8fe5ab2880ed66c0b9da0",
@@ -49,10 +49,10 @@
     "interface-label-projection": "0c6f958095b8e570a0c370e6ea66916af67d8aeee492d6f0d386f5e97453944a",
     "notodus-topology": "4bb9325369eefe712521941c8558bde6607aabb08a0fd211a2a71e01aa7b8465"
   },
-  "selectedSourceSha256": "59119f4e9fa2b8278dfa862acc18b4588eeecd3a8d76ae7229c526610683a73c",
-  "builtAt": "2026-10-07T22:20:25.562Z",
+  "selectedSourceSha256": "8b08382ac9b6170658175b5728819cda1dc28fd2f684818f0777ca1f4d86d38e",
+  "builtAt": "2026-10-07T22:26:17.546Z",
   "scope": "Selected currently loaded interface checkpoint",
-  "packagingWas": "f136d69ddf69cb008dc8f1528bd621b44f02ca4e61869c7b329acdab26f6dd72",
+  "packagingWas": null,
   "packagingDifference": "Native intake paths AND admitted identity-map keys relative to public application; same original asset bytes. Shared local device network disabled on static host; native browser display and voice controls retained. No chat trace, browser database or runtime actor observation exported.",
   "extraFiles": [
     "native-record-ledger.json",
@@ -66,7 +66,6 @@
   },
   "previewStateSHA": "daeed15b29f05a5858efac5f131efac69648313dd9d0c5ff3b41c771d3fa181f",
   "knownLimitations": [
-    "Right player list has a verified zero-width layout fault in this selected version; correction is a separate canonical continuation.",
     "Full EI/Notodus formation semantic linkage and historical reconciliation remain open.",
     "Shared local device service is not hosted on static GitHub Pages."
   ]
