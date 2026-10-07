@@ -1,15 +1,16 @@
 {
-  "revision": "8d6d3a6bfe17f2ce2da5c6bfa2fd99bd488f7c30af3432e1a4f90e42a5f36bac",
-  "viewerVersion": "626b3ac8b1c316d6e1e6e5c9bd5b677ab435c43f685f2a5e296de05dcee2be8a",
-  "selectedSourceSha256": "c03694d65a433a07cd5f5c05c565e812c2b1761e20fff0dfb21e2f3513df63ed",
-  "builtAt": "2026-10-07T05:56:25.890Z",
+  "revision": "c487aea2a2e8f2c4311f09335dab74e8dd73949803f85693e278071fbc838d61",
+  "viewerVersion": "6a57278ba19104728ad934aa455abcbf44d09e421dd2c55f7667f4709497cd7a",
+  "selectedSourceSha256": "5866330facd0ca92c97bafd173f39172f83bd0db6319a866acde5a0b53ae45b7",
+  "builtAt": "2026-10-07T06:57:33.107Z",
   "stage": "Alpha test",
-  "scope": "Owner-selected visible alpha checkpoint; recorded and provisional derived history",
-  "packagingDifference": "Same alpha status wrapper; no local profiling instrumentation, shared-client injection, browser QA data or localhost update bridge",
+  "scope": "Working-scoreboard release candidate using verified startup repair and existing public history",
+  "packagingDifference": "No additional native ledger assets; existing published preview-state bytes reused. Only verified duplicate-lookup startup repair relative to current public model.",
+  "priorPublicSource": "c03694d65a433a07cd5f5c05c565e812c2b1761e20fff0dfb21e2f3513df63ed",
+  "previewStateSHA": "daeed15b29f05a5858efac5f131efac69648313dd9d0c5ff3b41c771d3fa181f",
+  "extraFiles": [],
+  "publicVerification": "Not published",
   "knownLimitations": [
-    "Actual reference pixel discrepancies under investigation",
-    "Opponent-ring guide classification remains to correct",
-    "Slow initial load and frame costs remain under measurement",
-    "Derived history totals and original requested Whole remain open"
+    "Full model and history codec remain open; scoreboard runtime gate must pass before release."
   ]
 }
