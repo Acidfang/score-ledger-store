@@ -1,7 +1,7 @@
 {
-  "viewer": "18c3fa4213cc289b733815fd8904b5a5ca6ca22bc2190c13d0574d190c23d9f5",
-  "artifactSHA256": "5eb70dd74dcacbc6ddf1aeea10343e126815db14cc51e1e2aa1c1a9db1551129",
+  "viewer": "9d6cdbc8f3f296b97f0efde463762268063fc9aa22927315a336dda5cc6f8c8f",
+  "artifactSHA256": "2228da7c666554ef1ad18b58458ba3aca3b1c308eae6d9525b7a798cdfe159eb",
   "sourceSQLiteSHA256": "60c418899d9a0c8adee4d5b628a5f0ec0c4ac13a9259ca31fe30212fcc589bf4",
-  "scope": "Named participants/saved teams and direct setup controls; debug-only temporary bots with selected spreads and seed; human debug simulation one/two/three darts through legal commit/turn.",
-  "boundary": "Historical candidate totals remain unreconciled. Full-game autoplay, wider terrain/grain navigation and combined whole-history accuracy/profile derivation remain separate. Existing games without seed retain no claimed user-selected seed; sampler fallback is selected implementation parameter73151. APK is older."
+  "scope": "Single overview instance per selected player, inspected statistics and signed retained-total differences; addressed participant gallery with new empty-history stars; compact scoring navigation and prior named teams/debug simulation controls.",
+  "boundary": "Overview uses the existing completed-leg model, not yet a full multi-subject universal projection. Derived historical totals remain unreconciled. Reliable portrait/landscape proof, full autoplay controllers and combined whole-history profile remain separate. APK older."
 }
