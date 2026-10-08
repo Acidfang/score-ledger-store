@@ -1,8 +1,8 @@
 {
-  "revision": "d26ad19691190bd731cbfbfeecc9b97b6fc3388076481a6c57b43f020e452c77",
-  "sha256": "d26ad19691190bd731cbfbfeecc9b97b6fc3388076481a6c57b43f020e452c77",
-  "viewerVersion": "6a291c2d553eaf1d094f94792d0b4491823eff9f2881dccb8f2ebdf3edcedfdf",
-  "viewer": "6a291c2d553eaf1d094f94792d0b4491823eff9f2881dccb8f2ebdf3edcedfdf",
+  "revision": "81f21a8b3bc5277fd0007a2faa1ef5056d444d1f343b16c71eefcede51408a29",
+  "sha256": "81f21a8b3bc5277fd0007a2faa1ef5056d444d1f343b16c71eefcede51408a29",
+  "viewerVersion": "841d9c9f54d08abe9ff9d840adfbb862abbfe5c06c182ac1a6f0f907c443a7cf",
+  "viewer": "841d9c9f54d08abe9ff9d840adfbb862abbfe5c06c182ac1a6f0f907c443a7cf",
   "modules": {
     "x01-rules": "9825f135c664ffcef64f6bfd0b37e75c7d6bcb7e1d4021c2b31fd083cb116a51",
     "metric-shells": "b599c806ac5a07363f06c9921738acf37c8a94059e71081b423d11ae33f83601",
@@ -23,7 +23,7 @@
     "player-galaxy": "98f4343ae56193f7d4262d980e1cdd6034460d3bdc3aeca7a66a262c76f989d8",
     "planet-environment": "77ac664986b151c8a1d0a98efca93bef9603af7e174b9c49a26add06a8bc4f8d",
     "solar-integrated-edge": "fbd6260799572814b3fadb1eef2cf7d26b81faf89c40f8748ae6640ce01a4624",
-    "comparison-frame-controls": "976cdd1a7a197fc0d50ae42e2bd8ad41d452b19f1d91996ef61d0914d4db08dd",
+    "comparison-frame-controls": "2b6690e8000785df1fd960bdc944e3cd337654a050fc55d32da4ff0df73e3c63",
     "active-game-continuity": "0d1a7cd7e7c716af67f3638224461f33c999534daf9a3a181c23fd7a199497ea",
     "game-timeline": "837f1e545a33accd470c40dbbbe4e90f5b2dd747e8fd5f2fe2802deef61e7fc2",
     "active-game-recovery": "678df0320a4fe79b2b309d3b001d2adc018768ad5060f6f7e6ab2772fe52bdf2",
@@ -50,9 +50,9 @@
     "notodus-topology": "4bb9325369eefe712521941c8558bde6607aabb08a0fd211a2a71e01aa7b8465"
   },
   "selectedSourceSha256": "8b9b75083958172fee6ca1a6ad1a8b756d9fdf64c36ce506f7b2d95170712699",
-  "builtAt": "2026-10-08T02:13:13.902Z",
+  "builtAt": "2026-10-08T02:18:11.060Z",
   "scope": "Selected currently loaded interface checkpoint",
-  "packagingWas": "a40243243fc8b66bb9eb42d479d6eed36a5dafb03f1134fc30c7080e5f141be5",
+  "packagingWas": "d26ad19691190bd731cbfbfeecc9b97b6fc3388076481a6c57b43f020e452c77",
   "packagingDifference": "Native intake paths AND admitted identity-map keys relative to public application; same original asset bytes. Shared local device network and private framework service unavailable on static host; native browser display and voice controls retained. No chat trace, browser database or runtime actor observation exported.",
   "extraFiles": [
     "native-record-ledger.json",
