@@ -1,8 +1,8 @@
 {
-  "revision": "a40243243fc8b66bb9eb42d479d6eed36a5dafb03f1134fc30c7080e5f141be5",
-  "sha256": "a40243243fc8b66bb9eb42d479d6eed36a5dafb03f1134fc30c7080e5f141be5",
-  "viewerVersion": "4095885d90c1f594b67df97392a0beba385223f9613e1a324d051ffd8dc54f31",
-  "viewer": "4095885d90c1f594b67df97392a0beba385223f9613e1a324d051ffd8dc54f31",
+  "revision": "d26ad19691190bd731cbfbfeecc9b97b6fc3388076481a6c57b43f020e452c77",
+  "sha256": "d26ad19691190bd731cbfbfeecc9b97b6fc3388076481a6c57b43f020e452c77",
+  "viewerVersion": "6a291c2d553eaf1d094f94792d0b4491823eff9f2881dccb8f2ebdf3edcedfdf",
+  "viewer": "6a291c2d553eaf1d094f94792d0b4491823eff9f2881dccb8f2ebdf3edcedfdf",
   "modules": {
     "x01-rules": "9825f135c664ffcef64f6bfd0b37e75c7d6bcb7e1d4021c2b31fd083cb116a51",
     "metric-shells": "b599c806ac5a07363f06c9921738acf37c8a94059e71081b423d11ae33f83601",
@@ -36,7 +36,7 @@
     "modeled-opportunity-field": "2170e1ed35e895f357ffa2d8083b56612d4d15a1a4ae1dce96a0bba84014043a",
     "favorable-moon-field": "b369e2f243165c96c9c0a3860ebcff7e5f04f3b52e397a41eea6d655be8d5d1d",
     "creator-technical-display": "074b4f41e5e9c36ce7bf12bc557778ad0b23eee4ae1c401d2a1d20c12474ebd1",
-    "interface-navigation": "d3d2a7ab9b2cb406ce22bdff937fb51121ea5cd81853cf6f5cc3bd6c0f8d4a31",
+    "interface-navigation": "59472a9168b37f960352edb04cbb3c82ea189e1f8a4594f6090565f75460a99b",
     "interface-metric-references": "9ee7719c582c4ea6bc626ec62f8063e4ec99fdce82e2e15778a5aceab6cf74a8",
     "local-score-ledger-adapter": "b68446bcad1a92bba462d39b3b7108d8acced37a575b6e166a1896de73b63459",
     "selection-transcription": "967552ba68bf1cb4a391dbb18da5bd770f92b8cfcda7999023e080e5af9396f1",
@@ -50,10 +50,10 @@
     "notodus-topology": "4bb9325369eefe712521941c8558bde6607aabb08a0fd211a2a71e01aa7b8465"
   },
   "selectedSourceSha256": "8b9b75083958172fee6ca1a6ad1a8b756d9fdf64c36ce506f7b2d95170712699",
-  "builtAt": "2026-10-08T02:07:21.240Z",
+  "builtAt": "2026-10-08T02:13:13.902Z",
   "scope": "Selected currently loaded interface checkpoint",
-  "packagingWas": null,
-  "packagingDifference": "Native intake paths AND admitted identity-map keys relative to public application; same original asset bytes. Shared local device network disabled on static host; native browser display and voice controls retained. No chat trace, browser database or runtime actor observation exported.",
+  "packagingWas": "a40243243fc8b66bb9eb42d479d6eed36a5dafb03f1134fc30c7080e5f141be5",
+  "packagingDifference": "Native intake paths AND admitted identity-map keys relative to public application; same original asset bytes. Shared local device network and private framework service unavailable on static host; native browser display and voice controls retained. No chat trace, browser database or runtime actor observation exported.",
   "extraFiles": [
     "native-record-ledger.json",
     "native-events.json",
