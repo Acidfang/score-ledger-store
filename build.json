@@ -1,11 +1,11 @@
 {
-  "revision": "25833a2aef21f92da8383af9836ee2fef03dcf618c62093539a9ad530c3ab38e",
-  "sha256": "25833a2aef21f92da8383af9836ee2fef03dcf618c62093539a9ad530c3ab38e",
-  "viewerVersion": "a07b8323d04413ac826e5fe483fd1273214f95d2aec25886e227c3e6c3d17796",
-  "viewer": "a07b8323d04413ac826e5fe483fd1273214f95d2aec25886e227c3e6c3d17796",
+  "revision": "300fa2e6d754f04dc57d3a598e4d99e32cc560e56e4af5b134417a78a5f032e6",
+  "sha256": "300fa2e6d754f04dc57d3a598e4d99e32cc560e56e4af5b134417a78a5f032e6",
+  "viewerVersion": "a999fe23956ebf0902ded58c417ead00aa678d4d5438790ac545bff8311dd61c",
+  "viewer": "a999fe23956ebf0902ded58c417ead00aa678d4d5438790ac545bff8311dd61c",
   "modules": {
     "x01-rules": "9825f135c664ffcef64f6bfd0b37e75c7d6bcb7e1d4021c2b31fd083cb116a51",
-    "metric-shells": "683058b7c8bf88d7a405a5d0c4312da3f7b900b78c33fa1b505e06b0ec8c8c88",
+    "metric-shells": "0b4207fc5e0ff3a84b9405bfbcfdded9410c20c2edd5fa71f2713da3c85bd81a",
     "retained-leg-history": "cced77b3aebedcd6e461a51def12c1f27bd496f5bba74cbe5f429d4625a2add5",
     "score-frame": "31a0026c8e6855f10cd7ae9772ca0d6b1bb8e9d847e35970314589aa53f4a725",
     "import-validation": "005f6854d9a8cbedb6ae9614a61d002e67b63b96b0a95e74215f1d65d9ae189d",
@@ -50,10 +50,10 @@
     "darts-module": "132c64b63b7ddabd0e2d1542f574b2436642cf91e917ead06f4ea5bf930de02f",
     "ledger-driven-graphics-engine": "b7f42501d5b0fc6c843f6bb2ce59204810acd69c7c17f8449b15fa5190ca9f09"
   },
-  "selectedSourceSha256": "d7aaba8f3881e5f8edee3598487ecc5b3f86aabf60a954bec1ae16ecdd3b1d65",
-  "builtAt": "2026-10-08T20:28:21.574Z",
+  "selectedSourceSha256": "33520c2beb8fc9ee4a76251943a4c6fd4657bca5d97fee59a378f6797c033acd",
+  "builtAt": "2026-10-08T21:09:32.310Z",
   "scope": "Selected integrated compact Darts module interface",
-  "packagingWas": "141e63c5d9e87a8aa2b55260eb44b79f52760daeec3b3b797b3cc1e359dc0177",
+  "packagingWas": "25833a2aef21f92da8383af9836ee2fef03dcf618c62093539a9ad530c3ab38e",
   "ledgerBindings": {
     "user-ledger.jsonl": {
       "source": "C:\\Users\\joera\\OneDrive\\Documents\\For Everyone\\ledgered-world-ledger.jsonl",
