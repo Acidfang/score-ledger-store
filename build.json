@@ -1,13 +1,13 @@
 {
-  "revision": "673088d1df02fc1c80fbd06b4ca662e0e61f320957eb249271cf09747ed071df",
-  "sha256": "673088d1df02fc1c80fbd06b4ca662e0e61f320957eb249271cf09747ed071df",
-  "viewerVersion": "3e8525cf5f7091507ee8f13c7a5586156fd44bc750d4d70d13e63952985996a1",
-  "viewer": "3e8525cf5f7091507ee8f13c7a5586156fd44bc750d4d70d13e63952985996a1",
+  "revision": "b9512540a143c6ace566b985f0dd5211d47dc9b944b1ad79fb226ee3579d94da",
+  "sha256": "b9512540a143c6ace566b985f0dd5211d47dc9b944b1ad79fb226ee3579d94da",
+  "viewerVersion": "eb57e4687e5a0041298dd94c17351b9649f124490e15be435a7ee68f60c40b0a",
+  "viewer": "eb57e4687e5a0041298dd94c17351b9649f124490e15be435a7ee68f60c40b0a",
   "modules": {
     "x01-rules": "9825f135c664ffcef64f6bfd0b37e75c7d6bcb7e1d4021c2b31fd083cb116a51",
     "metric-shells": "67abb778b7625c97ea1dc65e76193f207bf89f5eaa74618a81f3ff4c623b0b00",
     "retained-leg-history": "cced77b3aebedcd6e461a51def12c1f27bd496f5bba74cbe5f429d4625a2add5",
-    "score-frame": "31a0026c8e6855f10cd7ae9772ca0d6b1bb8e9d847e35970314589aa53f4a725",
+    "score-frame": "3de145cd832841b348936df23ef9a33d18d95147355c0559199d6cc87cdddc8e",
     "import-validation": "005f6854d9a8cbedb6ae9614a61d002e67b63b96b0a95e74215f1d65d9ae189d",
     "player-improvement": "b7cb3a2e3d2013b01ba8b279ae76cecd8913e92e89c6d1eef5cc2f51d6f5e1b2",
     "cloud-history-filter": "74306834c64170c79a7bdf0f809629fded392260dd2dbe7d48fb822fe3e9dca4",
@@ -50,10 +50,10 @@
     "darts-module": "132c64b63b7ddabd0e2d1542f574b2436642cf91e917ead06f4ea5bf930de02f",
     "ledger-driven-graphics-engine": "b7f42501d5b0fc6c843f6bb2ce59204810acd69c7c17f8449b15fa5190ca9f09"
   },
-  "selectedSourceSha256": "ec1641afe007e87c7609dfbf31557cb49252ff13dd274b36cec5fe488381508b",
-  "builtAt": "2026-10-08T21:33:29.284Z",
+  "selectedSourceSha256": "ae3b5c5217e73f5d4dcc43bd8b91992c4c6ff4a1d2dd985bc0ea066b18581d68",
+  "builtAt": "2026-10-08T21:36:43.729Z",
   "scope": "Selected integrated compact Darts module interface",
-  "packagingWas": "ea8c1454feaba54775b6df63421b0687709332100de081f7a8bbb1f753ea8ecd",
+  "packagingWas": "673088d1df02fc1c80fbd06b4ca662e0e61f320957eb249271cf09747ed071df",
   "ledgerBindings": {
     "user-ledger.jsonl": {
       "source": "C:\\Users\\joera\\OneDrive\\Documents\\For Everyone\\ledgered-world-ledger.jsonl",
