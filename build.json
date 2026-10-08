@@ -1,8 +1,8 @@
 {
-  "revision": "c6e9d7c8bb3689256a25a8edbb1330afe87a6d536b201f68e3d2301c027acf38",
-  "sha256": "c6e9d7c8bb3689256a25a8edbb1330afe87a6d536b201f68e3d2301c027acf38",
-  "viewerVersion": "c85827bbcf7242464ab831bb9fa2ae741a68277c493edbd73da2cde18373f5f5",
-  "viewer": "c85827bbcf7242464ab831bb9fa2ae741a68277c493edbd73da2cde18373f5f5",
+  "revision": "c76b46a7c19c21944d70c4adb944ea1bbec4a7201276952c445fe3d08dcb9534",
+  "sha256": "c76b46a7c19c21944d70c4adb944ea1bbec4a7201276952c445fe3d08dcb9534",
+  "viewerVersion": "b79b89153d21535ade4b839700ab8209166f5c68616ac65dcf28768668098e29",
+  "viewer": "b79b89153d21535ade4b839700ab8209166f5c68616ac65dcf28768668098e29",
   "modules": {
     "x01-rules": "9825f135c664ffcef64f6bfd0b37e75c7d6bcb7e1d4021c2b31fd083cb116a51",
     "metric-shells": "b599c806ac5a07363f06c9921738acf37c8a94059e71081b423d11ae33f83601",
@@ -36,7 +36,7 @@
     "modeled-opportunity-field": "2170e1ed35e895f357ffa2d8083b56612d4d15a1a4ae1dce96a0bba84014043a",
     "favorable-moon-field": "b369e2f243165c96c9c0a3860ebcff7e5f04f3b52e397a41eea6d655be8d5d1d",
     "creator-technical-display": "074b4f41e5e9c36ce7bf12bc557778ad0b23eee4ae1c401d2a1d20c12474ebd1",
-    "interface-navigation": "a648308095e6e227f4eff0617b912e59b3f2e055ac0c1be77d22538885056fd3",
+    "interface-navigation": "ff6cf3309cdd80b088dff2602586fbbb07c1e98b5c27fbf4e72477763001b5c3",
     "interface-metric-references": "9ee7719c582c4ea6bc626ec62f8063e4ec99fdce82e2e15778a5aceab6cf74a8",
     "local-score-ledger-adapter": "d53f98581efbafa8b65a82c30c16c95015fd591c55085e5b1e2a5a3ff0522d72",
     "selection-transcription": "87e5b2c749f6bcff1c66345f29ec1c7998baf2baed2d89d9b46684b009dd398f",
@@ -50,8 +50,8 @@
     "darts-module": "132c64b63b7ddabd0e2d1542f574b2436642cf91e917ead06f4ea5bf930de02f",
     "ledger-driven-graphics-engine": "b7f42501d5b0fc6c843f6bb2ce59204810acd69c7c17f8449b15fa5190ca9f09"
   },
-  "selectedSourceSha256": "c9dea45439e9566c985d2c0529613fb199d711eaf55f50124dab98bac71bb7f5",
-  "builtAt": "2026-10-08T04:41:18.460Z",
+  "selectedSourceSha256": "ef3c2aa6006334f23e46bf409016e3f6483360bd63737d998bd37a700e108e16",
+  "builtAt": "2026-10-08T04:45:08.748Z",
   "scope": "Selected integrated compact Darts module interface",
   "packagingWas": null,
   "packagingDifference": "Native intake paths AND admitted identity-map keys relative to public application; same original asset bytes. Shared local device network and private framework service unavailable on static host; native browser display and voice controls retained. No chat trace, browser database or runtime actor observation exported.",
