@@ -1,8 +1,8 @@
 {
-  "revision": "ea8c1454feaba54775b6df63421b0687709332100de081f7a8bbb1f753ea8ecd",
-  "sha256": "ea8c1454feaba54775b6df63421b0687709332100de081f7a8bbb1f753ea8ecd",
-  "viewerVersion": "13322e8f8c39380c671787191cb7d54d772dc298caf6d5030dd80f5e75d0b717",
-  "viewer": "13322e8f8c39380c671787191cb7d54d772dc298caf6d5030dd80f5e75d0b717",
+  "revision": "673088d1df02fc1c80fbd06b4ca662e0e61f320957eb249271cf09747ed071df",
+  "sha256": "673088d1df02fc1c80fbd06b4ca662e0e61f320957eb249271cf09747ed071df",
+  "viewerVersion": "3e8525cf5f7091507ee8f13c7a5586156fd44bc750d4d70d13e63952985996a1",
+  "viewer": "3e8525cf5f7091507ee8f13c7a5586156fd44bc750d4d70d13e63952985996a1",
   "modules": {
     "x01-rules": "9825f135c664ffcef64f6bfd0b37e75c7d6bcb7e1d4021c2b31fd083cb116a51",
     "metric-shells": "67abb778b7625c97ea1dc65e76193f207bf89f5eaa74618a81f3ff4c623b0b00",
@@ -23,7 +23,7 @@
     "player-galaxy": "98f4343ae56193f7d4262d980e1cdd6034460d3bdc3aeca7a66a262c76f989d8",
     "planet-environment": "5ca288084bd8b545424cb41990d55b9726011536d0bd4a15e8696cd51ea13781",
     "solar-integrated-edge": "fbd6260799572814b3fadb1eef2cf7d26b81faf89c40f8748ae6640ce01a4624",
-    "comparison-frame-controls": "2b6690e8000785df1fd960bdc944e3cd337654a050fc55d32da4ff0df73e3c63",
+    "comparison-frame-controls": "debb9a963ab1d793e68a49c7ea4b26b5fc70eca5e004fe30c6e3bf09c28285da",
     "active-game-continuity": "0d1a7cd7e7c716af67f3638224461f33c999534daf9a3a181c23fd7a199497ea",
     "game-timeline": "837f1e545a33accd470c40dbbbe4e90f5b2dd747e8fd5f2fe2802deef61e7fc2",
     "active-game-recovery": "678df0320a4fe79b2b309d3b001d2adc018768ad5060f6f7e6ab2772fe52bdf2",
@@ -50,10 +50,10 @@
     "darts-module": "132c64b63b7ddabd0e2d1542f574b2436642cf91e917ead06f4ea5bf930de02f",
     "ledger-driven-graphics-engine": "b7f42501d5b0fc6c843f6bb2ce59204810acd69c7c17f8449b15fa5190ca9f09"
   },
-  "selectedSourceSha256": "eabe00e2f9780e84cf6ca082e1052ef2308a773ecc17e8045f3a398416b1c7bb",
-  "builtAt": "2026-10-08T21:28:35.969Z",
+  "selectedSourceSha256": "ec1641afe007e87c7609dfbf31557cb49252ff13dd274b36cec5fe488381508b",
+  "builtAt": "2026-10-08T21:33:29.284Z",
   "scope": "Selected integrated compact Darts module interface",
-  "packagingWas": "5978760b4cad43f49c1e2703a4dfb73f133e59fa27b8140bc61b78225cbd515d",
+  "packagingWas": "ea8c1454feaba54775b6df63421b0687709332100de081f7a8bbb1f753ea8ecd",
   "ledgerBindings": {
     "user-ledger.jsonl": {
       "source": "C:\\Users\\joera\\OneDrive\\Documents\\For Everyone\\ledgered-world-ledger.jsonl",
