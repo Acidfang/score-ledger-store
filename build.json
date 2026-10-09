@@ -1,8 +1,8 @@
 {
-  "revision": "10ee753ddbbb613bd626c92d46936408dfc146122dacf59c172e5b3fd707aa8b",
-  "sha256": "10ee753ddbbb613bd626c92d46936408dfc146122dacf59c172e5b3fd707aa8b",
-  "viewerVersion": "924ac9929b68eabccaa9d290ab263db0f5b74e89b9548c7ec3de6fb1a11b2c46",
-  "viewer": "924ac9929b68eabccaa9d290ab263db0f5b74e89b9548c7ec3de6fb1a11b2c46",
+  "revision": "4cf5526f02d3f404cb70d9fadbe6dd0742edc1421cbdcce58dce6fcd6826fa19",
+  "sha256": "4cf5526f02d3f404cb70d9fadbe6dd0742edc1421cbdcce58dce6fcd6826fa19",
+  "viewerVersion": "0c2437db4cccd8b63e097d6a4180871e9a8a3f8d0ccb5f8088b75695c75bd855",
+  "viewer": "0c2437db4cccd8b63e097d6a4180871e9a8a3f8d0ccb5f8088b75695c75bd855",
   "modules": {
     "x01-rules": "9825f135c664ffcef64f6bfd0b37e75c7d6bcb7e1d4021c2b31fd083cb116a51",
     "metric-shells": "83efc915ae6f3d184e2f95b9c2ae8443922e18193f81e7b0fcbbbb2a74ed05f2",
@@ -30,13 +30,13 @@
     "game-correction": "f5783fcdeda6ef0c6e2a73c2c97042a5d539cd03ab4677b5aa0cf06c57848270",
     "solar-stat-relations": "1dc5ec562f1339778f6b33731d06dffcdb998923fa6bb2d28da03b4362f57f52",
     "visual-state-difference": "c8be051b30ff14ef33da23ddc24aaf2c4c901405c07aa93224c48f0c71045384",
-    "ledger-field-intake": "2db39d6c948e4991c74125e9b12dd41c0f99d832eeab4a8c19e323a03f25218b",
+    "ledger-field-intake": "262a164999bb08927e04b9bb7f3f7df6c535cd04057add0090c784bdf254034e",
     "retained-leg-source-accessor": "bdd4c3bf28e15f24446bc6189be77749355bec8cb4c0e7347e0f3148bf239444",
     "append-only-ledger-projection": "27a2ea95d239d8217c29c2fa0933e930d1ebb28a634ef5a4fb0331aaaad1d33e",
     "modeled-opportunity-field": "2170e1ed35e895f357ffa2d8083b56612d4d15a1a4ae1dce96a0bba84014043a",
     "favorable-moon-field": "b369e2f243165c96c9c0a3860ebcff7e5f04f3b52e397a41eea6d655be8d5d1d",
     "creator-technical-display": "074b4f41e5e9c36ce7bf12bc557778ad0b23eee4ae1c401d2a1d20c12474ebd1",
-    "interface-navigation": "487f49f54179d601612864979e0820013ae87d9384bf10f028dd8b5d89411865",
+    "interface-navigation": "1ece0f89af57d457ec7ddf4de7f12db8c118f3dd7e82f4fcb827f111b838caa5",
     "interface-metric-references": "9ee7719c582c4ea6bc626ec62f8063e4ec99fdce82e2e15778a5aceab6cf74a8",
     "local-score-ledger-adapter": "d53f98581efbafa8b65a82c30c16c95015fd591c55085e5b1e2a5a3ff0522d72",
     "selection-transcription": "542ddc33826847a10014779886ead631404604bab97097404f2d1c0200abe2e1",
@@ -50,12 +50,12 @@
     "darts-module": "132c64b63b7ddabd0e2d1542f574b2436642cf91e917ead06f4ea5bf930de02f",
     "ledger-driven-graphics-engine": "b7f42501d5b0fc6c843f6bb2ce59204810acd69c7c17f8449b15fa5190ca9f09",
     "native-page-carrier": "d0df32720226b81276d1c5524fdf31a13f6f412d558c82b1a6318c20cfc9b8dd",
-    "metric-field-intake": "c89ffa2060a9ed6a3adf2e2abaaeaa0f66526a1a66b346dc914b23475724161d"
+    "metric-field-intake": "47897313954c3cf7f57bd89a492f726c36418516a0aab89bc9f3126e9d51d3ad"
   },
-  "selectedSourceSha256": "84210c099a6b3476dabef6b5c3e508a0002d8c1c7483d1d810064490ae75014e",
-  "builtAt": "2026-10-08T23:46:59.636Z",
+  "selectedSourceSha256": "a39ac2644bc4225e3e1419b25ee1772e09538794702462478f5c779cda206abe",
+  "builtAt": "2026-10-09T00:11:24.471Z",
   "scope": "Selected integrated compact Darts module interface",
-  "packagingWas": "723afad47948c246955978a91625f08121ef9e143247eb8570b884a77a0043d8",
+  "packagingWas": "10ee753ddbbb613bd626c92d46936408dfc146122dacf59c172e5b3fd707aa8b",
   "ledgerBindings": {
     "user-ledger.jsonl": {
       "source": "C:\\Users\\joera\\OneDrive\\Documents\\For Everyone\\ledgered-world-ledger.jsonl",
