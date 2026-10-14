@@ -111,7 +111,54 @@ function binaryRelation(left,relation,right){
  if(!left?.label||!right?.label||typeof relation!=='string'||!relation.trim())throw Error('Invalid binary relation');
  return Object.freeze({left:left.label,relation,right:right.label});
 }
-const api={version,defaultIdentity,open,admit,selection,records,events,symbolic,preview,contributions,labeledRange,resolveRange,binaryRelation};if(typeof module==='object')module.exports=api;else{
+// Isolated X01 scoring field. Existing imported ledgers remain read-only.
+function scoreAt(x,y){
+ if(!Number.isFinite(x)||!Number.isFinite(y))throw Error('Invalid board coordinate');
+ const radius=Math.hypot(x,y);
+ if(radius>1)return {label:'miss',range:[0,0],score:0,multiplier:0,segment:null,point:[x,y]};
+ if(radius<=6.35/170)return {label:'double-bull',range:[50,50],score:50,multiplier:2,segment:25,point:[x,y]};
+ if(radius<=15.9/170)return {label:'single-bull',range:[25,25],score:25,multiplier:1,segment:25,point:[x,y]};
+ const numbers=[20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5];
+ const theta=(Math.atan2(x,-y)*180/Math.PI+360)%360;
+ const segment=numbers[Math.floor((theta+9)/18)%20];
+ const multiplier=radius>=162/170?2:radius>=99/170&&radius<=107/170?3:1;
+ const score=segment*multiplier;
+ return {label:(multiplier===3?'triple-':multiplier===2?'double-':'single-')+segment,range:[score,score],score,multiplier,segment,point:[x,y]};
+}
+function x01Session(names,start=501){
+ if(!Array.isArray(names)||names.length<1||names.some(n=>typeof n!=='string'||!n.trim())||!Number.isSafeInteger(start)||start<2)throw Error('Invalid game setup');
+ const participants=names.map((name,i)=>({label:'player/'+(i+1),name,range:[start,start]}));
+ let history=[],turn=0,player=0,remaining=Array(names.length).fill(start),winner=null;
+ function rebuild(){
+  remaining=Array(names.length).fill(start);player=0;turn=0;winner=null;
+  for(const e of history){
+   if(winner)throw Error('Dart recorded after finish');
+   const before=remaining[player],next=before-e.score;
+   const bust=next<0||next===1||(next===0&&e.multiplier!==2);
+   if(!bust)remaining[player]=next;
+   e.player=participants[player].label;e.before=before;e.after=remaining[player];e.bust=bust;e.turn=turn+1;
+   if(!bust&&next===0){winner=participants[player].label;break;}
+   if(bust||history.filter(h=>h.turn===turn+1).length>=3){player=(player+1)%participants.length;turn++;}
+  }
+ }
+ // Replay by explicit visit boundaries, not inferred timestamps.
+ function replay(){
+  remaining=Array(names.length).fill(start);player=0;turn=0;winner=null;let dartsInVisit=0,visitStart=start;
+  for(const e of history){
+   const before=remaining[player],next=before-e.score;
+   const bust=next<0||next===1||(next===0&&e.multiplier!==2);
+   e.player=participants[player].label;e.before=before;e.bust=bust;e.turn=turn+1;
+   if(bust)remaining[player]=visitStart;else remaining[player]=next;
+   e.after=remaining[player];
+   if(!bust&&next===0){winner=participants[player].label;break;}
+   dartsInVisit++;
+   if(bust||dartsInVisit===3){player=(player+1)%participants.length;turn++;dartsInVisit=0;visitStart=remaining[player];}
+  }
+ }
+ const snapshot=()=>({players:participants.map((p,i)=>({...p,remaining:remaining[i]})),active:participants[player].label,dartsInTurn:history.length?history.at(-1).turn===turn+1?history.filter(e=>e.turn===turn+1).length:0:0,winner,events:history.map(e=>({...e}))});
+ return Object.freeze({throwAt(x,y){if(winner)throw Error('Game finished');const e=scoreAt(x,y);history.push({...e,order:history.length+1});replay();return snapshot();},miss(){return this.throwAt(2,2);},undo(){history.pop();replay();return snapshot();},snapshot});
+}
+const api={version,defaultIdentity,open,admit,selection,records,events,symbolic,preview,contributions,labeledRange,resolveRange,binaryRelation,scoreAt,x01Session};if(typeof module==='object')module.exports=api;else{
  root.dartDartsModule=api;
  const cache=()=>new Promise((resolve,reject)=>{const request=indexedDB.open('dart-darts-modules',1);request.onupgradeneeded=()=>request.result.createObjectStore('modules',{keyPath:'address'});request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});
  async function selected(){let db;try{db=await cache();return await new Promise((resolve,reject)=>{const request=db.transaction('modules').objectStore('modules').get('modules/darts/selected');request.onsuccess=()=>resolve(request.result||null);request.onerror=()=>reject(request.error);});}catch{return null;}finally{db?.close();}}
