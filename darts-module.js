@@ -94,7 +94,24 @@ const state={...view,players,registry,games,h2h,pairFields,teams,producedFrom:so
 
 return state;}
 function contributions(source,playerIds){const selected=playerIds==null?null:new Set(playerIds.map(String)),teams=source.reader.table('team'),groups=[],shared=[];for(const row of source.reader.table('statistics')){if(!(row.start_points>0))continue;const members=[...new Set(teams.filter(t=>t.opponent_id===row.opponent_id).map(t=>String(t.player_id)))];if(selected&&!members.some(id=>selected.has(id)))continue;const group={address:source.address+'/tables/statistics/'+row._id+'/counted-dart-grains',source:source.address+'/tables/statistics/'+row._id,opponent:row.opponent_id,members,count:row.darts_thrown,range:[0,row.darts_thrown],grain:'Counted native darts; individual unrecorded outcomes are not inferred'};if(!Number.isSafeInteger(group.count)||group.count<0)throw Error('Darts material count unresolved');if(selected&&members.length>1&&!members.every(id=>selected.has(id))){shared.push(group);continue;}groups.push(group);}return{address:source.address+'/reports/'+(selected?[...selected].sort().join(','):'whole')+'/dart-material',source:source.address,members:selected?[...selected]:null,groups,unallocatedShared:shared,count:groups.reduce((n,g)=>n+g.count,0),boundary:'Each native statistics scope counted once; complete shared scopes admitted only when all members belong to the report. Individual missing throw details remain unresolved'};}
-const api={version,defaultIdentity,open,admit,selection,records,events,symbolic,preview,contributions};if(typeof module==='object')module.exports=api;else{
+// Addressed binary operations: labels identify ranges; numeric scores are resolved values, not identities.
+function labeledRange(label,lower,upper=lower,relations=[]){
+ if(typeof label!=='string'||!label.trim())throw Error('Range label required');
+ if(!Number.isFinite(lower)||!Number.isFinite(upper)||lower>upper)throw Error('Invalid finite range');
+ if(!Array.isArray(relations)||relations.some(r=>typeof r!=='string'||!r.trim()))throw Error('Invalid relation addresses');
+ return Object.freeze({label,range:Object.freeze([lower,upper]),relations:Object.freeze([...relations])});
+}
+function resolveRange(state,value){
+ if(!state||!Array.isArray(state.range)||state.range.length!==2||!Number.isFinite(value))throw Error('Unresolved range');
+ const [lower,upper]=state.range;
+ if(value<lower||value>upper)throw Error('Value outside addressed range');
+ return Object.freeze({address:state.label,range:state.range,value,relations:state.relations});
+}
+function binaryRelation(left,relation,right){
+ if(!left?.label||!right?.label||typeof relation!=='string'||!relation.trim())throw Error('Invalid binary relation');
+ return Object.freeze({left:left.label,relation,right:right.label});
+}
+const api={version,defaultIdentity,open,admit,selection,records,events,symbolic,preview,contributions,labeledRange,resolveRange,binaryRelation};if(typeof module==='object')module.exports=api;else{
  root.dartDartsModule=api;
  const cache=()=>new Promise((resolve,reject)=>{const request=indexedDB.open('dart-darts-modules',1);request.onupgradeneeded=()=>request.result.createObjectStore('modules',{keyPath:'address'});request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});
  async function selected(){let db;try{db=await cache();return await new Promise((resolve,reject)=>{const request=db.transaction('modules').objectStore('modules').get('modules/darts/selected');request.onsuccess=()=>resolve(request.result||null);request.onerror=()=>reject(request.error);});}catch{return null;}finally{db?.close();}}
