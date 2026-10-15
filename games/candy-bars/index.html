@@ -43,7 +43,7 @@ function paintField(time){
    const perspective=3.3/(3.3-depth*.34);return [center[0]+x*size*scale*perspective,center[1]+y*size*scale*perspective];
  };
  for(let layer=0;layer<2;layer++){
-   const active=layer===1,points=tetra.map(p=>projected(p,active,active?.83:1));
+   const active=layer===1,points=tetra.map(p=>projected(p,active,active ? 0.83 : 1));
    g.beginPath();for(const [a,b] of edges){g.moveTo(...points[a]);g.lineTo(...points[b]);}
    g.strokeStyle=active?'rgba(255,207,100,.8)':'rgba(146,230,246,.4)';g.lineWidth=Math.max(1,dpr*(active?1.5:1));g.stroke();
    for(let i=0;i<points.length;i++){g.beginPath();g.arc(...points[i],Math.max(2,3*dpr),0,Math.PI*2);g.fillStyle=active?'#ffd27e':'#9ee8ff';g.fill();}
