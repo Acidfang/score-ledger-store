@@ -109,7 +109,7 @@ function animateTiles(oldValues,newValues,kind,source=null,target=null){
   else{dx=rects[from].left-rects[dest].left;dy=rects[from].top-rects[dest].top;}
   if(!dx&&!dy)continue;
   el.classList.add('moving');
-  const animation=el.animate([{transform:'translate('+dx+'px,'+dy+'px)',opacity:from===null?.15:1},{transform:'translate(0,0)',opacity:1}],{duration:kind==='swap'?220:360,easing:kind==='swap'?'ease-in-out':'cubic-bezier(.2,.72,.2,1)'});
+  const animation=el.animate([{transform:'translate('+dx+'px,'+dy+'px)',opacity:from===null?0.15:1},{transform:'translate(0,0)',opacity:1}],{duration:kind==='swap'?220:360,easing:kind==='swap'?'ease-in-out':'cubic-bezier(.2,.72,.2,1)'});
   promises.push(animation.finished.catch(()=>{}).then(()=>{el.classList.remove('moving');el.style.opacity='';}));
  }
  return Promise.all(promises);
