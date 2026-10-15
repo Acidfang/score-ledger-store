@@ -20,6 +20,26 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: actions/configure-pages@v5
+      - name: Add game navigation to published viewer
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path('index.html')
+          source = page.read_text(encoding='utf-8')
+          assert Path('games/candy-bars/index.html').is_file(), 'Candy Bars entry missing'
+          assert '</body>' in source.lower(), 'Main viewer has no closing body'
+          if 'data-score-ledger-game-nav=' not in source:
+              link = ('<a data-score-ledger-game-nav="candy-bars" '
+                      'href="games/candy-bars/" '
+                      'style="position:fixed;right:12px;bottom:12px;z-index:2147483646;'
+                      'padding:12px 16px;border-radius:30px;background:#ffd166;color:#201526;'
+                      'font:700 15px system-ui,sans-serif;text-decoration:none;'
+                      'box-shadow:0 3px 16px #0009" '
+                      'aria-label="Play Candy Bars match-three game">🍬 Candy Bars</a>')
+              at = source.lower().rfind('</body>')
+              source = source[:at] + link + '\n' + source[at:]
+              page.write_text(source, encoding='utf-8')
+          PY
       - uses: actions/upload-pages-artifact@v4
         with:
           path: '.'
