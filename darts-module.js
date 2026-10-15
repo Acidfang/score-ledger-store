@@ -126,6 +126,28 @@ function scoreAt(x,y){
  const score=segment*multiplier;
  return {label:(multiplier===3?'triple-':multiplier===2?'double-':'single-')+segment,range:[score,score],score,multiplier,segment,point:[x,y]};
 }
+// Deterministic visit reconstruction: score combinations are possibilities, never observed dart identities.
+// Filter to a physical aiming neighbourhood only when that target is explicitly supplied.
+function deriveVisit(total,darts=3,aim=null){
+ if(!Number.isSafeInteger(total)||total<0||!Number.isSafeInteger(darts)||darts<1||darts>3)throw Error('Invalid recorded visit');
+ const ring=[20,1,18,4,13,6,10,15,2,17,3,19,7,16,8,11,14,9,12,5];
+ const regions=[{label:'miss',score:0,segment:null,multiplier:0},{label:'single-bull',score:25,segment:25,multiplier:1},{label:'double-bull',score:50,segment:25,multiplier:2}];
+ for(const n of ring)for(const [name,m] of [['single',1],['double',2],['triple',3]])regions.push({label:name+'-'+n,score:n*m,segment:n,multiplier:m});
+ let allowed=regions;
+ if(aim!==null){
+  const target=typeof aim==='number'?aim:Number(aim);
+  const at=ring.indexOf(target);
+  if(at<0)throw Error('Unknown aiming segment');
+  const neighbours=new Set([ring[(at+19)%20],target,ring[(at+1)%20]]);
+  allowed=regions.filter(r=>r.segment===null||neighbours.has(r.segment));
+ }
+ const outcomes=[];function walk(remaining,slots,start,chosen){
+  if(slots===0){if(remaining===0)outcomes.push(Object.freeze([...chosen]));return;}
+  for(let i=start;i<allowed.length;i++){const r=allowed[i];if(r.score>remaining)continue;walk(remaining-r.score,slots-1,i,[...chosen,r]);}
+ }
+ walk(total,darts,0,[]);
+ return Object.freeze({observedTotal:total,darts,aim:aim===null?null:Number(aim),combinations:Object.freeze(outcomes),interpretation:'Mathematically possible unordered segment combinations; target and dart count are constraints, not inferred facts'});
+}
 function x01Session(names,start=501){
  if(!Array.isArray(names)||!names.length||names.some(n=>typeof n!=='string'||!n.trim())||!Number.isSafeInteger(start)||start<2)throw Error('Invalid game setup');
  const participants=names.map((name,i)=>Object.freeze({label:'player/'+(i+1),name,range:Object.freeze([0,start])}));
@@ -153,7 +175,7 @@ function x01Session(names,start=501){
   snapshot
  });
 }
-const api={version,defaultIdentity,open,admit,selection,records,events,symbolic,preview,contributions,labeledRange,resolveRange,binaryRelation,scoreAt,x01Session};if(typeof module==='object')module.exports=api;else{
+const api={version,defaultIdentity,open,admit,selection,records,events,symbolic,preview,contributions,labeledRange,resolveRange,binaryRelation,scoreAt,x01Session,deriveVisit};if(typeof module==='object')module.exports=api;else{
  root.dartDartsModule=api;
  const cache=()=>new Promise((resolve,reject)=>{const request=indexedDB.open('dart-darts-modules',1);request.onupgradeneeded=()=>request.result.createObjectStore('modules',{keyPath:'address'});request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});
  async function selected(){let db;try{db=await cache();return await new Promise((resolve,reject)=>{const request=db.transaction('modules').objectStore('modules').get('modules/darts/selected');request.onsuccess=()=>resolve(request.result||null);request.onerror=()=>reject(request.error);});}catch{return null;}finally{db?.close();}}
