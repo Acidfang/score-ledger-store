@@ -2,55 +2,58 @@
 
 Live page: https://acidfang.github.io/score-ledger-store/recursive-cubes/
 
-Source: [index.html](./index.html). One self-contained HTML file; no external dependencies, build step, backend or analytics. Keep this isolated from the canonical viewer and source data.
+Source: [index.html](./index.html). One self-contained HTML file, with no external dependencies or build step. Keep changes isolated from the repository's canonical viewer and source data.
 
-## Governing requirement and current release boundary
+## Governing relation and current implementation
 
-The current governing geometry is a segmented sphere: N segments correspond to N children; one segment is the whole sphere, two are hemispheres, and segment boundaries/tips meet at the top and bottom. Arbitrary N, including five and seven, must not be restricted to regular solids. The numerical segment-centre and child-orientation rule is not yet implemented. Do not silently invent longitudinal-sector midpoint/equatorial placement. The four- and six-child presets below are retained historical path demonstrations, not the governing construction.
-
-## Requirements retained
-
-- Follow actual centres and their paths. Cube wireframes and spherical field guides are optional, off by default. Every displayed point is an addressed centre; there is no additional sampling grid.
-- The selected child arrangement repeats identically at every generation. Six children retain the original ±X, ±Y, ±Z directions; four children use a regular tetrahedron. Each child's distance from its parent is equal within that generation. “Hypercube” preserves Joe's name for the six-direction relation; it does not mean a tesseract implementation.
-- Child bottom, local −Y, faces the parent. Local +Y points away. Parent rotation carries the complete child frame; the child also turns about its own local Y axis.
-- Overlapping positions retain distinct addresses. Input fills an existing centre without changing its geometry or identity. Entered values are page-session memory only and are not uploaded.
-- A child retains all ancestor colour contributions and adds its own indexed contribution. The same ordered palette repeats at every generation. Colours and blending are explicit display conventions.
-- The whole centre-path pattern also appears at a finer scale inside its primary centre. The current implementation renders one inner instance, not infinitely many nested instances.
+- A parent has N sphere segments and N children. One segment is the whole sphere, two are hemispheres; segment boundaries/tips meet at top and bottom. Child centres are dispersed as evenly as possible as a field around the parent, at equal distance from it. This is not a requirement that every pair of children have identical separation.
+- Joe defines atomic number in this model as the number of children a parent has. This does not establish physical element properties. One control, “Atomic number · children per parent”, accepts N = 1…118. The same count and ordered local direction arrangement repeat at every centre. Complete displayed generations always contain all N children.
+- Directions are precomputed once per N and reused through every recursive parent frame. One child uses +Y and two use ±Y as display conventions. Four retain tetrahedral symmetry; six retain the previous axial symmetry internally. Other counts use a deterministic Fibonacci-sphere distribution: y = 1 − 2(i+½)/N, longitude = iπ(3−√5). This is the chosen numerical approximation to even spreading, not a proof of optimal spacing or an exact derivation of segment boundaries.
+- Spherical and radial guides are optional. There is no cube framework or extra point-sampling grid. Full spherical segment boundary surfaces remain unimplemented.
+- Every centre is a ZERO POINT. The child-to-immediate-parent ZERO POINT line defines the local rotation axis, recursively. This does not mean all generations lie on one global line.
+- A child's bottom, local −Y, faces its parent; local +Y points away. A parent's turn carries the complete child frame; the child also turns around its own local Y axis.
+- Follow actual centre trajectories. The complete pattern also appears once at a finer scale within its primary centre. This inner instance is finite; infinite nesting is not rendered.
 - Joe’s EI specification assigns AI only source-occurrence transcription. This page is an illustrative implementation of the stated geometric relations; it does not establish a complete EI implementation. Binary means relations between addressed things. No physical claim is made.
 
-## Implementation
+## Identity, additions and history
 
-`relation-engine` defines presets, topology, matrices and colour contributions. Matrices are row-major and apply to column vectors; scale is separate. For parent centre C, rotation R, size s, child size c and unit radial direction n:
+Children have stable ordinal addresses C1, C2, …, C118. Increasing N attaches the next identities and redistributes the retained siblings using the chosen even-spread approximation. It does not reset angles, simulation time or input values. The same arrangement is shared at every generation.
 
-- child centre = C + R × n × (s + c) / 2
+Changing N, depth or field scale starts a new trajectory segment; no line joins across the geometry change. Earlier segments retain their original node/address mapping, sampled world positions and inner-instance scale. They are drawn separately with dashed lines. Never use a new topology's numeric BFS index to read an old sample array.
+
+Removed or temporarily unrendered addresses retain their entered values in the tab. A selection outside the current view is retained logically, with a visible boundary notice and a rendered ancestor used for inspection. It restores when rendered again, unless the user explicitly selects another address. The values and history are not uploaded or persisted across reloads.
+
+Current trajectory history is limited to six seconds and 24,000 stored centre positions. Earlier geometry segments have a separate 12,000-position budget; the oldest samples expire. This is finite in-memory retention, not an immutable source ledger. Reset motion explicitly clears current and archived path history but preserves entered values. Hiding paths does not delete them.
+
+## Mathematical implementation
+
+The `relation-engine` script uses row-major matrices with column vectors and separate scale. For parent centre C, rotation R, size s, child size c and unit direction n:
+
+- child centre = C + R × n × (s+c)/2
 - child rotation = R × directionBasis × localYRotation
 
-The spherical field radius is the current parent-to-child distance, (s+c)/2. Six-axis adjacent distances are √2 times that radius; opposites are twice it. The four tetrahedral normals are (1,1,1), (1,−1,−1), (−1,1,−1), (−1,−1,1), normalized. Their pair distances are √(8/3) times the radius. Tetrahedral initial roll is a stable right-handed display basis, not a newly inferred law.
+All siblings therefore have equal parent radius. Direction bases are proper right-handed rotations mapping local +Y to the radial direction. The initial roll, radius/size convention and root Y axis are explicit display choices.
 
-Colour is the equal-weight RGB average of the root contribution plus every child-index contribution along the complete ancestry. A grandchild therefore includes the root, parent and its own contribution.
+Each child adds a fixed RGB contribution keyed only by its stable child index. The same palette repeats at every generation and stays unchanged when N changes. Visible colour is the equal-weight average of the root contribution plus the complete ancestry of indexed contributions. The indexed contribution maps each segment/direction to its child origin, so descendants retain that segment contribution in their ancestry. The palette spans broad RGB hues without repeating a six-colour cycle or changing with N. Palette and mixing are display conventions, with no nanometre labels, wavelength calibration or physical claim.
 
-`view-engine` separates camera math. Pointer rays hit the nearest displayed cube surface when that framework is on; otherwise a nearby centre's depth or the selected centre's view plane supplies the anchor. Perspective distance and pixel offsets change together so the picked world point remains under the cursor. Pinch keeps it under the moving midpoint.
+The `view-engine` script separates camera math. Wheel zoom anchors a ray-intersected sphere surface when its guide is visible, otherwise a nearby centre-depth plane or the selected centre's view plane. Pinch holds the same world anchor under the moving midpoint. Camera changes only reproject stored world trajectories.
 
-The page uses a single fixed, full-viewport canvas with no page scrolling. The Controls button opens a collapsible overlay containing all settings, explanations, source links and update notices; only that panel scrolls internally. Drag orbits, Shift-drag or right-drag pans, and wheel/pinch zoom stays anchored. Escape closes the panel.
+The `relation-ui` script samples actual world positions every 1/15 simulation second. Root/local default rates, 12°/s and 24°/s, remain adjustable demonstration parameters. Rate changes preserve continuous history. Hidden pages do not advance simulation time. Step advances 1/30 second.
 
-`relation-ui` samples actual world positions every 1/15 simulation second. It connects those samples in time order; parent–child relation links are a separate optional layer. Speed changes preserve history. Angle reset, preset, depth and field-scale changes clear it. Camera movement only reprojects it. Hidden pages do not advance simulation time.
+The inner instance is one fixed affine scaled copy of the whole relation and its trajectories about root; it adds no independent turn. Scale is min(0.5, 0.38/max(R,0.76)), with R the sum of parent-to-child distances along the deepest displayed chain. This bound is constant during each geometry segment. Inner addresses start with `root::inner/`. Select the inner instance and Focus centre to inspect it.
 
-The inner instance uses the same complete transforms and stored trajectories with one fixed uniform scale about root. Its scale is min(0.5, 0.38 / max(R, 0.76)), where R is the sum of parent-to-child distances along the deepest chain. This conservative bound is constant for a given preset/depth/scale. It adds no independent rotation. Inner addresses use `root::inner/` before the source address. Select that instance and use Focus cube to inspect it. More inner layers and independent internal motion are not implemented.
+## Finite view and interaction
 
-## Explicit choices and unresolved parameters
+Depth adapts to N and the number of displayed instances. At most 1,600 current centres are displayed in total, and depth is capped at eight. Every admitted generation is complete; no sibling groups are silently truncated. For N=118 and depth=1, each instance contains root plus 118 children. Deeper continuation remains part of the repeated rule, outside the current rendering budget. The interface reports counts and the maximum available depth.
 
-- Arbitrary N remains pending its specified distribution/orientation. Do not infer a spherical arrangement or demand all-pairs equidistance for six children. Four and six are the currently supported historical examples; segmented-sphere placement is the next geometry task.
-- Default field-size ratio is 1; 0.3–1 is an inspection control. Radial spacing, inner-instance scale, tetrahedral roll, camera, palette and RGB averaging are visible implementation conventions.
-- Root/local defaults are 12°/s and 24°/s; they are demonstration rates. Root axis is Y. A canonical metric/rate law is not established.
-- Depth 0–4 yields 1/7/43/259/1,555 centres for six children or 1/5/21/85/341 for four. Counts are per pattern instance. These finite limits do not end the specified relation.
-- History is at most six seconds and 24,000 stored centre positions. Higher depth shortens it; the interface reports the span and samples per centre. Step advances 1/30 second.
+The canvas fills one fixed viewport without page scrolling. Controls opens a collapsible, internally scrolling overlay containing settings, explanations, source links and update notices. Drag orbits; Shift-drag or right-drag pans. Wheel/pinch zoom is anchored. Escape closes the panel.
 
-## Continuing and updating
+## Running, updates and verification
 
 Open the HTML directly, or run `python3 -m http.server 8000` from the repository root and visit `http://localhost:8000/recursive-cubes/`.
 
-When publishing an HTML change, update both the `model-version` meta value and the `VERSION` constant. Hosted pages check their own URL every 60 seconds while visible. A newer version reloads automatically only when it can preserve display settings and there is no entered value or draft to lose. Otherwise a labelled reload button warns that entered values will clear. Settings are stored in this tab's session storage; values and trail history are not. Pages opened before this update need one manual refresh to gain the update checker. Offline checks leave the current model running.
+When publishing a change, update both the `model-version` meta value and `VERSION` constant. Hosted pages check their own URL every 60 seconds while visible. They reload automatically only when display settings can be preserved and no entered value or draft would be lost. Otherwise a labelled reload button warns that values will clear. Settings live in tab session storage; values and path history do not. Old four/six preset settings and selection names migrate to the count/index representation. Offline checks leave the current page running.
 
-Checks exercised include matrix/axis/radial invariants, addressed counts, JavaScript syntax, input-as-text safety, repeated controls, pointer cancellation, pause/step/reset, actual trajectory samples and history resets, cursor/midpoint projection anchors, preset switches, inner-instance addressing, update guards and settings validation. Native Canvas renders were inspected at desktop and phone dimensions using a mocked DOM. Actual browser layout/device interaction remains unverified because the available browser could not start.
+Checks cover every count 1–118, full generation sizes and total budget, equal parent radii, outward local axes, deterministic direction reuse, palette ancestry, stable identities, retained values/angles/time, selection restoration, archived sample indexing, geometry boundaries, input-as-text safety, fullscreen panel/pan, camera anchors and update guards. Native Canvas output was inspected at desktop/phone dimensions with a mocked DOM. Actual browser layout/device interaction remains unverified because the available browser could not start.
 
-Before release, verify pause/step/reset, source links, both presets, inherited colours, actual trails, inner-instance focus, optional guides, pointer anchoring on a visible framework surface, pinch midpoint, mobile overflow, update preservation and back/forward restoration. Keep test output out of the published repository unless requested.
+Before release, check N=1,2,3,5,7,118; adding/removing a selected last child; complete-generation depth caps; old/new path separation; field guides; inner instance; mobile overflow; anchored zoom; update preservation; and back/forward restoration. Keep test output outside the published repository unless requested.
