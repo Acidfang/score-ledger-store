@@ -167,3 +167,101 @@ for(const row of data){
 console.log(JSON.stringify({sha256,samplesPerCase:M,durationModelSeconds:T,cases,largestDisplacement,largestEngineDifference,largestPredictionDisplacement,largestRotationChange,largestNonDC,data},null,2));
 JS
 ```
+
+
+## 6. Additional candidate: inherited orientation frequencies
+
+Added 2026-10-17. **This assistant-proposed candidate does not match the four-line dataset after one calibration.** It tests rotation of the inherited frames, rather than centre motion. It is not an existing physical emission rule or a claim attributed to the model's author. Sections 1–5 remain the original pinned centre-motion audit; their statement that no spectral fit was performed applies to that original audit. This section adds one explicit candidate fit.
+
+### Fixed mapping before calculation
+
+Use the same pinned v11 engines and the same four observations from §2. Keep `N = 1`, root rate `r = 12°/model-second`, local rate `l = 24°/model-second`, ratio `ρ = 1`, and the **world** frame. At depth `d`, take the orientation signal
+
+`qd(t) = ex · [Rd(t) ex] = Rd(t)[0,0] = cos[θ(t) + d φ(t)]`.
+
+Its frequency is `fd = |r + d l|/360` cycles per model second. Assign the four consecutive Balmer lines to the first four child frames in order: `d = n_upper − 2`. This gives Hα → depth 1, Hβ → 2, Hγ → 3, Hδ → 4. These assignments are the candidate's additional assumptions; they do not follow from the geometric relation.
+
+The fixed frequencies are `1/10, 1/6, 7/30, 3/10`. Their ratios to the first are exactly **`1, 5/3, 7/3, 3`**. No rate adjustment, line reassignment, harmonic selection, additive offset, child-count search or other candidate scan was performed. All four depths are on the single repeated `C1` lineage. Expanding the selectable child-count range to 200 would not change this fixed `N = 1` test.
+
+### One calibration, then three checks
+
+Only Hα fixes the global frequency scale:
+
+`K = να,observed / f1 = 4566.804649178928 THz per (cycle/model-second)`.
+
+Then `νd,candidate = K fd`. Define the signed relative residual as `100 × (νcandidate / νobserved − 1)`. Hβ, Hγ and Hδ are held out of the scale calibration; their already-known values make this an out-of-calibration comparison, not a blind validation.
+
+| Line | Observed frequency ratio | Candidate ratio | Candidate frequency (THz) | Candidate − observed (THz) | Relative residual |
+|---|---:|---:|---:|---:|---:|
+| Hα | 1 | 1 | 456.680465 | 0 by calibration | 0% by calibration |
+| Hβ | 1.349988 | 1.6666667 | 761.134108 | +144.620975 | +23.4579% |
+| Hγ | 1.5119912 | 2.3333333 | 1065.587751 | +375.090918 | +54.3219% |
+| Hδ | 1.5999934 | 3 | 1370.041395 | +639.355678 | +87.5008% |
+
+The corresponding ratio residuals are +0.316678697, +0.821342156 and +1.400006629. These discrepancies greatly exceed the measurement uncertainties in §2; no covariance-dependent significance statistic is needed to establish this candidate's failure at the quoted accuracy. The candidate ratios increase in equal steps of 2/3, while the measured ratios have decreasing successive increments. The agreement at Hα is entirely imposed by calibration.
+
+### Actual-engine numerical check
+
+For 2,048 equally spaced samples on `[0,30)` model seconds, the non-DC positive-frequency DFT peaks of the four engine-generated orientation signals occur in bins **3, 5, 7 and 9**. Each has normalized DFT amplitude approximately 0.5, as expected for a unit cosine. Dividing the bins by the 30-model-second record reproduces the analytic frequencies exactly at this resolution.
+
+- Maximum matrix-element difference from `Ry(θ + dφ)`: `7.126244039312724e-15`
+- Maximum FIR versus reference-engine orientation difference: `0`
+- Maximum centre displacement: `0`
+
+Thus actual orientation change supplies a nonzero signal, but this particular assignment of its frequencies does not reproduce the observed ratios. A physical continuation still needs to derive how an orientation produces radiation or a transition-energy difference, why the chosen observer-frame quantity is relevant, and how atomic states select the participating depths. The fitted conversion of model time to physical frequency is also not a prediction. This result excludes only the stated candidate at its fixed settings, not every possible orientation-based theory.
+
+### Reproduce this additional calculation
+
+Run the following separately in the directory containing the same immutable v11 `index.html` linked in §1. It reads the actual relation and FIR engines, checks their orientations, extracts the dominant DFT frequency, and applies exactly one scale factor. No new observational data or network request is required.
+
+```bash
+node <<'JS'
+const fs=require('node:fs'),vm=require('node:vm'),crypto=require('node:crypto');
+const html=fs.readFileSync(process.argv[2]||'index.html','utf8');
+const hash=crypto.createHash('sha256').update(html).digest('hex');
+if(hash!=='fe7b5c71f8e0c89c91b19d7d2f20026cd5b0e9d5cb9d7b27e39b4e98642138b3')throw Error('Use the pinned v11 source.');
+const ctx=vm.createContext({});
+for(const id of ['relation-engine','fir-engine']){
+ const code=html.match(new RegExp('<script id="'+id+'">([\\s\\S]*?)</script>'));
+ if(!code)throw Error('Missing '+id);
+ vm.runInContext(code[1],ctx);
+}
+const {E,F}=vm.runInContext('({E:CubeRelation,F:CubeFIR})',ctx);
+const samples=2048,duration=30,rootRate=12,localRate=24;
+const m=F.create(E,{childCount:1,ratio:1,filterAddress:'root',shellFrom:0,shellTo:4,instances:1,rootAngle:.31,localAngle:-.47,rootSpeed:rootRate,localSpeed:localRate});
+const series=Array.from({length:4},()=>[]);
+let maxMatrixError=0,maxReferenceDifference=0,maxCentreDisplacement=0;
+for(let j=0;j<samples;j++){
+ const t=duration*j/samples,theta=.31+rootRate*Math.PI/180*t,phi=-.47+localRate*Math.PI/180*t;
+ m.apply({changes:{rootAngle:theta,localAngle:phi},time:t,continuous:true});
+ const w=m.reconstruct(),reference=E.transforms(m.nodes,theta,phi);
+ for(let d=1;d<=4;d++){
+  const expected=E.rotateY(theta+d*phi);
+  for(let k=0;k<9;k++){
+   maxMatrixError=Math.max(maxMatrixError,Math.abs(w[d].rotation[k]-expected[k]));
+   maxReferenceDifference=Math.max(maxReferenceDifference,Math.abs(w[d].rotation[k]-reference[d].rotation[k]));
+  }
+  maxCentreDisplacement=Math.max(maxCentreDisplacement,Math.hypot(w[d].centre[0],w[d].centre[1]-d,w[d].centre[2]));
+  series[d-1].push(w[d].rotation[0]);
+ }
+}
+const peaks=series.map((s,i)=>{
+ let best={bin:0,amplitude:0};
+ for(let k=1;k<samples/2;k++){
+  let re=0,im=0;
+  for(let j=0;j<samples;j++){const a=2*Math.PI*k*j/samples;re+=s[j]*Math.cos(a);im-=s[j]*Math.sin(a);}
+  const amplitude=Math.hypot(re,im)/samples;
+  if(amplitude>best.amplitude)best={bin:k,amplitude};
+ }
+ return {depth:i+1,...best,frequency:best.bin/duration,analyticFrequency:(rootRate+(i+1)*localRate)/360};
+});
+const observed=[['H-alpha',656.460,.003],['H-beta',486.271,.005],['H-gamma',434.1692,.0006],['H-delta',410.2892,.0006]];
+const anchorFrequency=299792.458/observed[0][1],scale=anchorFrequency/peaks[0].analyticFrequency;
+const rows=observed.map(([line,lambda,u],i)=>{
+ const actual=299792.458/lambda,modelRatio=peaks[i].analyticFrequency/peaks[0].analyticFrequency;
+ const predicted=scale*peaks[i].analyticFrequency;
+ return {line,depth:i+1,observedRatio:observed[0][1]/lambda,modelRatio,predicted_THz:predicted,observed_THz:actual,residual_THz:predicted-actual,residual_ratio:modelRatio-observed[0][1]/lambda,residual_percent:100*(predicted/actual-1),calibration:i===0};
+});
+console.log(JSON.stringify({hash,samples,duration,rootRate,localRate,maxMatrixError,maxReferenceDifference,maxCentreDisplacement,peaks,scale_THz_per_model_frequency:scale,rows},null,2));
+JS
+```
