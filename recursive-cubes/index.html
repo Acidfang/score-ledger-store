@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="model-version" content="2026-10-17-centre-paths-9">
+  <meta name="model-version" content="2026-10-17-centre-paths-10-fir">
   <meta name="theme-color" content="#101917">
   <meta name="description" content="An interactive spherical child-centre relation with inherited frames, local rotation and actual trajectories.">
   <title>Centre paths · Recursive centre relation</title>
@@ -57,14 +57,17 @@
       <p class="hint">Independent demonstration rates, not a canonical coupling. Setting the absolute model root rate to zero stops that model rotation; the relative view control does not. Step advances 1/30 second. Reset clears model and relative-view angles.</p></details>
     </section>
     <section class="section"><h3>Field and finite view <span class="number">02 / DEPTH</span></h3>
-      <label class="control-head" for="child-count">Atomic number · children per parent</label><input id="child-count" type="number" min="1" max="118" step="1" value="6" aria-describedby="atomic-definition count-boundary"><p id="atomic-definition" class="hint">Joe’s model definition; physical element properties are not established.</p><p id="count-boundary" class="hint"></p>
-      <div class="control"><label class="control-head" for="depth">Child shells shown <output id="depth-value">2</output></label><input id="depth" type="range" min="0" max="4" step="1" value="2"></div>
-      <p class="hint" id="shell-summary"></p><button id="show-rotation" style="margin-top:9px">Show child rotation</button><p class="hint" id="rotation-status" role="status">Shell 0 is root; shell 1 is its children; shell 2 is their children. A child’s own turn is visible through its children’s centre paths.</p>
+      <label class="control-head" for="child-count">Children per parent · N</label><input id="child-count" type="number" min="1" max="118" step="1" value="6" aria-describedby="atomic-definition count-boundary"><p id="atomic-definition" class="hint">The atomic-number interpretation is tentative; physical element properties are not established.</p><p id="count-boundary" class="hint"></p>
+      <div class="control"><label class="control-head" for="depth">Visible centre generations <output id="depth-value">2</output></label><input id="depth" type="range" min="0" max="4" step="1" value="2"></div>
+      <p class="hint" id="shell-summary"></p><button id="show-rotation" style="margin-top:9px">Show motion shells</button><p class="hint" id="rotation-status" role="status">Motion shells trace real direct-descendant addresses of visible centres, without adding descendant markers. Visible centre generations are a separate filter.</p>
+      <form id="region-filter-form"><label class="control-head" for="region-address">Addressed centre domain</label><input id="region-address" type="text" value="root" autocomplete="off" spellcheck="false"><label class="control-head" for="region-from">First visible outward generation</label><input id="region-from" type="number" min="0" max="8" value="0"><button type="submit">Apply centre filter</button></form>
+      <p class="hint" id="region-filter-status" role="status">The whole addressed relation is retained as rules. This filter chooses visible centres.</p>
+      <label><input id="show-shells" type="checkbox" checked> Motion shells of visible centres</label><p class="hint" id="shell-pattern-status">Shell paths come from actual descendant addresses. They add no centre markers. Outward centre generations are controlled separately.</p>
       <div class="control"><label class="control-head" for="ratio">Child field scale <output id="ratio-value">1.00 × parent</output></label><input id="ratio" type="range" min="0.3" max="1" step="0.01" value="1"></div>
       <div class="toggle-row"><label><input id="show-trails" type="checkbox" checked>Centre trails</label><label><input id="show-history" type="checkbox" checked>Previous geometry paths</label><label><input id="show-emphasis" type="checkbox" checked>Emphasize selected branch</label><label><input id="show-field" type="checkbox">Sphere / radial guide</label><label><input id="show-reference" type="checkbox" checked>World-fixed reference points</label><label><input id="show-inner" type="checkbox" checked>Pattern inside root</label><label><input id="show-links" type="checkbox">Relations</label><label><input id="show-axes" type="checkbox">Axes</label></div>
       <p class="hint" id="path-frame">Paths: parent-relative, using each sample’s own root frame.</p><p class="hint">Background points are a sparse world-fixed reference guide, not physical particles or model children.</p>
       <p class="hint" id="trail-status">Trails build from actual motion.</p>
-      <p class="hint">Shells count complete child generations below root. At N=4, two shells show root + 4 children + 16 grandchildren, with a separate trajectory for every address. Paths may coincide or cover only part of an orbit. Select a child or descendant to emphasize its root-child colour branch; all other centres and paths remain present. It adapts to keep at most 1,600 displayed centres across both instances. Coincident addresses still count separately. Every coloured model point is an addressed centre; faint background references are excluded.</p>
+      <p class="hint">Visible centre generations are outward steps from the addressed domain. Motion shells are actual direct-descendant path patterns of each visible centre, without extra descendant markers. Other addresses retain their producing rules. A finite safety limit rejects an oversized centre filter before it changes the view. Coincident addresses remain distinct.</p>
     </section>
     <section class="section"><h3>Inspect a ZERO POINT <span class="number">03 / INPUT</span></h3>
       <label class="sr-only" for="instance-select">Pattern instance</label><select id="instance-select" aria-label="Pattern instance" style="margin-bottom:7px"><option value="0">Whole pattern</option><option value="1">Finer pattern inside root</option></select>
@@ -75,9 +78,9 @@
       <label class="sr-only" for="centre-value">Value to fill at selected address</label><form id="fill-form" class="input-row"><input id="centre-value" type="text" maxlength="240" placeholder="Fill this centre…" autocomplete="off"><button type="submit">Fill</button></form>
       <p id="input-status" class="hint" role="status">The address exists before input. No value assigned.</p>
       <p class="hint">Tap a centre to select it. Where addresses coincide, use the list or indexed child buttons. Input stays on this page only.</p>
-    </section>    <div class="details"><p id="update-status" class="hint" role="status">This version checks for published updates while open.</p><button id="reload-update" hidden>Reload updated page (clears entered values)</button><details><summary>Read the relation and its rendering boundaries</summary>
+    </section>    <details id="fir-inspector"><summary>Inspect FILTER · ISOLATE · RECONSTRUCT</summary><p class="hint" id="fir-address"></p><p class="hint" id="fir-relation"></p><p class="hint" id="fir-receipt"></p><p class="hint" id="fir-retention"></p><button id="export-fir" type="button">Export retained transition receipts</button><p class="hint">This bounded numerical implementation preserves addressed producing relations. It is not a claim of complete EI semantics. No private ledger is read or changed.</p></details><div class="details"><p id="update-status" class="hint" role="status">This version checks for published updates while open.</p><button id="reload-update" hidden>Reload updated page (clears entered values)</button><details><summary>Read the relation and its rendering boundaries</summary>
       <p><strong>EI specification and implementation boundary.</strong> Joe’s EI specification assigns AI only source-occurrence transcription. This page is an illustrative implementation of the stated geometric relations; it does not establish a complete EI implementation. “Binary” here means a relation between addressed things. It does not replace those things with 0s and 1s.</p>
-      <p><strong>Segmented-sphere requirement and display boundary.</strong> The relation has N sphere segments and N children: one whole sphere, two hemispheres, and boundaries meeting at top and bottom. This page now repeats any selected count from 1 to 118. Child centres lie at equal radius from their parent. General-N directions use a deterministic Fibonacci spherical distribution as the explicit numerical approximation for the stated even-spreading requirement, not an exact derivation of segment boundaries. The optional sphere and radial lines are guides; full segment boundary surfaces are not implemented.</p>
+      <p><strong>Current geometry boundary.</strong> Joe’s latest explanation is face-to-face cube stacks. This version retains its earlier near-even direction model as a numerical approximation while the branch-frame/contact relation is clarified. The tetrahedral N=4 arrangement is not face contact on one rigid parent cube. Shared addressed shell patterns are implemented here; literal cube-face contact is not established. Centre spacing remains tied to the retained dimensions by (parent size + child size)/2; absolute lengths are unspecified, with no independent free-distance control.</p><p><strong>Earlier segmented-sphere approximation.</strong> The relation has N sphere segments and N children: one whole sphere, two hemispheres, and boundaries meeting at top and bottom. This page now repeats any selected count from 1 to 118. Child centres lie at equal radius from their parent. General-N directions use a deterministic Fibonacci spherical distribution as the explicit numerical approximation for the stated even-spreading requirement, not an exact derivation of segment boundaries. The optional sphere and radial lines are guides; full segment boundary surfaces are not implemented.</p>
       <p><strong>Direction conventions.</strong> One child uses local +Y; two use ±Y. Four retain tetrahedral directions; six retain ±X, ±Y, ±Z. Other counts use the spherical approximation. These choices do not assert that every pair of children is equally spaced. For six, adjacent distances are √2 times the radius and opposites are twice it.</p>
       <p><strong>Observer and path frames.</strong> The default observer turns with the root parent. At zero relative view turn, the parent has zero relative turn while its absolute model rotation continues. World view uses an external frame. Parent-relative paths remove the root rotation recorded at each sample’s own time; world paths use the original world positions. Switching view does not change the model or rewrite history. Samples without a recorded root phase remain world-only. Background reference points stay fixed in world coordinates and move on screen only through the camera. The observer and reference points are excluded from all centre counts.</p>
       <p><strong>Centres first.</strong> Trails connect actual sampled world positions from the running transform, in time order. They are not parent–child connectors or invented curves. Root remains at its fixed centre. Changing count, depth or display scale starts a new path segment and retains earlier geometry separately within a finite history budget. No path joins across the geometry change. Time, rotation phase, camera view, filled values and address-keyed drafts survive these changes. Newly exposed centres may lie outside the view; use Fit to reframe. Reset motion clears history. Rate changes preserve history. Camera moves only change the view.</p>
@@ -147,6 +150,188 @@ const CubeRelation = (() => {
   return Object.freeze({faces,tetra,directions,maxDepth,palette,colourContributions,colour,multiply,apply,add,scale,rotateY,topology,transforms,point});
 })();
 </script>
+<script id="fir-engine">
+// Bounded FILTER / ISOLATE / RECONSTRUCT model for the illustrative relation.
+// Original world samples remain owned by the UI; this graph never rewrites them.
+const CubeFIR = (() => {
+  const MODEL_KEYS=['childCount','ratio','rootAngle','localAngle','rootSpeed','localSpeed','filterAddress','shellFrom','shellTo','instances'];
+  const structuralKeys=['childCount','ratio','filterAddress','shellFrom','shellTo','instances'];
+  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+  // Preflight counts before creating any addressed descendant. The fixed safety
+  // limit is a rejection boundary; it is never a reason to expand hidden branches.
+  function plan(parameters) {
+    const {childCount:n,ratio,filterAddress:address,shellFrom:from,shellTo:to,instances}=parameters;
+    if(!Number.isInteger(n)||n<1||n>118)throw Error('Child count must be 1–118.');
+    if(!Number.isFinite(ratio)||ratio<.3||ratio>1)throw Error('Field scale must be .3–1.');
+    if(![1,2].includes(instances))throw Error('One or two display instances required.');
+    if(typeof address!=='string'||!/^root(?:\/C(?:[1-9]|[1-9][0-9]|10[0-9]|11[0-8])){0,64}$/.test(address))throw Error('Use an address such as root/C1/C2 (up to 64 steps).');
+    const path=address.split('/').slice(1).map(p=>Number(p.slice(1))-1);
+    if(path.some(i=>i>=n))throw Error('The filter address includes a child outside the selected N. Choose its parent or another address first.');
+    if(!Number.isInteger(from)||!Number.isInteger(to)||from<0||to<from||to>8)throw Error('Outward shells must satisfy 0 ≤ from ≤ to ≤ 8.');
+    let level=1n,subtree=0n,visible=0n;
+    for(let shell=0;shell<=to;shell++){subtree+=level;if(shell>=from)visible+=level;level*=BigInt(n);}
+    const materialized=subtree+BigInt(path.length),displayed=visible*BigInt(instances);
+    if(displayed>1600n||materialized>1600n)throw Error('Filter requests '+displayed+' displayed centres and '+materialized+' dependencies. The safety bound is 1,600. Choose a narrower address or outward shell range; no partial generation was applied.');
+    return Object.freeze({address,path:Object.freeze(path),from,to,instances,visible:Number(visible),displayed:Number(displayed),materialized:Number(materialized),dependencyOnly:Number(materialized-visible),complete:true});
+  }
+  function materialize(E,parameters,request) {
+    const directions=E.directions(parameters.childCount),nodes=[];
+    function add(address,parent,face,relativeShell){const p=parent<0?null:nodes[parent],node={address,parent,face,level:p?p.level+1:0,size:p?p.size*parameters.ratio:1,visible:relativeShell!==null&&relativeShell>=request.from&&relativeShell<=request.to,relativeShell};if(p)node.rule=directions[face];nodes.push(node);return nodes.length-1;}
+    let seed=add('root',-1,-1,request.path.length?null:0);
+    for(let i=0;i<request.path.length;i++){const face=request.path[i];seed=add(nodes[seed].address+'/C'+(face+1),seed,face,i===request.path.length-1?0:null);}
+    let boundary=[seed];
+    for(let shell=1;shell<=request.to;shell++){const next=[];for(const parent of boundary)for(let face=0;face<parameters.childCount;face++)next.push(add(nodes[parent].address+'/C'+(face+1),parent,face,shell));boundary=next;}
+    if(nodes.length!==request.materialized||nodes.filter(n=>n.visible).length!==request.visible)throw Error('Materialization disagreed with its preflight count.');
+    return nodes;
+  }
+  function create(E,initial={},origin={}) {
+    let parameters={childCount:6,ratio:1,rootAngle:0,localAngle:0,rootSpeed:12,localSpeed:24,filterAddress:'root',shellFrom:0,shellTo:2,instances:2,...initial};
+    let request=plan(parameters);
+    let nodes=[],world=[],byAddress=new Map(),records=new Map(),locals=new Map(),filters=new Map();
+    let phase=0,topologyRevision=0,worldRevision=0,sequence=0,expired=0;
+    let previousReceipt=null,motionWindow=null,lastIsolation=null;
+    const receipts=[],RECEIPT_LIMIT=48,rootCentre=Object.freeze([0,0,0]);
+    const originalIntent=Object.freeze({relation:'child frame = parent frame × radial placement × direction orientation × local-axis turn',addressRule:'root/C(index)/…; inner copy uses root::inner/',scope:'Finite illustrative numerical relation. No claim of complete EI semantics.',...origin});
+    const statistics={attempts:0,committed:0,noops:0,topologyBuilds:0,worldReads:0,worldRebuilds:0,centreRebuilds:0,rotationRebuilds:0,localProducts:0,worldHits:0};
+    let rootRotation=null,rootRotationAngle,localAngle,localDirections=null,localSpin=null,dirty=true;
+    function filter(address='root') {
+      if(filters.has(address))return filters.get(address);
+      const rendered=address.startsWith('root::inner/')?address.slice('root::inner/'.length):address;
+      const node=byAddress.get(rendered);
+      if(!node)throw Error('Address is outside the retained current topology: '+address);
+      const prefix=rendered+'/';
+      const result=Object.freeze({address,modelAddress:rendered,instance:address.startsWith('root::inner/')?'inner':'whole',node,whole:'root',members:Object.freeze(nodes.filter(n=>n.address===rendered||n.address.startsWith(prefix)).map(n=>n.address))});filters.set(address,result);return result;
+    }
+    function rebuildTopology(validated=null) {
+      const next=validated||materialize(E,parameters,request),old=byAddress;
+      nodes=next.map(node=>{const retained=old.get(node.address);return retained&&retained.parent===node.parent&&retained.face===node.face&&retained.level===node.level&&Object.is(retained.size,node.size)&&retained.rule===node.rule&&retained.visible===node.visible&&retained.relativeShell===node.relativeShell?retained:Object.freeze(node);});
+      byAddress=new Map(nodes.map(n=>[n.address,n]));filters=new Map();
+      const kept=new Map();
+      for(const node of nodes){const previous=records.get(node.address);kept.set(node.address,previous||{});}
+      records=kept;topologyRevision++;statistics.topologyBuilds++;dirty=true;
+    }
+    function dependencies(changed) {
+      const out=[];
+      if(changed.some(k=>structuralKeys.includes(k)))out.push('preflight addressed filter','only requested centres and required ancestors','radial placements','dependent world transforms');
+      if(changed.includes('rootAngle'))out.push('root rotation','dependent world transforms','sample-to-current-root projection');
+      if(changed.includes('localAngle'))out.push('shared direction × local-turn products','dependent world transforms');
+      if(changed.includes('rootSpeed')||changed.includes('localSpeed'))out.push('future angle integration; current geometry retained');
+      return [...new Set(out)];
+    }
+    function append(data) {
+      const receipt=Object.freeze({id:'transition/'+(++sequence),previous:previousReceipt,phase,topologyRevision,worldRevision,status:'observed',...data});
+      receipts.push(receipt);previousReceipt=receipt.id;
+      while(receipts.length>RECEIPT_LIMIT){receipts.shift();expired++;}
+      return receipt;
+    }
+    function flushMotion() {
+      if(!motionWindow)return null;
+      const result=append({...motionWindow,kind:'motion-window',retention:'Intermediate numerical steps are counted, not individually retained.'});motionWindow=null;return result;
+    }
+    function recordTransition(isolation,intent,time,continuous,checked,reuse) {
+      const entry={phase,topologyRevision,worldRevision,intent,filter:Object.freeze({address:request.address,from:request.from,to:request.to,scope:'requested addressed subtree plus necessary ancestors'}),isolated:isolation,reconstruct:Object.freeze(dependencies(Object.keys(isolation))),observed:Object.freeze({nodes:nodes.length,displayed:request.displayed,dependencyOnly:request.dependencyOnly,phase,checked,reuse}),time:Number.isFinite(time)?time:null};
+      if(!continuous){flushMotion();append({...entry,kind:'change'});return;}
+      const second=Number.isFinite(time)?Math.floor(time):0;
+      if(motionWindow&&motionWindow.second!==second)flushMotion();
+      if(!motionWindow)motionWindow={...entry,second,steps:1,startPhase:phase-1,workScope:'Totals across all steps in this window'};
+      else {const combined={...motionWindow.isolated};for(const [key,value] of Object.entries(isolation))combined[key]=Object.freeze({was:own(combined,key)?combined[key].was:value.was,is:value.is});const totalReuse=Object.fromEntries(Object.keys(reuse).map(key=>[key,motionWindow.observed.reuse[key]+reuse[key]]));motionWindow={...motionWindow,phase:entry.phase,topologyRevision:entry.topologyRevision,worldRevision:entry.worldRevision,isolated:Object.freeze(combined),reconstruct:Object.freeze([...new Set([...motionWindow.reconstruct,...entry.reconstruct])]),time:entry.time,steps:motionWindow.steps+1,observed:Object.freeze({...entry.observed,reuse:Object.freeze(totalReuse),verifiedSteps:motionWindow.steps+1})};}
+    }
+    function apply({address='root',changes={},intent='Apply model change',time=null,continuous=false}={}) {
+      // Global parameters are explicitly rooted. A selected child is inspectable,
+      // but is not silently reinterpreted as permission to change the whole rule.
+      const selected=filter(address);
+      if(selected.modelAddress!=='root'||selected.instance!=='whole')throw Error('Shared model parameters must be applied at the whole-pattern root.');
+      for(const key of Object.keys(changes))if(!MODEL_KEYS.includes(key))throw Error('Unknown model dependency: '+key);
+      const next={...parameters,...changes},isolated={};
+      for(const key of MODEL_KEYS)if(!Object.is(parameters[key],next[key]))isolated[key]=Object.freeze({was:parameters[key],is:next[key]});
+      const changed=Object.keys(isolated);statistics.attempts++;
+      if(!changed.length){statistics.noops++;return Object.freeze({changed:false,phase,isolated:Object.freeze({})});}
+      // Validate before committing; a failed change leaves WAS intact.
+      if(!['rootAngle','localAngle','rootSpeed','localSpeed'].every(k=>Number.isFinite(next[k])))throw Error('Model angles and rates must be finite.');
+      const nextRequest=changed.some(k=>structuralKeys.includes(k))?plan(next):request;
+      const validated=nextRequest!==request?materialize(E,next,nextRequest):null;
+      const before={...statistics};parameters=next;request=nextRequest;phase++;statistics.committed++;lastIsolation=Object.freeze(isolated);
+      if(validated)rebuildTopology(validated);else if(changed.includes('rootAngle')||changed.includes('localAngle'))dirty=true;
+      const actual=reconstruct(),checked=verify(actual),reuse=Object.freeze({centresRebuilt:statistics.centreRebuilds-before.centreRebuilds,rotationsRebuilt:statistics.rotationRebuilds-before.rotationRebuilds,localProducts:statistics.localProducts-before.localProducts,centresRetained:nodes.length-(statistics.centreRebuilds-before.centreRebuilds)});
+      recordTransition(lastIsolation,intent,time,continuous,checked,reuse);
+      return Object.freeze({changed:true,phase,isolated:lastIsolation,dependents:Object.freeze(dependencies(changed))});
+    }
+    function reconstruct() {
+      statistics.worldReads++;
+      if(!dirty){statistics.worldHits++;return world;}
+      const directions=E.directions(parameters.childCount);
+      if(localDirections!==directions||!Object.is(localAngle,parameters.localAngle)){
+        locals=new Map();localSpin=null;localDirections=directions;localAngle=parameters.localAngle;
+      }
+      if(!rootRotation||!Object.is(rootRotationAngle,parameters.rootAngle)){rootRotation=E.rotateY(parameters.rootAngle);rootRotationAngle=parameters.rootAngle;statistics.rotationRebuilds++;}
+      const next=[];
+      for(const node of nodes){const cached=records.get(node.address);let centre,rotation;
+        if(node.parent<0){centre=rootCentre;rotation=rootRotation;}
+        else {const parent=next[node.parent],rule=node.rule||E.faces[node.face],distance=(parent.size+node.size)/2;
+          if(cached.rule!==rule||!Object.is(cached.distance,distance)){cached.offset=E.scale(rule.normal,distance);cached.rule=rule;cached.distance=distance;}
+          if(!locals.has(rule)){if(!localSpin)localSpin=E.rotateY(parameters.localAngle);locals.set(rule,E.multiply(rule.basis,localSpin));statistics.localProducts++;}const turn=locals.get(rule);
+          if(cached.parentCentre===parent.centre&&cached.parentRotation===parent.rotation&&cached.offsetUsed===cached.offset)centre=cached.centre;
+          else {centre=E.add(parent.centre,E.apply(parent.rotation,cached.offset));statistics.centreRebuilds++;}
+          if(cached.parentRotation===parent.rotation&&cached.turn===turn)rotation=cached.rotation;
+          else {rotation=E.multiply(parent.rotation,turn);statistics.rotationRebuilds++;}
+          cached.parentCentre=parent.centre;cached.parentRotation=parent.rotation;cached.offsetUsed=cached.offset;cached.turn=turn;
+        }
+        if(cached.node!==node||cached.centre!==centre||cached.rotation!==rotation)cached.world={...node,centre,rotation};
+        cached.node=node;cached.centre=centre;cached.rotation=rotation;next.push(cached.world);
+      }
+      world=next;dirty=false;worldRevision++;statistics.worldRebuilds++;return world;
+    }
+    function verify(actual) {
+      if(actual.length!==nodes.length||actual.length!==request.materialized||actual.filter(n=>n.visible).length!==request.visible)throw Error('Reconstruction disagreed with preflight filtered counts.');
+      let radialChecks=0;
+      for(let i=0;i<actual.length;i++){
+        const node=actual[i];if(node.address!==nodes[i].address||!node.centre.every(Number.isFinite)||!node.rotation.every(Number.isFinite))throw Error('Invalid addressed reconstruction.');
+        if(node.parent<0){if(node.centre.some(v=>v!==0))throw Error('Root centre moved.');continue;}
+        if(node.parent>=i)throw Error('Parent dependency order failed.');
+        const parent=actual[node.parent],distance=(parent.size+node.size)/2,delta=node.centre.map((v,k)=>v-parent.centre[k]);
+        if(Math.abs(Math.hypot(...delta)-distance)>1e-10*Math.max(1,distance))throw Error('Equal parent-radius invariant failed.');
+        if(delta.some((v,k)=>Math.abs(v-node.rotation[k*3+1]*distance)>1e-10*Math.max(1,distance)))throw Error('Outward local-axis invariant failed.');
+        radialChecks++;
+      }
+      return Object.freeze({passed:true,finiteAddressedCentres:actual.length,rootFixed:true,parentBeforeChild:true,equalRadiusAndOutwardAxis:radialChecks,tolerance:1e-10});
+    }
+    function observe(address='root') {
+      const selected=filter(address),index=nodes.indexOf(selected.node),current=reconstruct()[index];
+      const parent=selected.node.parent<0?null:nodes[selected.node.parent];
+      return Object.freeze({address:selected.address,modelAddress:selected.modelAddress,parent:parent?.address||null,level:selected.node.level,size:selected.node.size,centre:current.centre.slice(),rotation:current.rotation.slice(),producingRelation:selected.node.parent<0?'root centre fixed; root turn = Ry(rootAngle)':'centre = parent.centre + parent.rotation × radialOffset; rotation = parent.rotation × (directionBasis × Ry(localAngle))',inputs:Object.freeze({parent:parent?.address||null,direction:selected.node.face<0?null:'directions/'+parameters.childCount+'/C'+(selected.node.face+1),rootAngle:parameters.rootAngle,localAngle:parameters.localAngle,ratio:parameters.ratio}),filteredCentres:selected.members.length,request:{...request},phase,topologyRevision,worldRevision,lastIsolation,statistics:{...statistics},latestReceipt:receipts.at(-1)||null,motionWindow:motionWindow?{...motionWindow}:null,retention:{limit:RECEIPT_LIMIT,retained:receipts.length,expired,motion:'One compact window per simulation second; earlier receipts expire.'}});
+    }
+    function snapshot(){flushMotion();return{format:'recursive-centres-fir-receipts-v1',originalIntent,parameters:{...parameters},request:{...request},sourceAddresses:nodes.map(n=>({address:n.address,role:n.visible?'displayed':'dependency-only',parent:n.parent<0?null:nodes[n.parent].address,direction:n.face<0?null:'directions/'+parameters.childCount+'/C'+(n.face+1)})),receipts:receipts.slice(),retention:{limit:RECEIPT_LIMIT,expired,notCompleteHistory:true},statistics:{...statistics}};}
+    rebuildTopology();const initialChecked=verify(reconstruct());append({kind:'initial',intent:'Retain the original addressed relation',filter:{address:request.address,from:request.from,to:request.to,scope:'requested addressed subtree plus necessary ancestors'},isolated:{},reconstruct:['initial addressed topology','initial world transforms'],observed:{nodes:nodes.length,checked:initialChecked}});
+    return Object.freeze({filter,apply,reconstruct,observe,snapshot,flushMotion,get nodes(){return nodes;},get request(){return{...request};},get parameters(){return{...parameters};},get phase(){return phase;}});
+  }
+  function shellTemplate(E,nodes,childCount,ratio) {
+    const directions=E.directions(childCount),bySize=new Map();
+    const parents=nodes.map(node=>{if(!bySize.has(node.size)){const radius=(node.size+node.size*ratio)/2;bySize.set(node.size,Object.freeze(directions.map(rule=>Object.freeze(E.scale(rule.normal,radius)))));}return Object.freeze({address:node.address,size:node.size,visible:node.visible!==false,offsets:bySize.get(node.size)});});
+    return Object.freeze({childCount,ratio,parents:Object.freeze(parents),directionAddresses:Object.freeze(directions.map(rule=>'directions/'+childCount+'/'+rule.name)),retainedOffsetSets:bySize.size,relation:'child centre at sample time = recorded parent centre + recorded parent rotation × retained radial offset'});
+  }
+  function captureFrames(world) {const rotations=new Float64Array(world.length*9);world.forEach((node,i)=>rotations.set(node.rotation,i*9));return rotations;}
+  function shellPoint(E,template,sample,parentIndex,childIndex) {
+    if(!sample.rotations||sample.rotations.length<parentIndex*9+9)return null;
+    const parent=template.parents[parentIndex];if(!parent||!Number.isInteger(childIndex)||childIndex<0||childIndex>=template.childCount)return null;
+    const offset=parent.offsets[childIndex],r=sample.rotations,at=parentIndex*9,p=parentIndex*3;
+    const delta=E.apply(r.subarray(at,at+9),offset);
+    return [sample.positions[p]+delta[0],sample.positions[p+1]+delta[1],sample.positions[p+2]+delta[2]];
+  }
+  // Allocation-light projection of the same recorded descendant point. This
+  // preserves the operation order of shellPoint → history frame → instance → view.
+  function shellProject(template,sample,parentIndex,childIndex,factor,history,view) {
+    const offset=template.parents[parentIndex].offsets[childIndex],r=sample.rotations,at=parentIndex*9,p=parentIndex*3,dx=offset[0],dy=offset[1],dz=offset[2];
+    let x=sample.positions[p]+(r[at]*dx+r[at+1]*dy+r[at+2]*dz),y=sample.positions[p+1]+(r[at+3]*dx+r[at+4]*dy+r[at+5]*dz),z=sample.positions[p+2]+(r[at+6]*dx+r[at+7]*dy+r[at+8]*dz);
+    if(history){const hx=history[0]*x+history[1]*y+history[2]*z,hy=history[3]*x+history[4]*y+history[5]*z,hz=history[6]*x+history[7]*y+history[8]*z;x=hx;y=hy;z=hz;}
+    if(factor!==null){x*=factor;y*=factor;z*=factor;}
+    x-=view.target[0];y-=view.target[1];z-=view.target[2];
+    const depth=view.distance-(view.toward[0]*x+view.toward[1]*y+view.toward[2]*z);if(depth<=.025)return null;
+    return{x:view.width*.5+view.panX+(view.right[0]*x+view.right[1]*y+view.right[2]*z)*view.focal/depth,y:view.height*.51+view.panY-(view.up[0]*x+view.up[1]*y+view.up[2]*z)*view.focal/depth,z:depth};
+  }
+  return Object.freeze({create,plan,shellTemplate,captureFrames,shellPoint,shellProject});
+})();
+
+</script>
 <script id="view-engine">
 'use strict';
 // Camera math is separate from the addressed relation. Pixel pan offsets preserve a
@@ -180,38 +365,59 @@ const CubeView = (() => {
   'use strict';
   const $=id=>document.getElementById(id), canvas=$('scene'),ctx=canvas.getContext('2d'), E=CubeRelation,V=CubeView;
   if(!ctx){$('motion-state').textContent='Canvas is unavailable in this browser.';return;}
-  const state={childCount:6,depth:2,ratio:1,rootSpeed:12,localSpeed:24,rootAngle:0,localAngle:0,running:!matchMedia('(prefers-reduced-motion: reduce)').matches,selected:'root',pendingSelection:null,instance:0,yaw:.63,pitch:.38,zoom:1,panX:0,panY:0,focus:false,cameraExtent:null,cameraTarget:[0,0,0],observerMode:'parent',observerSpeed:0,observerAngle:0};
+  const state={childCount:6,depth:1,filterAddress:'root',shellFrom:0,ratio:1,rootSpeed:12,localSpeed:24,rootAngle:0,localAngle:0,running:!matchMedia('(prefers-reduced-motion: reduce)').matches,selected:'root',pendingSelection:null,instance:0,yaw:.63,pitch:.38,zoom:1,panX:0,panY:0,focus:false,cameraExtent:null,cameraTarget:[0,0,0],observerMode:'parent',observerSpeed:0,observerAngle:0};
   const values=new Map(),drafts=new Map();let inputAddress=null;
   let nodes=[],world=[],byAddress=new Map(),picks=[],width=1,height=1,dpr=1,dirty=true,lastTime=0,lastPaint=0,frameId=0,simTime=0,trailAccumulator=0,activeSignature='',activeInnerScale=1;
   const referencePoints=Array.from({length:96},(_,i)=>{const y=1-2*(i+.5)/96,a=i*Math.PI*(3-Math.sqrt(5)),r=Math.sqrt(1-y*y);return[r*Math.cos(a)*30,y*30,r*Math.sin(a)*30];});
+  let model=null,activeShellTemplate=null;
+  const historyRotations=new WeakMap();
   const archives=[];const ARCHIVE_POINT_BUDGET=12000;
   const trails=[];const TRAIL_INTERVAL=1/15,TRAIL_SECONDS=6,TRAIL_POINT_BUDGET=24000;
   function selectedNode(){return world[byAddress.get(state.selected)]||world[0];}
   function targetAddress(){return state.instance?'root::inner/'+state.selected:state.selected;}
-  function innerScale(){let distance=0,size=1;for(let i=0;i<state.depth;i++){const child=size*state.ratio;distance+=(size+child)/2;size=child;}return Math.min(.5,.38/Math.max(distance,.76));}
-  function instancePoint(point,instance){if(!instance)return point;const root=world[0].centre,factor=innerScale();return point.map((v,i)=>root[i]+(v-root[i])*factor);}
-  function instanceNode(node,instance){return instance?{...node,centre:instancePoint(node.centre,instance),size:node.size*innerScale()}:node;}
+  function innerScale(){let distance=0,size=1;for(let i=0;i<modelDepth();i++){const child=size*state.ratio;distance+=(size+child)/2;size=child;}return Math.min(.5,.38/Math.max(distance,.76));}
+  function instancePoint(point,instance){if(!instance)return point;const root=world[0].centre,factor=activeInnerScale;return point.map((v,i)=>root[i]+(v-root[i])*factor);}
+  function instanceNode(node,instance){return instance?{...node,centre:instancePoint(node.centre,instance),size:node.size*activeInnerScale}:node;}
+  function modelDepth(){return nodes.length?Math.max(...nodes.map(node=>node.level)):state.depth;}
+  function proposal(){return{childCount:state.childCount,ratio:state.ratio,rootAngle:state.rootAngle,localAngle:state.localAngle,rootSpeed:state.rootSpeed,localSpeed:state.localSpeed,filterAddress:state.filterAddress,shellFrom:state.shellFrom,shellTo:state.depth,instances:$('show-inner').checked?2:1};}
+  function applyModel(intent,continuous=false){const next=proposal();if(!model)model=CubeFIR.create(E,next,{sourceURL:'https://acidfang.github.io/score-ledger-store/recursive-cubes/',baselineVersion:'2026-10-17-centre-paths-9',baselineSHA256:'48063feb99be602d6bf5e097940bf8418012444c42370bfbacbeeffcef004ba2'});else model.apply({changes:next,intent,time:simTime,continuous});nodes=model.nodes;world=model.reconstruct();return world;}
   function requestDraw(){dirty=true;}
   function syncPlay(){const button=$('play');button.textContent=state.running?'Pause':'Play';button.setAttribute('aria-pressed',String(state.running));$('motion-state').textContent=(state.running?'Model running':'Model paused')+(state.observerMode==='parent'?' · with parent':' · world view');$('live-dot').style.opacity=state.running?'1':'.35';}
   function rememberDraft(){if(inputAddress===null)return;const text=$('centre-value').value;if(text!==(values.get(inputAddress)||''))drafts.set(inputAddress,text);else drafts.delete(inputAddress);}
   function syncTarget(){rememberDraft();const address=targetAddress();inputAddress=address;$('selection-boundary').hidden=!state.pendingSelection;$('selection-boundary').textContent=state.pendingSelection?'Retained selection '+state.pendingSelection+' is outside this view. Showing '+state.selected+' until it is rendered again.':'';$('address').textContent=address;$('centre-value').value=drafts.has(address)?drafts.get(address):(values.get(address)||'');$('input-status').textContent=drafts.has(address)?'Unsubmitted draft retained for this address.':values.has(address)?'Filled: '+values.get(address):'The address exists before input. No value assigned.';requestDraw();}
-  function syncSelection(){const childSelect=$('child-select');childSelect.replaceChildren();const prompt=document.createElement('option');prompt.value='';prompt.textContent='Go to a child…';childSelect.appendChild(prompt);E.directions(state.childCount).forEach(rule=>{const opt=document.createElement('option');opt.value=rule.name;opt.textContent=rule.name;childSelect.appendChild(opt);});const index=byAddress.get(state.selected),node=nodes[index];$('node-select').value=state.selected;$('instance-select').value=String(state.instance);$('parent').disabled=node.parent<0;childSelect.disabled=node.level>=state.depth;childSelect.value='';document.querySelectorAll('[data-face]').forEach((b,i)=>{const placement=E.directions(state.childCount)[i];b.hidden=!placement;b.disabled=!placement||node.level>=state.depth;if(placement){b.dataset.face=placement.name;b.textContent=placement.name;}});syncTarget();}
-  function select(address){if(!byAddress.has(address))return;state.pendingSelection=null;state.selected=address;syncSelection();}
-  function rebuild(){const instances=$('show-inner').checked?2:1,limit=E.maxDepth(state.childCount,instances);state.depth=Math.min(state.depth,limit);const signature=[state.childCount,state.depth,state.ratio].join('/'),changed=signature!==activeSignature;if(changed&&nodes.length)archiveCurrent();$('depth').max=String(limit);$('depth').value=String(state.depth);nodes=E.topology(state.depth,state.ratio,state.childCount);byAddress=new Map(nodes.map((node,i)=>[node.address,i]));if(state.pendingSelection&&byAddress.has(state.pendingSelection)){state.selected=state.pendingSelection;state.pendingSelection=null;}if(!byAddress.has(state.selected)&&!state.pendingSelection)state.pendingSelection=state.selected;while(!byAddress.has(state.selected))state.selected=state.selected.slice(0,state.selected.lastIndexOf('/'))||'root';world=E.transforms(nodes,state.rootAngle,state.localAngle);const list=$('node-select');list.replaceChildren();const fragment=document.createDocumentFragment();nodes.forEach(node=>{const opt=document.createElement('option');opt.value=node.address;opt.textContent=node.address;fragment.appendChild(opt);});list.appendChild(fragment);$('cube-count').textContent=nodes.length.toLocaleString();$('count-boundary').textContent=state.childCount+' children at every centre · '+(nodes.length*instances).toLocaleString()+' displayed centres · maximum depth '+limit+'. Complete generations only.';$('depth-value').textContent=String(state.depth);$('shell-summary').textContent=Array.from({length:state.depth+1},(_,level)=>'Shell '+level+': '+(state.childCount**level).toLocaleString()+(level===0?' root':level===1?' children':level===2?' grandchildren':' centres')).join(' · ');$('ratio-value').textContent=state.ratio.toFixed(2)+' × parent';syncSelection();if(changed){clearTrails();activeSignature=signature;activeInnerScale=innerScale();}trailStatus();requestDraw();}
+  function syncSelection(){const childSelect=$('child-select');childSelect.replaceChildren();const prompt=document.createElement('option');prompt.value='';prompt.textContent='Go to a child…';childSelect.appendChild(prompt);E.directions(state.childCount).forEach(rule=>{const opt=document.createElement('option');opt.value=rule.name;opt.textContent=rule.name;childSelect.appendChild(opt);});const index=byAddress.get(state.selected),node=nodes[index];$('node-select').value=state.selected;$('instance-select').value=String(state.instance);$('parent').disabled=node.parent<0;childSelect.disabled=false;childSelect.value='';document.querySelectorAll('[data-face]').forEach((b,i)=>{const placement=E.directions(state.childCount)[i];b.hidden=!placement;b.disabled=!placement;if(placement){b.dataset.face=placement.name;b.textContent=placement.name;}});syncTarget();}
+  function select(address){if(!byAddress.has(address)){if(!changeGeometry(()=>{state.filterAddress=address;state.depth=0;state.shellFrom=0;},'Manifest selected address'))return;}state.pendingSelection=null;state.selected=address;syncSelection();}
+  function rebuild(intent='Apply centre filter'){
+    const next=proposal();CubeFIR.plan(next);
+    const signature=[state.childCount,state.depth,state.ratio,state.filterAddress,state.shellFrom,next.instances].join('/'),changed=signature!==activeSignature;
+    if(changed&&nodes.length)archiveCurrent();
+    applyModel(intent);byAddress=new Map(nodes.map((node,i)=>[node.address,i]));
+    if(state.pendingSelection&&byAddress.has(state.pendingSelection)){state.selected=state.pendingSelection;state.pendingSelection=null;}
+    if(!byAddress.has(state.selected)&&!state.pendingSelection)state.pendingSelection=state.selected;
+    while(!byAddress.has(state.selected))state.selected=state.selected.slice(0,state.selected.lastIndexOf('/'))||'root';
+    const list=$('node-select');list.replaceChildren();const fragment=document.createDocumentFragment();nodes.forEach(node=>{const opt=document.createElement('option');opt.value=node.address;opt.textContent=node.address+(node.visible?'':' (dependency only)');fragment.appendChild(opt);});list.appendChild(fragment);
+    const request=model.request;$('cube-count').textContent=String(request.visible);$('count-boundary').textContent=state.childCount+' children per parent · '+request.displayed.toLocaleString()+' displayed centres · '+request.dependencyOnly+' dependency-only ancestors/intermediate centres. The complete requested range is shown.';
+    $('depth').max='8';$('depth').value=String(state.depth);$('depth-value').textContent=String(state.depth);$('region-address').value=state.filterAddress;$('region-from').value=String(state.shellFrom);
+    $('shell-summary').textContent='Centre domain '+state.filterAddress+' · outward generations '+state.shellFrom+'–'+state.depth+'. Motion shells are a separate path filter.';
+    $('ratio-value').textContent=state.ratio.toFixed(2)+' × parent';$('region-filter-status').textContent='Applied '+state.filterAddress+', centre generations '+state.shellFrom+'–'+state.depth+'. Other addresses remain defined by the repeated rule.';
+    activeShellTemplate=CubeFIR.shellTemplate(E,nodes,state.childCount,state.ratio);syncSelection();
+    if(changed){clearTrails();activeSignature=signature;activeInnerScale=innerScale();}trailStatus();requestDraw();return true;
+  }
 
   function resize(){const rect=canvas.getBoundingClientRect();width=Math.max(1,rect.width);height=Math.max(1,rect.height);dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);requestDraw();}
-  function bounds(){let extent=.5,size=1;for(let i=0;i<state.depth;i++){const child=size*state.ratio;extent+=(size+child)/2;size=child;}return Math.max(1.2,extent*1.2);}
+  function bounds(){let extent=.5,size=1;for(let i=0;i<modelDepth();i++){const child=size*state.ratio;extent+=(size+child)/2;size=child;}return Math.max(1.2,extent*1.2);}
   function observerFrameAngle(){return state.observerMode==='parent'?state.rootAngle+state.observerAngle:0;}
   function camera(){const node=instanceNode(selectedNode(),state.instance),frame=E.rotateY(observerFrameAngle()),view=V.camera({...state,width,height,target:state.focus?node.centre:E.apply(frame,state.cameraTarget),extent:state.cameraExtent??bounds()});return{...view,right:E.apply(frame,view.right),up:E.apply(frame,view.up),toward:E.apply(frame,view.toward)};}
-  function changeGeometry(change){const view=camera();change();rebuild();state.cameraExtent=view.extent;state.cameraTarget=E.apply(E.rotateY(-observerFrameAngle()),view.target);state.focus=false;requestDraw();}
+  function changeGeometry(change,intent='Apply geometry / centre filter'){const before={...state},view=camera();change();try{rebuild(intent);}catch(error){Object.assign(state,before);$('child-count').value=String(state.childCount);$('depth').value=String(state.depth);$('ratio').value=String(state.ratio);$('show-inner').checked=Boolean(model&&model.parameters.instances===2);$('region-filter-status').textContent=error.message+' The previous state remains.';return false;}state.cameraExtent=view.extent;state.cameraTarget=E.apply(E.rotateY(-observerFrameAngle()),view.target);state.focus=false;requestDraw();return true;}
   function syncObserver(){$('observer-mode').value=state.observerMode;$('observer-speed').value=String(state.observerSpeed);$('observer-speed-value').textContent=state.observerSpeed+'°/s';$('observer-speed').disabled=state.observerMode==='world';$('observer-hint').textContent=state.observerMode==='parent'?'Zero relative view turn follows the parent while the model continues turning. The observer is not a child.':'World view holds an external frame. Relative view turn is inactive here; model motion continues.';syncPlay();requestDraw();}
   function setObserverMode(mode){if(!['parent','world'].includes(mode)||mode===state.observerMode)return;const before=camera(),oldAngle=observerFrameAngle();state.observerMode=mode;const nextAngle=observerFrameAngle();state.yaw+=oldAngle-nextAngle;state.cameraTarget=E.apply(E.rotateY(-nextAngle),before.target);syncObserver();}
-  function historyPoint(sample,index,instance=0,factor=innerScale()){let point=[sample.positions[index*3],sample.positions[index*3+1],sample.positions[index*3+2]];if(state.observerMode==='parent'){if(!Number.isFinite(sample.rootAngle))return null;point=E.apply(E.rotateY(state.rootAngle-sample.rootAngle),point);}return instance?point.map(v=>v*factor):point;}
-  function projection(){const view=camera();return point=>V.project(view,point);}
+  function historyPosition(sample,point,instance=0,factor=activeInnerScale){if(state.observerMode==='parent'){if(!Number.isFinite(sample.rootAngle))return null;let retained=historyRotations.get(sample);if(!retained||retained.rootAngle!==state.rootAngle){retained={rootAngle:state.rootAngle,rotation:E.rotateY(state.rootAngle-sample.rootAngle)};historyRotations.set(sample,retained);}point=E.apply(retained.rotation,point);}return instance?point.map(v=>v*factor):point;}
+  function historyPoint(sample,index,instance=0,factor=activeInnerScale){return historyPosition(sample,[sample.positions[index*3],sample.positions[index*3+1],sample.positions[index*3+2]],instance,factor);}
+  function projection(){const view=camera(),project=point=>V.project(view,point);project.view=view;return project;}
   function trailLimit(){return Math.max(2,Math.min(Math.round(TRAIL_SECONDS/TRAIL_INTERVAL)+1,Math.floor(TRAIL_POINT_BUDGET/nodes.length)));}
-  function sampleTrail(){const positions=new Float64Array(nodes.length*3);world.forEach((node,i)=>positions.set(node.centre,i*3));trails.push({time:simTime,rootAngle:state.rootAngle,positions});while(trails.length>trailLimit())trails.shift();}
-  function archiveCurrent(){if(!trails.length)return;const samples=trails.slice();if(samples.at(-1).time<simTime-1e-10){const positions=new Float64Array(nodes.length*3);E.transforms(nodes,state.rootAngle,state.localAngle).forEach((node,i)=>positions.set(node.centre,i*3));samples.push({time:simTime,rootAngle:state.rootAngle,positions});}if(samples.length<2)return;archives.push({nodes:nodes.slice(),samples,innerScale:activeInnerScale});let points=archives.reduce((sum,segment)=>sum+segment.nodes.length*segment.samples.length,0);while(points>ARCHIVE_POINT_BUDGET&&archives.length){const first=archives[0];points-=first.nodes.length;first.samples.shift();if(first.samples.length<2){points-=first.nodes.length*first.samples.length;archives.shift();}}}
-  function clearTrails(){trails.length=0;trailAccumulator=0;world=E.transforms(nodes,state.rootAngle,state.localAngle);sampleTrail();}
+  function sampleTrail(){const positions=new Float64Array(nodes.length*3);world.forEach((node,i)=>positions.set(node.centre,i*3));trails.push({time:simTime,rootAngle:state.rootAngle,positions,rotations:CubeFIR.captureFrames(world)});while(trails.length>trailLimit())trails.shift();}
+  function archiveCurrent(){if(!trails.length)return;const samples=trails.slice();if(samples.at(-1).time<simTime-1e-10){const positions=new Float64Array(nodes.length*3);model.reconstruct().forEach((node,i)=>positions.set(node.centre,i*3));samples.push({time:simTime,rootAngle:state.rootAngle,positions,rotations:CubeFIR.captureFrames(model.reconstruct())});}if(samples.length<2)return;archives.push({nodes:nodes.slice(),samples,innerScale:activeInnerScale,shellTemplate:activeShellTemplate});let points=archives.reduce((sum,segment)=>sum+segment.nodes.length*segment.samples.length,0);while(points>ARCHIVE_POINT_BUDGET&&archives.length){const first=archives[0];points-=first.nodes.length;first.samples.shift();if(first.samples.length<2){points-=first.nodes.length*first.samples.length;archives.shift();}}}
+  function clearTrails(){trails.length=0;trailAccumulator=0;applyModel('Sample current model',true);sampleTrail();}
   function trailStatus(){const missing=trails.filter(s=>!Number.isFinite(s.rootAngle)).length+archives.reduce((n,segment)=>n+segment.samples.filter(s=>!Number.isFinite(s.rootAngle)).length,0);$('path-frame').textContent=(state.observerMode==='parent'?'Paths: parent-relative, using each sample’s own root frame.':'Paths: original world-coordinate history.')+(missing?' '+missing+' older samples have no recorded root phase and are available only in World view.':'');const span=trails.length>1?trails.at(-1).time-trails[0].time:0;const capacity=(trailLimit()-1)*TRAIL_INTERVAL;$('trail-status').textContent='Actual centre history: '+span.toFixed(1)+' s of '+capacity.toFixed(1)+' s · '+trails.length+' samples/centre. Earlier geometry: '+archives.length+' separate segments, up to 12,000 stored positions; oldest history expires.';$('trail-count').textContent=String(trails.length);}
 
   function branchWeight(node){if(!$('show-emphasis').checked||state.selected==='root'||node.address==='root')return 1;const branch='root/'+state.selected.split('/')[1];return node.address===branch||node.address.startsWith(branch+'/')?1:.22;}
@@ -219,30 +425,31 @@ const CubeView = (() => {
   function line(a,b,color,thickness=1,dashed=false){if(!a||!b)return;ctx.strokeStyle=color;ctx.lineWidth=thickness;ctx.setLineDash(dashed?[3,5]:[]);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
   function circle(p,r,color,outline){if(!p||p.x< -10||p.x>width+10||p.y< -10||p.y>height+10)return;ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();if(outline){ctx.lineWidth=1;ctx.strokeStyle=outline;ctx.stroke();}}
   function label(p,text,color){if(!p)return;ctx.fillStyle=color;ctx.font='11px system-ui';ctx.fillText(text,p.x+7,p.y-7);}
-  function draw(){world=E.transforms(nodes,state.rootAngle,state.localAngle);const project=projection(),selected=instanceNode(selectedNode(),state.instance);ctx.clearRect(0,0,width,height);picks=[];if($('show-reference').checked)referencePoints.forEach(point=>circle(project(point),1.1,'#a4b8c342'));
+  function draw(){world=model.reconstruct();const project=projection(),selected=instanceNode(selectedNode(),state.instance);ctx.clearRect(0,0,width,height);picks=[];if($('show-reference').checked)referencePoints.forEach(point=>circle(project(point),1.1,'#a4b8c342'));
     const instances=$('show-inner').checked?[0,1]:[0];
-    const projected=instances.flatMap(instance=>world.map((source,i)=>{const node=instanceNode(source,instance);return{node,source,i,instance,centre:project(node.centre)};})).sort((a,b)=>(b.centre?.z||0)-(a.centre?.z||0));
-    if($('show-field').checked){const radius=selected.size*(1+state.ratio)/2;for(let plane=0;plane<3;plane++){let last=null;for(let k=0;k<=96;k++){const angle=k*Math.PI/48,v=[0,0,0];v[plane]=Math.cos(angle)*radius;v[(plane+1)%3]=Math.sin(angle)*radius;const p=project(E.add(selected.centre,E.apply(selected.rotation,v)));if(last)line(last,p,'#a2b8a555',.8);last=p;}}if(selected.level<state.depth){const centre=project(selected.centre);E.directions(state.childCount).forEach(rule=>line(centre,project(E.add(selected.centre,E.apply(selected.rotation,E.scale(rule.normal,radius)))),'#a2b8a544',.7,true));}}
+    const projected=instances.flatMap(instance=>world.map((source,i)=>{const node=instanceNode(source,instance);return{node,source,i,instance,centre:project(node.centre)};}).filter(item=>item.source.visible)).sort((a,b)=>(b.centre?.z||0)-(a.centre?.z||0));
+    if($('show-field').checked){const radius=selected.size*(1+state.ratio)/2;for(let plane=0;plane<3;plane++){let last=null;for(let k=0;k<=96;k++){const angle=k*Math.PI/48,v=[0,0,0];v[plane]=Math.cos(angle)*radius;v[(plane+1)%3]=Math.sin(angle)*radius;const p=project(E.add(selected.centre,E.apply(selected.rotation,v)));if(last)line(last,p,'#a2b8a555',.8);last=p;}}if(selected){const centre=project(selected.centre);E.directions(state.childCount).forEach(rule=>line(centre,project(E.add(selected.centre,E.apply(selected.rotation,E.scale(rule.normal,radius)))),'#a2b8a544',.7,true));}}
     if($('show-links').checked)projected.forEach(({node,instance,centre})=>{if(node.parent>=0)line(project(instancePoint(world[node.parent].centre,instance)),centre,node.address===state.selected?'#edc27b66':'#728f7e33',.7,true);});
-    if($('show-trails').checked&&$('show-history').checked){for(const segment of archives){for(const instance of instances){segment.nodes.forEach((node,i)=>{ctx.beginPath();let connected=false;for(const sample of segment.samples){const position=historyPoint(sample,i,instance,segment.innerScale),p=position?project(position):null;if(!p){connected=false;continue;}if(connected)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);connected=true;}ctx.strokeStyle='rgba('+E.colour(node,segment.nodes).join(',')+','+(.26*branchWeight(node))+')';ctx.lineWidth=.8;ctx.setLineDash([2,4]);ctx.stroke();});}}}
+    if($('show-trails').checked&&$('show-history').checked){for(const segment of archives){for(const instance of instances){segment.nodes.forEach((node,i)=>{if(node.visible===false)return;ctx.beginPath();let connected=false;for(const sample of segment.samples){const position=historyPoint(sample,i,instance,segment.innerScale),p=position?project(position):null;if(!p){connected=false;continue;}if(connected)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);connected=true;}ctx.strokeStyle='rgba('+E.colour(node,segment.nodes).join(',')+','+(.26*branchWeight(node))+')';ctx.lineWidth=.8;ctx.setLineDash([2,4]);ctx.stroke();});}}}
     if($('show-trails').checked&&trails.length>1){ctx.setLineDash([]);projected.forEach(({node,source,i,instance})=>{const active=node.address===state.selected&&instance===state.instance;ctx.beginPath();let connected=false;for(const sample of trails){const position=historyPoint(sample,i,instance),p=position?project(position):null;if(!p){connected=false;continue;}if(connected)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);connected=true;}const current=project(node.centre);if(connected&&current)ctx.lineTo(current.x,current.y);const rgb=E.colour(source,nodes);ctx.strokeStyle='rgba('+rgb.join(',')+','+((active||branchAccent(source)?.95:Math.max(.28,.75-node.level*.09))*branchWeight(source))+')';ctx.lineWidth=active?2:branchAccent(source)?1.6:1;ctx.stroke();});}
 
     projected.forEach(({node,source,instance,centre})=>{if(!centre)return;const active=node.address===state.selected&&instance===state.instance,address=instance?'root::inner/'+node.address:node.address,filled=values.has(address);if(active)circle(centre,9,'#9ee9bd16','#9ee9bd55');circle(centre,active?4.5:filled?3.5:node.level<2?3:2.2,'rgba('+(filled?[236,168,172]:E.colour(source,nodes)).join(',')+','+branchWeight(source)+')');picks.push({point:centre,address:node.address,kind:'cube',world:node.centre,instance});});
     if($('show-axes').checked){const centre=project(selected.centre),top=project(E.point(selected,[0,.83,0])),bottom=project(E.point(selected,[0,-.68,0]));line(bottom,top,'#edc27b',1.5);circle(top,3,'#edc27b');label(top,'top · +Y','#edc27b');label(bottom,selected.parent<0?'bottom · −Y':'bottom · toward parent','#b0bfb1');const right=project(E.point(selected,[.68,0,0])),front=project(E.point(selected,[0,0,.68]));line(centre,right,'#c89c9288',1);line(centre,front,'#9bb5d388',1);label(right,'+X','#c89c92');label(front,'+Z','#9bb5d3');}
+    drawShells(project,instances);inspectFIR();
     const centre=project(selected.centre);label(centre,state.selected==='root'?'root':state.selected.split('/').slice(-1)[0]+' centre','#d5ecd9');ctx.setLineDash([]);trailStatus();
   }
 
   function advance(seconds){
     // Fixed-time sampling is independent of frame rate. Camera moves never sample paths.
-    let remaining=seconds;while(remaining>1e-10){const part=Math.min(remaining,TRAIL_INTERVAL-trailAccumulator);state.rootAngle=(state.rootAngle+state.rootSpeed*Math.PI/180*part)%(Math.PI*2);state.localAngle=(state.localAngle+state.localSpeed*Math.PI/180*part)%(Math.PI*2);if(state.observerMode==='parent')state.observerAngle=(state.observerAngle+state.observerSpeed*Math.PI/180*part)%(Math.PI*2);simTime+=part;trailAccumulator+=part;remaining-=part;if(trailAccumulator>=TRAIL_INTERVAL-1e-10){world=E.transforms(nodes,state.rootAngle,state.localAngle);sampleTrail();trailAccumulator=0;}}requestDraw();
+    let remaining=seconds;while(remaining>1e-10){const part=Math.min(remaining,TRAIL_INTERVAL-trailAccumulator);state.rootAngle=(state.rootAngle+state.rootSpeed*Math.PI/180*part)%(Math.PI*2);state.localAngle=(state.localAngle+state.localSpeed*Math.PI/180*part)%(Math.PI*2);if(state.observerMode==='parent')state.observerAngle=(state.observerAngle+state.observerSpeed*Math.PI/180*part)%(Math.PI*2);simTime+=part;trailAccumulator+=part;remaining-=part;if(trailAccumulator>=TRAIL_INTERVAL-1e-10){applyModel('Sample current model',true);sampleTrail();trailAccumulator=0;}}applyModel('Advance model time',true);requestDraw();
   }
 
   function tick(time){const elapsed=lastTime?Math.min((time-lastTime)/1000,.1):0;lastTime=time;if(state.running&&!document.hidden)advance(elapsed);if(dirty&&time-lastPaint>=1000/30){draw();dirty=false;lastPaint=time;}frameId=requestAnimationFrame(tick);}
   function fit(){state.focus=false;state.cameraExtent=bounds();state.cameraTarget=[0,0,0];state.zoom=1;state.panX=0;state.panY=0;state.yaw=.63;state.pitch=.38;requestDraw();}
-  $('play').addEventListener('click',()=>{state.running=!state.running;syncPlay();});$('step').addEventListener('click',()=>{state.running=false;syncPlay();advance(1/30);});$('reset').addEventListener('click',()=>{state.rootAngle=0;state.localAngle=0;state.observerAngle=0;simTime=0;archives.length=0;clearTrails();requestDraw();});
-  $('show-rotation').addEventListener('click',()=>{const wanted=Math.max(2,selectedNode().level+1),limit=E.maxDepth(state.childCount,$('show-inner').checked?2:1),depth=Math.max(state.depth,Math.min(wanted,limit));$('show-trails').checked=true;if(depth!==state.depth)changeGeometry(()=>{state.depth=depth;});$('rotation-status').textContent=(wanted>limit?'Shell '+wanted+' exceeds the complete-generation budget; shell '+limit+' is the limit at this count.':'Showing shell '+state.depth+' so the selected centre’s child paths can be inspected.')+' Time, view and inputs are retained. New centres may be outside the view; use Fit if needed.'+(state.running?'':' Press Play to build paths.');requestDraw();});
+  $('play').addEventListener('click',()=>{state.running=!state.running;syncPlay();});$('step').addEventListener('click',()=>{state.running=false;syncPlay();advance(1/30);});$('reset').addEventListener('click',()=>{state.rootAngle=0;state.localAngle=0;state.observerAngle=0;simTime=0;archives.length=0;applyModel('Reset motion');clearTrails();requestDraw();});
+  $('show-rotation').addEventListener('click',()=>{$('show-shells').checked=true;$('show-trails').checked=true;$('rotation-status').textContent='Motion shells enabled for every visible centre. Each path belongs to a real direct-descendant address; the centre filter and marker count are unchanged.';requestDraw();});
   $('observer-mode').addEventListener('change',event=>setObserverMode(event.target.value));$('observer-speed').addEventListener('input',event=>{state.observerSpeed=Number(event.target.value);syncObserver();});
-  ['root','local'].forEach(kind=>$(kind+'-speed').addEventListener('input',event=>{state[kind+'Speed']=Number(event.target.value);$(kind+'-speed-value').textContent=event.target.value+'°/s';}));
+  ['root','local'].forEach(kind=>$(kind+'-speed').addEventListener('input',event=>{state[kind+'Speed']=Number(event.target.value);$(kind+'-speed-value').textContent=event.target.value+'°/s';applyModel('Change '+kind+' turn rate');}));
   $('child-count').addEventListener('input',event=>{const count=Number(event.target.value);if(Number.isInteger(count)&&count>=1&&count<=118){if(count!==state.childCount)changeGeometry(()=>{state.childCount=count;});}});$('child-count').addEventListener('change',()=>{$('child-count').value=String(state.childCount);});$('depth').addEventListener('input',event=>{changeGeometry(()=>{state.depth=Number(event.target.value);});});$('ratio').addEventListener('input',event=>{changeGeometry(()=>{state.ratio=Number(event.target.value);});});
   ['show-trails','show-history','show-emphasis','show-inner','show-field','show-reference','show-links','show-axes'].forEach(id=>$(id).addEventListener('change',requestDraw));$('node-select').addEventListener('change',event=>select(event.target.value));$('child-select').addEventListener('change',event=>{if(event.target.value)select(state.selected+'/'+event.target.value);});$('show-inner').addEventListener('change',()=>changeGeometry(()=>{if(!$('show-inner').checked)state.instance=0;}));$('instance-select').addEventListener('change',event=>changeGeometry(()=>{state.instance=Number(event.target.value);if(state.instance)$('show-inner').checked=true;}));
   document.querySelectorAll('[data-face]').forEach(button=>button.addEventListener('click',()=>select(state.selected+'/'+button.dataset.face)));$('parent').addEventListener('click',()=>{const node=nodes[byAddress.get(state.selected)];if(node.parent>=0)select(nodes[node.parent].address);});$('root').addEventListener('click',()=>select('root'));$('focus').addEventListener('click',()=>{state.focus=true;state.cameraExtent=Math.max(instanceNode(selectedNode(),state.instance).size*2,.2);state.zoom=1;state.panX=0;state.panY=0;requestDraw();});$('fit').addEventListener('click',fit);
@@ -251,6 +458,34 @@ const CubeView = (() => {
   function zoom(factor,x=width*.5,y=height*.51,anchor=null){const fixed=anchor||anchorAt(x,y);Object.assign(state,V.anchoredZoom(camera(),fixed,factor,x,y));requestDraw();}
   $('zoom-in').addEventListener('click',()=>zoom(1.2));$('zoom-out').addEventListener('click',()=>zoom(1/1.2));
 
+
+  $('region-filter-form').addEventListener('submit',event=>{event.preventDefault();const address=$('region-address').value.trim(),from=Number($('region-from').value);changeGeometry(()=>{state.filterAddress=address;state.shellFrom=from;},'Apply addressed centre filter');});
+  $('show-shells').addEventListener('change',requestDraw);
+  function inspectFIR(){if(!model)return;const detail=model.observe(targetAddress()),receipt=detail.motionWindow||detail.latestReceipt,keys=receipt?Object.keys(receipt.isolated):[];$('fir-address').textContent='FILTER '+detail.address+' · visible domain '+state.filterAddress+' · generations '+state.shellFrom+'–'+state.depth;$('fir-relation').textContent=detail.producingRelation;$('fir-receipt').textContent='ISOLATE '+(keys.length?keys.map(key=>key+': '+receipt.isolated[key].was+' → '+receipt.isolated[key].is).join('; '):'no changed model input')+'. RECONSTRUCT '+(receipt?.observed?.checked?.passed?'checked':'pending')+' · '+detail.statistics.worldRebuilds+' world reconstructions, '+detail.statistics.worldHits+' unchanged reads reused.';$('fir-retention').textContent=detail.retention.retained+' linked receipts retained (limit '+detail.retention.limit+'); '+detail.retention.expired+' older receipts expired. Motion is summarized in one-second windows; stored path samples keep their own frames.';}
+  $('export-fir').addEventListener('click',()=>{const data=model.snapshot(),blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='recursive-centres-fir-receipts.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);inspectFIR();});
+  const SHELL_VERTEX_BUDGET=240000;
+  function shellParents(template){const visible=template.parents.map((parent,i)=>({parent,i})).filter(({parent})=>parent.visible);return visible.filter(({parent})=>parent.address!=='root'||visible.length===1);}
+  function drawShells(project,instances){
+    if(!$('show-shells').checked){$('shell-pattern-status').textContent='Motion shell paths hidden. Addressed descendant rules remain retained; visible centres are unchanged.';return;}
+    const current={nodes,samples:trails,innerScale:activeInnerScale,shellTemplate:activeShellTemplate},segments=[$('show-history').checked?archives:[],[current]].flat();
+    const eligible=segments.filter(segment=>segment.shellTemplate&&segment.samples.some(sample=>sample.rotations));
+    const curves=eligible.reduce((sum,segment)=>sum+shellParents(segment.shellTemplate).length*segment.shellTemplate.childCount*instances.length,0);
+    if(curves*2>SHELL_VERTEX_BUDGET){$('shell-pattern-status').textContent='The requested shell paths need at least '+(curves*2).toLocaleString()+' vertices, beyond this finite '+SHELL_VERTEX_BUDGET.toLocaleString()+'-vertex drawing budget. Choose a narrower centre filter or hide previous geometry. No shell branches were silently dropped.';return;}
+    const limit=Math.max(2,Math.floor(SHELL_VERTEX_BUDGET/Math.max(1,curves)));let drawn=0,minimum=Infinity,maximum=0,missing=0;
+    for(const segment of eligible){const template=segment.shellTemplate,original=segment.samples.filter(sample=>sample.rotations);missing+=segment.samples.length-original.length;let samples=original;
+      if(segment===current&&world.length&&(!samples.length||samples.at(-1).time<simTime-1e-10))samples=[...samples,{time:simTime,rootAngle:state.rootAngle,positions:Float64Array.from(world.flatMap(node=>node.centre)),rotations:CubeFIR.captureFrames(world)}];
+      if(samples.length>limit)samples=Array.from({length:limit},(_,i)=>samples[Math.round(i*(samples.length-1)/(limit-1))]);
+      minimum=Math.min(minimum,samples.length);maximum=Math.max(maximum,samples.length);if(samples.length<2)continue;const frames=samples.map(sample=>{if(state.observerMode!=='parent')return{sample,rotation:null};if(!Number.isFinite(sample.rootAngle))return null;historyPosition(sample,[0,0,0]);return{sample,rotation:historyRotations.get(sample).rotation};});
+      for(const {parent,i} of shellParents(template)){const source=segment.nodes[i],parts=E.colourContributions(source,segment.nodes),sum=[0,1,2].map(channel=>parts.reduce((total,rgb)=>total+rgb[channel],0));
+        for(let child=0;child<template.childCount;child++){const rgb=sum.map((total,channel)=>Math.round((total+E.palette[child][channel])/(parts.length+1)));
+          for(const instance of instances){ctx.beginPath();let connected=false;for(const frame of frames){const p=frame?CubeFIR.shellProject(template,frame.sample,i,child,instance?segment.innerScale:null,frame.rotation,project.view):null;if(!p){connected=false;continue;}if(connected)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);connected=true;}
+            ctx.strokeStyle='rgba('+rgb.join(',')+','+((segment===current?.44:.16)*branchWeight(source))+')';ctx.lineWidth=branchAccent(source)?1.15:.65;ctx.setLineDash(segment===current?[]:[2,4]);ctx.stroke();drawn++;
+          }
+        }
+      }
+    }
+    ctx.setLineDash([]);$('shell-pattern-status').textContent=drawn?drawn.toLocaleString()+' actual descendant-address shell curves across displayed instances; no extra markers. '+(minimum===maximum?maximum:minimum+'–'+maximum)+' retained sample times per curve are drawn (uniform temporal thinning within a '+SHELL_VERTEX_BUDGET.toLocaleString()+'-vertex budget).'+(missing?' '+missing+' older samples lack recorded frames and are omitted.':''):'Shells are collecting actual sample-time frames. Press Play or Step; no past curve is invented.';
+  }
 
   $('centre-value').addEventListener('input',rememberDraft);
   $('fill-form').addEventListener('submit',event=>{event.preventDefault();const value=$('centre-value').value;if(!value.trim()){$('input-status').textContent='Enter a value to fill this address.';return;}values.set(targetAddress(),value);drafts.delete(targetAddress());$('filled-count').textContent=String(values.size);$('input-status').textContent='Filled: '+value;requestDraw();});
@@ -267,15 +502,15 @@ const CubeView = (() => {
   if(typeof ResizeObserver!=='undefined')new ResizeObserver(resize).observe($('stage'));else window.addEventListener('resize',resize);
   function setPanel(open){$('control-panel').hidden=!open;$('panel-toggle').setAttribute('aria-expanded',String(open));$('panel-toggle').textContent=open?'Close controls':'Controls';}
   $('panel-toggle').addEventListener('click',()=>setPanel($('control-panel').hidden));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('control-panel').hidden){setPanel(false);$('panel-toggle').focus();}});
-  const VERSION='2026-10-17-centre-paths-9',SETTINGS_KEY='recursive-cubes-settings-v1';let updateTimer=0,checkingUpdate=false;
-  const toggleIds=['show-trails','show-history','show-emphasis','show-inner','show-field','show-reference','show-links','show-axes'];
+  const VERSION='2026-10-17-centre-paths-10-fir',SETTINGS_KEY='recursive-cubes-settings-v1';let updateTimer=0,checkingUpdate=false;
+  const toggleIds=['show-shells','show-trails','show-history','show-emphasis','show-inner','show-field','show-reference','show-links','show-axes'];
   function saveSettings(){try{sessionStorage.setItem(SETTINGS_KEY,JSON.stringify({state,toggles:Object.fromEntries(toggleIds.map(id=>[id,$(id).checked]))}));return true;}catch{return false;}}
-  function restoreSettings(){try{const saved=JSON.parse(sessionStorage.getItem(SETTINGS_KEY)||'null');if(!saved)return;const v=saved.state||{};const ranges={childCount:[1,118],depth:[0,8],ratio:[.3,1],rootSpeed:[-60,60],localSpeed:[-90,90],rootAngle:[-7,7],localAngle:[-7,7],yaw:[-10000,10000],pitch:[-1.45,1.45],zoom:[.3,7],panX:[-100000,100000],panY:[-100000,100000],instance:[0,1],cameraExtent:[.000001,100000],observerSpeed:[-60,60],observerAngle:[-7,7]};if(v.observerMode==='parent'||v.observerMode==='world')state.observerMode=v.observerMode;if(Array.isArray(v.cameraTarget)&&v.cameraTarget.length===3&&v.cameraTarget.every(x=>Number.isFinite(x)&&Math.abs(x)<=100000))state.cameraTarget=v.cameraTarget.slice();for(const [key,[lo,hi]] of Object.entries(ranges)){if(Number.isFinite(v[key])&&v[key]>=lo&&v[key]<=hi)state[key]=v[key];}state.childCount=Math.round(state.childCount);state.depth=Math.round(state.depth);state.instance=Math.round(state.instance);if(!Number.isFinite(v.childCount)&&v.arrangement==='tetra')state.childCount=4;if(typeof v.selected==='string'){const oldNames={'+X':'C1','-X':'C2','+Y':'C3','-Y':'C4','+Z':'C5','-Z':'C6',T1:'C1',T2:'C2',T3:'C3',T4:'C4'};v.selected=v.selected.split('/').map((part,i)=>i?(oldNames[part]||part):part).join('/');}if(typeof v.selected==='string'&&/^root(?:\/C(?:[1-9]|[1-9][0-9]|10[0-9]|11[0-8])){0,8}$/.test(v.selected))state.selected=v.selected;if(typeof v.pendingSelection==='string'&&/^root(?:\/C(?:[1-9]|[1-9][0-9]|10[0-9]|11[0-8])){0,8}$/.test(v.pendingSelection))state.pendingSelection=v.pendingSelection;for(const key of ['running','focus'])if(typeof v[key]==='boolean')state[key]=v[key];for(const id of toggleIds)if(typeof saved.toggles?.[id]==='boolean')$(id).checked=saved.toggles[id];if(state.instance)$('show-inner').checked=true;}catch{/* Invalid saved display settings do not change the model. */}}
+  function restoreSettings(){try{const saved=JSON.parse(sessionStorage.getItem(SETTINGS_KEY)||'null');if(!saved)return;const v=saved.state||{};if(typeof v.filterAddress==='string')state.filterAddress=v.filterAddress;if(Number.isInteger(v.shellFrom))state.shellFrom=v.shellFrom;const ranges={childCount:[1,118],depth:[0,8],ratio:[.3,1],rootSpeed:[-60,60],localSpeed:[-90,90],rootAngle:[-7,7],localAngle:[-7,7],yaw:[-10000,10000],pitch:[-1.45,1.45],zoom:[.3,7],panX:[-100000,100000],panY:[-100000,100000],instance:[0,1],cameraExtent:[.000001,100000],observerSpeed:[-60,60],observerAngle:[-7,7]};if(v.observerMode==='parent'||v.observerMode==='world')state.observerMode=v.observerMode;if(Array.isArray(v.cameraTarget)&&v.cameraTarget.length===3&&v.cameraTarget.every(x=>Number.isFinite(x)&&Math.abs(x)<=100000))state.cameraTarget=v.cameraTarget.slice();for(const [key,[lo,hi]] of Object.entries(ranges)){if(Number.isFinite(v[key])&&v[key]>=lo&&v[key]<=hi)state[key]=v[key];}state.childCount=Math.round(state.childCount);state.depth=Math.round(state.depth);state.instance=Math.round(state.instance);if(!Number.isFinite(v.childCount)&&v.arrangement==='tetra')state.childCount=4;if(typeof v.selected==='string'){const oldNames={'+X':'C1','-X':'C2','+Y':'C3','-Y':'C4','+Z':'C5','-Z':'C6',T1:'C1',T2:'C2',T3:'C3',T4:'C4'};v.selected=v.selected.split('/').map((part,i)=>i?(oldNames[part]||part):part).join('/');}if(typeof v.selected==='string'&&/^root(?:\/C(?:[1-9]|[1-9][0-9]|10[0-9]|11[0-8])){0,72}$/.test(v.selected))state.selected=v.selected;if(typeof v.pendingSelection==='string'&&/^root(?:\/C(?:[1-9]|[1-9][0-9]|10[0-9]|11[0-8])){0,72}$/.test(v.pendingSelection))state.pendingSelection=v.pendingSelection;for(const key of ['running','focus'])if(typeof v[key]==='boolean')state[key]=v[key];for(const id of toggleIds)if(typeof saved.toggles?.[id]==='boolean')$(id).checked=saved.toggles[id];if(state.instance)$('show-inner').checked=true;}catch{/* Invalid saved display settings do not change the model. */}}
   async function checkVersion(){if(checkingUpdate||document.hidden||!/^https?:$/.test(location.protocol))return;checkingUpdate=true;try{const response=await fetch(location.href,{cache:'no-store',credentials:'same-origin'});if(!response.ok)return;const source=await response.text(),match=source.match(/<meta name="model-version" content="([^"]+)"/);if(!match||match[1]===VERSION)return;rememberDraft();if(values.size||drafts.size||$('centre-value').value.trim()){$('update-status').textContent='A published update is ready. Reload keeps display settings but clears your entered values and drafts.';$('reload-update').hidden=false;}else if(saveSettings())location.reload();else{$('update-status').textContent='A published update is ready. This browser could not preserve display settings; reload when ready.';$('reload-update').hidden=false;}}catch{/* Offline or unavailable updates leave the running page intact. */}finally{checkingUpdate=false;}}
   function startUpdates(){if(!updateTimer)updateTimer=setInterval(checkVersion,60000);}
   $('reload-update').addEventListener('click',()=>{saveSettings();location.reload();});window.addEventListener('pagehide',()=>{saveSettings();clearInterval(updateTimer);updateTimer=0;});window.addEventListener('pageshow',event=>{if(event.persisted)startUpdates();});
   restoreSettings();$('child-count').value=String(state.childCount);['depth','ratio'].forEach(id=>$(id).value=String(state[id]));['root','local'].forEach(kind=>{$(kind+'-speed').value=String(state[kind+'Speed']);$(kind+'-speed-value').textContent=state[kind+'Speed']+'°/s';});
-  syncObserver();rebuild();if(state.cameraExtent===null)state.cameraExtent=state.focus?Math.max(instanceNode(selectedNode(),state.instance).size*2,.2):bounds();syncPlay();resize();frameId=requestAnimationFrame(tick);startUpdates();
+  syncObserver();try{rebuild('Restore addressed model');}catch(error){state.filterAddress='root';state.shellFrom=0;state.depth=1;rebuild('Restore within filter safety boundary');$('region-filter-status').textContent='Saved filter could not be applied: '+error.message;}if(state.cameraExtent===null)state.cameraExtent=state.focus?Math.max(instanceNode(selectedNode(),state.instance).size*2,.2):bounds();syncPlay();resize();frameId=requestAnimationFrame(tick);startUpdates();
 })();
 </script>
 </body>
