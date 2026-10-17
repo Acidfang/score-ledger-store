@@ -1,3 +1,5 @@
+> Optional construction-centres experiment. The layer is off by default. Separating the original six-face construction from N counted children is an inspectable interpretation; it is not asserted as six additional physical constituents.
+
 # Continue the centre-path model
 
 Live page: https://acidfang.github.io/score-ledger-store/recursive-cubes/
@@ -165,3 +167,32 @@ This view makes the N1/N2 child's-child frame rotation visible without inventing
 The independent child-count range is now 1–200. UI bounds, input/recovery validation, pure direction and FIR validation, address grammar, selected/pending address restoration and the fixed-index palette all accept the same range. C199/C200 are ordinary retained indexed addresses; C201 is rejected. The first 118 direction arrays and colour contributions are unchanged. Counts 119–200 are exploratory geometric counts, not identified elements or established physical atomic numbers. The linked atomic-comparison document remains the place for measured comparison and its stated limitations; this extension does not derive a spectral match.
 
 The centre filter still preflights against 1,600 displayed centres and 1,600 dependencies. Root generations 0–1 at N200 show 201 centres per pattern (402 with the inner instance). A complete generation 2 would require 40,201 per pattern and is rejected before allocation. Optional direct-descendant shell curves use the existing shared finite templates and their unchanged 240,000 observed-vertex budget; calculated paths retain their 320,000 curve-vertex / 120,000 node-frame budgets. A request that cannot fit its minimum curve samples is reported and rejected as a whole, never silently shortened to fewer children or fewer branches. No cap increase changes rates, phase, current camera, source retention or the addressed domain.
+
+
+## Optional adjacent construction-centres producer (candidate v16)
+
+### Why this candidate exists
+
+At identical phases/rates, the selected N1/N2 centre relations use only local ±Y offsets. Rotation around Y leaves these offsets unchanged, so every selected centre remains stationary at every depth, even though frames turn. In the N3 triad, C1 remains axial but C2/C3 have transverse offsets, producing moving descendant centres. At ratio1 and a one-second step with illustrative root12°/s/local24°/s, parent-relative moving-grandchild counts are N1:0/1, N2:0/4 and N3:6/9. Orientation ticks made frames visible but did not supply the missing centre-path construction.
+
+Joe then stated that the spinning cube construction belongs to the parent and the low-N children alike. This candidate reuses the original six face-to-face cube-centre relation in a separately named construction layer. Whether that construction is retained independently of the later N counted-child selection remains an explicit interpretation awaiting confirmation. The layer is off by default. It is not a face-surface tracer or arbitrary circle.
+
+### Exact proposed producer and addresses
+
+For each admitted carrier centre of size s, the construction-child size is c=s×the existing configured ratio. Six construction-cube centres lie at carrierCentre + carrierRotation×faceNormal×(s+c)/2. Their addresses are carrierAddress::construction/+X, −X, +Y, −Y, +Z, −Z. The normals and face bases come from the original six-face relation. No free radius is introduced. These paths do not use the cube-face surface midpoint s/2.
+
+Under isolated local Y spin, the four lateral construction centres describe the same circle with phase-separated addressed centres; ±Y construction centres remain axial. Coincident loci do not erase their distinct addresses. Under inherited ancestor motion, their complete world paths follow the same composition. This does not promise six or four distinct rings. Their colour retains the carrier's complete ancestry contributions and adds the original ordered face-index contribution, using the existing illustrative RGB mixing rule.
+
+The centre filter admits carriers before producing construction centres: all visible selected centres, plus only the existing explicitly enabled N1/N2 first-descendant reference carriers. There is no automatic all-grandchildren expansion. Ordinary N-child topology, centre markers/picks, input addresses, sampled selected-node history and selected-child forecast curves are unchanged. Construction-centre markers and curves are separately counted; they are not automatically counted as additional selected children or physical atomic constituents. Construction markers currently do not create input/pick targets.
+
+### Pure API and temporal provenance
+
+CubeConstruction.scope(E,{nodes,childCount,ratio,domain,includeLineage}) returns immutable addressed carriers and six curve descriptors per carrier. Descriptors identify carrierAddress, carrierIndex, faceIndex, retained radial offset, colour and a separate construction address. carrierFrame, point and capture derive exact sample-time geometry from recorded source frames. Current/frame cache and projection do not change the live FIR model.
+
+For a virtual first-descendant carrier, the retained immediate parent frame is composed with the original C1 placement/basis and that sample's own local phase. New current/tail/archive samples record localAngle as well as rootAngle and full materialized rotations. Legacy times lacking the necessary phase omit virtual carrier paths; current phase is never substituted into an older sample. Existing materialized carrier frames are used directly. Old geometry uses its own retained source parameters/template and appears only under the explicit inactive-history overlay.
+
+Calculated construction paths have a separate phase-origin cache, using the same producing geometry, rates, sample-time frame construction and parent/world period rules as selected-child forecasts. CubePredictions.build accepts an optional curveSet while keeping its original default behavior. Camera-only changes reproject cached points. Geometry, rate and reset changes invalidate the appropriate cache; a hidden rate round-trip cannot revive an obsolete phase origin. Calculated construction frames are never appended as observations.
+
+The separate construction forecast is limited to320,000 projected curve vertices and120,000 node frames, with the existing conservative phase sampling bound. Observed construction projection has a240,000-vertex budget; existing sample times are uniformly thinned and the limit is stated. An inadmissible minimum request is rejected as a whole. Point/frame caches reuse each immutable sample/scope and do not silently materialize another N-ary generation. Parent-relative paths remove each sample's own root turn. Whole/inner instance scaling follows the original fixed affine rule.
+
+The optional experiment can be inspected through “Cube construction centres + paths” beside the child-count controls. It stays off by default because the interpretation is not asserted as the complete confirmed model. Publication requires final numerical/source review; Native Canvas is available, while actual browser/device verification remains unavailable.
