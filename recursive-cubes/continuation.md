@@ -31,6 +31,8 @@ Colour is the equal-weight RGB average of the root contribution plus every child
 
 `view-engine` separates camera math. Pointer rays hit the nearest displayed cube surface when that framework is on; otherwise a nearby centre's depth or the selected centre's view plane supplies the anchor. Perspective distance and pixel offsets change together so the picked world point remains under the cursor. Pinch keeps it under the moving midpoint.
 
+The page uses a single fixed, full-viewport canvas with no page scrolling. The Controls button opens a collapsible overlay containing all settings, explanations, source links and update notices; only that panel scrolls internally. Drag orbits, Shift-drag or right-drag pans, and wheel/pinch zoom stays anchored. Escape closes the panel.
+
 `relation-ui` samples actual world positions every 1/15 simulation second. It connects those samples in time order; parent–child relation links are a separate optional layer. Speed changes preserve history. Angle reset, preset, depth and field-scale changes clear it. Camera movement only reprojects it. Hidden pages do not advance simulation time.
 
 The inner instance uses the same complete transforms and stored trajectories with one fixed uniform scale about root. Its scale is min(0.5, 0.38 / max(R, 0.76)), where R is the sum of parent-to-child distances along the deepest chain. This conservative bound is constant for a given preset/depth/scale. It adds no independent rotation. Inner addresses use `root::inner/` before the source address. Select that instance and use Focus cube to inspect it. More inner layers and independent internal motion are not implemented.
