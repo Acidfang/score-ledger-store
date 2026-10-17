@@ -29,4 +29,4 @@ A label/address is an identity even if its value range is a singleton. The range
 
 ## Recursive cube relation
 
-[Open the interactive recursive cube page](https://acidfang.github.io/score-ledger-store/recursive-cubes/) to inspect the six-face parent–child relation, inherited frames, local-axis rotation and finite nested grain points. This isolated illustration preserves the canonical viewer and source data; its rendering parameters do not define a physical or canonical metric law.
+[Open the interactive recursive cube page](https://acidfang.github.io/score-ledger-store/recursive-cubes/) to follow actual addressed centre trajectories with retained six-axis or four-tetrahedral examples, inherited frames and colours, local-axis rotation, and a finer same-pattern instance inside the primary centre. This isolated illustration preserves the canonical viewer and source data; its rendering parameters do not define a physical or canonical metric law. [Source and continuation notes](recursive-cubes/continuation.md) explain the model, checks and the pending segmented-sphere construction.
