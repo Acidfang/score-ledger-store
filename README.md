@@ -26,3 +26,7 @@ A label/address is an identity even if its value range is a singleton. The range
 **Before changing the live viewer:** inspect its complete source and existing scoring/navigation bindings, verify dependencies and current user-visible behaviour, make the smallest compatible change in place, run source and runtime checks, and confirm GitHub Pages deployment. A successful Pages build does not establish that scoring works on a tablet. Existing source and data must not be overwritten by an invented interpretation.
 
 **Open verification boundary:** The complete multi-megabyte `index.html` has not been available for a reliable function-by-function inspection in the current connector reads. Therefore a complete viewer dependency audit, live scoring integration, tablet touch/zoom, match persistence, checkout recommendations, mercy rules and device execution remain **unverified**, not complete. Do not mark them done on the strength of module names or build metadata alone.
+
+## Recursive cube relation
+
+[Open the interactive recursive cube page](https://acidfang.github.io/score-ledger-store/recursive-cubes/) to inspect the six-face parent–child relation, inherited frames, local-axis rotation and finite nested grain points. This isolated illustration preserves the canonical viewer and source data; its rendering parameters do not define a physical or canonical metric law.
