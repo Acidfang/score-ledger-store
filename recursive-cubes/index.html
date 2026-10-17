@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="model-version" content="2026-10-17-centre-paths-17-filter-recovery">
+  <meta name="model-version" content="2026-10-17-centre-paths-18-contact">
   <meta name="theme-color" content="#101917">
   <meta name="description" content="An interactive spherical child-centre relation with inherited frames, local rotation and actual trajectories.">
   <title>Centre paths · Recursive centre relation</title>
@@ -84,7 +84,29 @@
       <label class="sr-only" for="centre-value">Value to fill at selected address</label><form id="fill-form" class="input-row"><input id="centre-value" type="text" maxlength="240" placeholder="Fill this centre…" autocomplete="off"><button type="submit">Fill</button></form>
       <p id="input-status" class="hint" role="status">The address exists before input. No value assigned.</p>
       <p class="hint">Tap a centre to select it. Where addresses coincide, use the list or indexed child buttons. Input stays on this page only.</p>
-    </section>    <details id="fir-inspector"><summary>Inspect FILTER · ISOLATE · RECONSTRUCT</summary><p class="hint" id="fir-address"></p><p class="hint" id="fir-relation"></p><p class="hint" id="fir-receipt"></p><p class="hint" id="fir-retention"></p><button id="export-fir" type="button">Export retained transition receipts</button><p class="hint">This bounded numerical implementation preserves addressed producing relations. It is not a claim of complete EI semantics. No private ledger is read or changed.</p></details><div class="details"><p id="update-status" class="hint" role="status">This version checks for published updates while open.</p><button id="reload-update" hidden>Reload updated page (clears entered values)</button><details><summary>Read the relation and its rendering boundaries</summary>
+    </section>    <details id="contact-inspector" class="section" style="overflow-wrap:anywhere"><summary>Numerical path-contact experiment</summary>
+      <p class="hint">Freeze the current phases, rates, addressed domain and selected instance. Choose one explicitly displayed path source in the current Parent or World frame. N-selected descendant shells and the optional cube-construction paths are separate experiments. Inactive history is excluded. The saved run starts when you press Inspect.</p>
+      <label class="field-label" for="contact-source">Analysis source · one layer per run</label><select id="contact-source"><option value="">Choose one admitted source…</option><option id="contact-source-descendant" value="descendant">N-selected descendant shell paths</option><option id="contact-source-construction" value="construction">Cube construction-centre paths · experiment</option></select><p class="hint" id="contact-source-status" role="status"></p>
+      <label class="hint"><input id="contact-same-grain" type="checkbox" checked> Test same addressed generation only</label>
+      <p class="hint">This tentative test means equal absolute parent/carrier address depth within this one selected instance. It is not a physical definition of grain. Uncheck to compare all retained group generations.</p>
+      <label class="field-label" for="contact-tolerance">Numerical distance tolerance · root-length units</label><input id="contact-tolerance" type="number" min="0" max="0.01" step="any" value="0.000001">
+      <div class="buttons" style="margin-top:10px"><button id="contact-inspect" type="button">Inspect this run</button><button id="contact-cancel" type="button" disabled>Cancel scan</button></div>
+      <p class="hint" id="contact-status" role="status">No run inspected. The complete finite request is checked or rejected; no path subset is silently tested.</p>
+      <div id="contact-result" hidden>
+        <p class="hint" id="contact-scope"></p>
+        <label class="field-label" for="contact-event">Flagged path-group candidates</label><select id="contact-event" aria-label="Flagged path-group candidate"></select>
+        <p class="hint" id="contact-witness"></p>
+        <canvas id="contact-preview" width="600" height="440" style="position:relative;inset:auto;width:100%;height:auto;aspect-ratio:15/11;touch-action:auto;cursor:default;border:1px solid var(--border);border-radius:8px" aria-label="Independent replay of the retained run. Gold and pink mark the two sampled-path witnesses; centre markers are evaluated at the displayed replay time."></canvas>
+        <label class="field-label" for="contact-time">Replay from inspection start <output id="contact-time-value">0 s</output></label><input id="contact-time" type="range" min="0" max="1000" step="1" value="0">
+        <div class="buttons"><button id="contact-restart" type="button">Replay start</button><button id="contact-play" type="button">Play replay</button></div>
+        <div class="buttons" style="margin-top:7px"><button id="contact-visit-a" type="button">Visit A</button><button id="contact-visit-b" type="button">Visit B</button></div>
+        <p class="hint" id="contact-replay-phase"></p>
+        <p class="hint">This is a sampled-polyline check. Between-sample curve error is not estimated. Two path visits can have different times; this does not establish simultaneous contact, an impact time, or a shedding rule. Gold/pink witness markers lie on the sampled segments; replay centres use the original transform relation. Orientation ticks alone add no contact members. When the construction layer is explicitly selected, its admitted low-N first-descendant carriers follow that layer’s saved scope.</p>
+        <button id="contact-export" type="button">Export retained run and receipts</button>
+        <p class="hint">One run is kept in this tab. A successful new inspection replaces it. Export to keep it after reload. Main-view motion, values, drafts and history stay independent.</p>
+      </div>
+    </details>
+    <details id="fir-inspector"><summary>Inspect FILTER · ISOLATE · RECONSTRUCT</summary><p class="hint" id="fir-address"></p><p class="hint" id="fir-relation"></p><p class="hint" id="fir-receipt"></p><p class="hint" id="fir-retention"></p><button id="export-fir" type="button">Export retained transition receipts</button><p class="hint">This bounded numerical implementation preserves addressed producing relations. It is not a claim of complete EI semantics. No private ledger is read or changed.</p></details><div class="details"><p id="update-status" class="hint" role="status">This version checks for published updates while open.</p><button id="reload-update" hidden>Reload updated page (clears entered values)</button><details><summary>Read the relation and its rendering boundaries</summary>
       <p><strong>EI specification and implementation boundary.</strong> Joe’s EI specification assigns AI only source-occurrence transcription. This page is an illustrative implementation of the stated geometric relations; it does not establish a complete EI implementation. “Binary” here means a relation between addressed things. It does not replace those things with 0s and 1s.</p>
       <p><strong>Current geometry boundary.</strong> Joe’s latest explanation is face-to-face cube stacks. This version retains its earlier near-even direction model as a numerical approximation while the branch-frame/contact relation is clarified. The tetrahedral N=4 arrangement is not face contact on one rigid parent cube. Shared addressed shell patterns are implemented here; literal cube-face contact is not established. Centre spacing remains tied to the retained dimensions by (parent size + child size)/2; absolute lengths are unspecified, with no independent free-distance control.</p><p><strong>Earlier segmented-sphere approximation.</strong> The relation has N sphere segments and N children: one whole sphere, two hemispheres, and boundaries meeting at top and bottom. This page now repeats any selected count from 1 to 200. Child centres lie at equal radius from their parent. General-N directions use a deterministic Fibonacci spherical distribution as the explicit numerical approximation for the stated even-spreading requirement, not an exact derivation of segment boundaries. The optional sphere and radial lines are guides; full segment boundary surfaces are not implemented.</p>
       <p><strong>Direction conventions.</strong> One child uses local +Y; two use ±Y. Three use exact 120° spacing on a polar great circle: C1 is +Y, C2/C3 have Y=−1/2 and X=±√3/2, with Z=0. This plane and indexed orientation are explicit display conventions, not a physical or unique derivation. Four retain tetrahedral directions; six retain ±X, ±Y, ±Z. Other counts use the spherical approximation. These choices do not assert that every pair of children is equally spaced. For six, adjacent distances are √2 times the radius and opposites are twice it.</p>
@@ -419,6 +441,275 @@ const CubePredictions = (() => {
 })();
 
 </script>
+<script id="contact-engine">
+'use strict';
+/*
+ * Bounded numerical contact inspection of ONE explicitly selected geometry source.
+ * inspect(E,F,P,snapshot,{construction,shouldCancel,yieldControl}) is isolated
+ * from live model/UI state. It never impacts, prunes, ejects or removes geometry.
+ *
+ * snapshot.source is required: 'descendant' or 'construction'. Both require the
+ * saved directionRuleVersion, parameters, origin, mode, instance, instanceScale,
+ * sameGrain, tolerance and admission. Descendant admission retains enabled,
+ * showShells, grainMode, grainExtraShells and exact parentAddresses/curveAddresses.
+ * Construction additionally retains snapshot.constructionRuleVersion,
+ * snapshot.includeLineage, admission.showConstruction and
+ * admission.constructionScope = captureConstruction(CubeConstruction.scope(...)).
+ * Construction scope retains ALL exact producer descriptors, including six
+ * original adjacent-cube curves per carrier, independently of descendant N.
+ *
+ * Construction runs and curvePoint require options.construction=CubeConstruction.
+ * curvePoint(E,F,result,frame,curve,options) returns an instance-scaled point;
+ * frame may be a prediction frame or an isolated replay {world,localAngle}.
+ * Generic curve records retain source and descriptor; construction records also
+ * retain carrierIndex/faceIndex, never fabricated descendant child addresses.
+ *
+ * Success preserves the previous shell/receipt API and adds source, admission,
+ * directionRuleVersion and (for construction) constructionRuleVersion,
+ * includeLineage, constructionScope. shell.level is absolute parent/carrier depth.
+ * One receipt per shell/carrier pair prefers initial overlap, else lexicographic
+ * (max(timeA,timeB),timeA,timeB,addressA,addressB,segmentA,segmentB). Dual times
+ * are path witnesses, not physical impact times. candidateCount counts contacting
+ * segment pairs, including repeated or adjacent samples, not physical events.
+ * All points/receipt coordinates are scaled, unprefixed model addresses retain
+ * explicit instance metadata, and failures never expose partial shells/receipts.
+ */
+const CubeContacts = (() => {
+  const LIMITS = Object.freeze({MAX_SEGMENT_PAIRS:8000000,MAX_SHELL_VERTICES:64000,MAX_TOLERANCE:0.01,NUMERIC_EPSILON_MULTIPLIER:128});
+  const PARAMETER_KEYS=['childCount','ratio','rootAngle','localAngle','rootSpeed','localSpeed','filterAddress','shellFrom','shellTo','instances'];
+  const scope=Object.freeze({source:'one explicitly selected calculated-polyline geometry source',sampling:'Finite piecewise-linear approximation in the selected frame; path times may differ.',sameGrain:'Optional hypothesis: compare equal absolute parent/carrier address depths within the selected instance.',boundary:'Numerical proximity only; no physical collision, continuous-curve proof, impact, ejection, pruning, or removal is asserted.'});
+  const finitePoint=p=>p&&p.length===3&&Number.isFinite(p[0])&&Number.isFinite(p[1])&&Number.isFinite(p[2]);
+  const clamp=x=>Math.max(0,Math.min(1,x));
+  const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+  const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+  const lerp=(a,b,t)=>t===0?a.slice():t===1?b.slice():a.map((v,i)=>{const d=b[i]-v;return Number.isFinite(d)?v+d*t:v*(1-t)+b[i]*t;});
+  const separation=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
+
+  // Boundary candidates handle all point/segment degeneracies and collinear
+  // cases. A cross-product solve adds the interior candidate without the
+  // cancellation-prone (a*c - b*b) denominator or a near-parallel cutoff.
+  function closestSegments(p0,p1,q0,q1) {
+    if(![p0,p1,q0,q1].every(finitePoint))throw TypeError('Segment endpoints must be finite 3D points.');
+    let d=p1.map((v,i)=>v-p0[i]),e=q1.map((v,i)=>v-q0[i]),w=q0.map((v,i)=>v-p0[i]);
+    if(![...d,...e,...w].every(Number.isFinite)){
+      const magnitude=Math.max(...p0.map(Math.abs),...p1.map(Math.abs),...q0.map(Math.abs),...q1.map(Math.abs));
+      d=p1.map((v,i)=>v/magnitude-p0[i]/magnitude);e=q1.map((v,i)=>v/magnitude-q0[i]/magnitude);w=q0.map((v,i)=>v/magnitude-p0[i]/magnitude);
+    }
+    const scale=Math.max(...d.map(Math.abs),...e.map(Math.abs),...w.map(Math.abs),Number.MIN_VALUE);
+    d=d.map(v=>v/scale);e=e.map(v=>v/scale);w=w.map(v=>v/scale);
+    const a=dot(d,d),b=dot(d,e),c=dot(e,e),dw=dot(d,w),ew=dot(e,w);
+    let best=null;
+    function consider(u,v){
+      if(Number.isNaN(u)||Number.isNaN(v))return;
+      u=clamp(u);v=clamp(v);
+      const pointA=lerp(p0,p1,u),pointB=lerp(q0,q1,v),distance=separation(pointA,pointB);
+      if(!best||distance<best.distance||(distance===best.distance&&(u<best.u||(u===best.u&&v<best.v))))best={pointA,pointB,u,v,distance};
+    }
+    consider(0,0);
+    consider(a?dw/a:0,0);consider(a?(dw+b)/a:0,1);
+    consider(0,c?-ew/c:0);consider(1,c?(b-ew)/c:0);
+    const n=cross(d,e),m=Math.max(...n.map(Math.abs));
+    if(m>0){const unit=n.map(v=>v/m),den=dot(unit,unit),wxE=cross(w,e),wxD=cross(w,d),u=dot(wxE.map(v=>v/m),unit)/den,v=dot(wxD.map(v=>v/m),unit)/den;if(u>=0&&u<=1&&v>=0&&v<=1)consider(u,v);}
+    return best;
+  }
+  const newBounds=()=>[Infinity,Infinity,Infinity,-Infinity,-Infinity,-Infinity];
+  function extend(bounds,p){for(let i=0;i<3;i++){bounds[i]=Math.min(bounds[i],p[i]);bounds[i+3]=Math.max(bounds[i+3],p[i]);}return bounds;}
+  function separated(a,b,epsilon){for(let i=0;i<3;i++)if(a[i]-b[i+3]>epsilon||b[i]-a[i+3]>epsilon)return true;return false;}
+  function witnessOrder(a,b){
+    if(!b)return -1;
+    const ak=[Math.max(a.timeA,a.timeB),a.timeA,a.timeB,a.addressA,a.addressB,a.segmentA,a.segmentB],bk=[Math.max(b.timeA,b.timeB),b.timeA,b.timeB,b.addressA,b.addressB,b.segmentA,b.segmentB];
+    for(let i=0;i<ak.length;i++){if(ak[i]<bk[i])return -1;if(ak[i]>bk[i])return 1;}return 0;
+  }
+  // Canonical, lossless serializable capture: reject omissions that JSON.stringify
+  // would silently turn into null, discard, or coerce. Sorted object keys make
+  // descriptor comparison independent of object insertion order; arrays stay exact.
+  function captureData(value){
+    const seen=new Set();let visits=0;
+    function copy(input,depth){
+      if(++visits>1000000||depth>128)throw Error('Descriptor data exceeds the finite capture bound.');
+      if(input===null||typeof input==='string'||typeof input==='boolean')return input;
+      if(typeof input==='number'){if(!Number.isFinite(input))throw Error('Descriptor numbers must be finite.');return input;}
+      if(!input||typeof input!=='object'||seen.has(input))throw Error('Descriptor data must be finite, acyclic and fully serializable.');
+      if(Object.getOwnPropertySymbols(input).length)throw Error('Descriptor symbol keys are not serializable.');
+      seen.add(input);let result;
+      if(Array.isArray(input)){
+        const keys=Object.keys(input);if(keys.length!==input.length||Object.getOwnPropertyNames(input).length!==input.length+1||keys.some((key,i)=>key!==String(i)))throw Error('Descriptor lists must be dense arrays with no additional properties.');
+        result=[];for(let i=0;i<input.length;i++){const d=Object.getOwnPropertyDescriptor(input,String(i));if(!d||!('value'in d))throw Error('Descriptor accessors are not allowed.');result.push(copy(d.value,depth+1));}
+      }else{
+        const prototype=Object.getPrototypeOf(input);
+        if(Object.prototype.toString.call(input)!=='[object Object]'||(prototype!==null&&Object.getPrototypeOf(prototype)!==null)||Object.getOwnPropertyNames(input).length!==Object.keys(input).length)throw Error('Descriptor objects must be plain serializable records with no hidden fields.');
+        result={};for(const key of Object.keys(input).sort()){const d=Object.getOwnPropertyDescriptor(input,key);if(!d||!('value'in d))throw Error('Descriptor accessors are not allowed.');Object.defineProperty(result,key,{value:copy(d.value,depth+1),enumerable:true,writable:false,configurable:false});}
+      }
+      seen.delete(input);return Object.freeze(result);
+    }
+    return copy(value,0);
+  }
+  function captureConstruction(value){
+    const saved=captureData(value);
+    if(!saved||typeof saved!=='object'||!Array.isArray(saved.carriers)||!Array.isArray(saved.curves)||typeof saved.ruleVersion!=='string'||typeof saved.includeLineage!=='boolean')throw Error('A complete construction scope descriptor is required.');
+    return saved;
+  }
+  const sameData=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+  function curvePoint(E,F,result,frame,curve,options={}){
+    if(!result||!curve||curve.source!==result.source||!Number.isFinite(result.instanceScale)||result.instanceScale<=0)throw Error('A curve from this explicit source and a valid instance scale are required.');
+    let sample=frame;
+    if(frame&&Array.isArray(frame.world))sample={...frame,positions:Float64Array.from(frame.world.flatMap(node=>node.centre)),rotations:F.captureFrames(frame.world)};
+    let raw;
+    if(result.source==='descendant')raw=F.shellPoint(E,result.template,sample,curve.parentIndex,curve.childIndex);
+    else if(result.source==='construction'){
+      const C=options.construction;
+      if(!C||typeof C.point!=='function'||C.ruleVersion!==result.constructionRuleVersion)throw Error('The retained construction producer rule version is required for point evaluation.');
+      if(!sample||!Number.isFinite(sample.localAngle))throw Error('Construction samples must retain their finite localAngle.');
+      raw=C.point(E,result.constructionScope,sample,curve.descriptor);
+    }else throw Error('Choose exactly one geometry source.');
+    if(!finitePoint(raw))throw Error('Calculated source point is outside finite numerical range.');
+    const point=raw.map(value=>value*result.instanceScale);
+    if(!finitePoint(point))throw Error('Instance-scaled source point is outside finite numerical range.');return point;
+  }
+  async function inspect(E,F,P,snapshot,options={}){
+    let metadata={},stats={};
+    const fail=(code,reason)=>({ok:false,complete:false,code,reason,...metadata,stats:{...stats},scope});
+    const cancelled=()=>({...fail('cancelled','Inspection cancelled; no partial result retained.'),cancelled:true});
+    try{
+      const shouldCancel=options.shouldCancel||(()=>false),yieldControl=options.yieldControl||(()=>new Promise(resolve=>setTimeout(resolve,0)));
+      if(typeof shouldCancel!=='function'||typeof yieldControl!=='function')return fail('invalid-input','Cancellation and yield hooks must be functions.');
+      if(shouldCancel())return cancelled();
+      if(!snapshot||typeof snapshot!=='object'||!snapshot.parameters||typeof snapshot.parameters!=='object')return fail('invalid-input','A complete numerical snapshot with FIR parameters is required.');
+      const parameters={};for(const key of PARAMETER_KEYS)parameters[key]=snapshot.parameters[key];
+      for(const key of ['childCount','ratio','rootAngle','localAngle','rootSpeed','localSpeed','shellFrom','shellTo','instances'])if(!Number.isFinite(parameters[key]))return fail('invalid-input','Parameter '+key+' must be finite.');
+      const {source,mode,instance,instanceScale,sameGrain,tolerance}=snapshot,origin=snapshot.origin;
+      if(!['descendant','construction'].includes(source))return fail('invalid-source','Explicitly select descendant or construction geometry; mixed and implicit sources are not inspected.');
+      if(!['parent','world'].includes(mode)||![0,1].includes(instance)||!Number.isFinite(instanceScale)||instanceScale<=0||typeof sameGrain!=='boolean'||!Number.isFinite(tolerance)||tolerance<0||tolerance>LIMITS.MAX_TOLERANCE||!origin||!['rootAngle','localAngle','time'].every(key=>Number.isFinite(origin[key])))return fail('invalid-input','Use a valid frame, instance, positive instance scale, same-grain boolean, tolerance from 0 through 0.01, and finite phase/time origin.');
+      metadata={source,mode,instance,instanceScale,sameGrain,tolerance,directionRuleVersion:snapshot.directionRuleVersion};
+      const phaseOrigin={rootAngle:origin.rootAngle,localAngle:origin.localAngle,time:origin.time};
+      const admission=captureData(snapshot.admission);
+      if(!admission||typeof admission.enabled!=='boolean'||!Array.isArray(admission.parentAddresses)||!Array.isArray(admission.curveAddresses)||!admission.parentAddresses.every(a=>typeof a==='string')||!admission.curveAddresses.every(a=>typeof a==='string'))return fail('invalid-admission','Explicit frozen source admission with complete address lists is required.');
+      if(snapshot.directionRuleVersion!==E.directionRuleVersion)return fail('rule-version-mismatch','The retained direction-rule version does not match this viewer. No scan was run.');
+      let constructionScope=null,C=null,includeLineage=null;
+      if(source==='descendant'){
+        if(!['showShells','grainMode','grainExtraShells'].every(k=>typeof admission[k]==='boolean')||admission.enabled!==(admission.showShells&&(!admission.grainMode||admission.grainExtraShells)))return fail('invalid-admission','Descendant admission must match the saved effective shell-path display gates.');
+        if('constructionScope'in admission)return fail('invalid-admission','Construction descriptors cannot be included in descendant admission.');
+      }else{
+        C=options.construction;includeLineage=snapshot.includeLineage;
+        if(!C||typeof C.scope!=='function'||typeof C.point!=='function')return fail('invalid-source','The explicit construction producer is required for construction inspection.');
+        if(snapshot.constructionRuleVersion!==C.ruleVersion)return fail('rule-version-mismatch','The retained construction-rule version does not match this viewer. No scan was run.');
+        if(typeof includeLineage!=='boolean'||typeof admission.showConstruction!=='boolean'||admission.enabled!==admission.showConstruction)return fail('invalid-admission','Construction admission requires its saved separate Show construction gate and includeLineage setting.');
+        metadata={...metadata,constructionRuleVersion:C.ruleVersion,includeLineage};
+      }
+      if(!admission.enabled){
+        if(admission.parentAddresses.length||admission.curveAddresses.length)return fail('admission-mismatch','Disabled geometry must have empty admitted address lists.');
+        return fail('empty-scope',typeof admission.emptyReason==='string'?admission.emptyReason:'The selected geometry source is OFF; no current paths are admitted.');
+      }
+      const isolated=F.create(E,parameters),nodes=isolated.nodes,template=F.shellTemplate(E,nodes,parameters.childCount,parameters.ratio);
+      let groups,paths;
+      if(source==='descendant'){
+        // Exact current observed-shell parent filter; centre-only root paths and
+        // inactive archives never become contact members merely by existing.
+        const visible=template.parents.map((parent,index)=>({parent,index})).filter(({parent})=>parent.visible);
+        const parentIndices=visible.filter(({parent})=>parent.address!=='root'||visible.length===1).map(({index})=>index);
+        groups=parentIndices.map(parentIndex=>({source,address:template.parents[parentIndex].address,level:nodes[parentIndex].level,parentIndex,descriptor:captureData({address:template.parents[parentIndex].address,level:nodes[parentIndex].level,parentIndex}),curves:Array.from({length:parameters.childCount},(_,childIndex)=>({source,address:template.parents[parentIndex].address+'/C'+(childIndex+1),parentIndex,childIndex,descriptor:captureData({address:template.parents[parentIndex].address+'/C'+(childIndex+1),kind:'shell',parentIndex,childIndex})}))}));
+        paths=P.curves(E,nodes,template,true);
+      }else{
+        constructionScope=captureConstruction(admission.constructionScope);
+        const expected=captureConstruction(C.scope(E,{nodes,childCount:parameters.childCount,ratio:parameters.ratio,domain:parameters.filterAddress,includeLineage}));
+        if(!sameData(constructionScope,expected))return fail('admission-mismatch','The frozen construction descriptors do not exactly match the retained producer, display domain and lineage setting. No scan was run.');
+        constructionScope=expected;
+        if(constructionScope.curves.length!==constructionScope.carriers.length*6)return fail('invalid-source','Construction geometry must contain all six original adjacent-cube centre trajectories per carrier.');
+        groups=constructionScope.carriers.map((carrier,carrierIndex)=>({source,address:carrier.address,level:carrier.level,parentIndex:carrier.nodeIndex,carrierIndex,descriptor:carrier,curves:constructionScope.curves.slice(carrierIndex*6,carrierIndex*6+6).map(descriptor=>({source,address:descriptor.address,carrierIndex,faceIndex:descriptor.faceIndex,descriptor}))}));
+        if(groups.some(group=>group.curves.length!==6||group.curves.some(curve=>curve.descriptor.carrierIndex!==group.carrierIndex)))return fail('invalid-source','Every construction carrier must retain its complete six-member descriptor set.');
+        paths=constructionScope.curves;
+      }
+      const expectedParents=groups.map(group=>group.address),expectedCurves=groups.flatMap(group=>group.curves.map(curve=>curve.address));
+      if(!sameData(admission.parentAddresses,expectedParents)||!sameData(admission.curveAddresses,expectedCurves))return fail('admission-mismatch','The frozen admitted addresses do not match the exact selected source and current display filter. No scan was run.');
+      if(!groups.length)return fail('empty-scope','No paths are admitted in this current addressed domain.');
+      const levelCounts=new Map();for(const group of groups)levelCounts.set(group.level,(levelCounts.get(group.level)||0)+1);
+      const totalShellPairs=groups.length*(groups.length-1)/2,shellPairs=sameGrain?[...levelCounts.values()].reduce((sum,count)=>sum+count*(count-1)/2,0):totalShellPairs;
+      const schedule=P.plan({mode,rootSpeed:parameters.rootSpeed,localSpeed:parameters.localSpeed,nodes,curveCount:paths.length,instances:1}),membersPerGroup=source==='construction'?6:parameters.childCount;
+      stats={shellCount:groups.length,shellCurveCount:groups.reduce((sum,group)=>sum+group.curves.length,0),predictionCurveCount:paths.length,totalShellPairs,shellPairs};
+      stats.skippedByGrain=stats.totalShellPairs-stats.shellPairs;
+      if(!schedule.ok)return fail('prediction-rejected',schedule.reason||'The complete prediction request was rejected.');
+      const rootRate=parameters.rootSpeed*Math.PI/180,localRate=parameters.localSpeed*Math.PI/180;
+      if(!Number.isFinite(schedule.duration)||schedule.duration<0||![rootRate,localRate,phaseOrigin.rootAngle+rootRate*schedule.duration,phaseOrigin.localAngle+localRate*schedule.duration,phaseOrigin.time+schedule.duration].every(Number.isFinite))return fail('numerical-range','The frozen interval would overflow a replay phase or its time. Choose representable rates or a shorter finite forecast. No scan was run.');
+      const frames=schedule.sampleCount,segments=frames-1;
+      if(!Number.isSafeInteger(frames)||frames<2)return fail('invalid-prediction','Prediction must contain at least two finite samples.');
+      stats.sampleCount=frames;stats.shellVertices=stats.shellCurveCount*frames;stats.potentialSegmentPairs=shellPairs*membersPerGroup*membersPerGroup*segments*segments;
+      if(stats.shellVertices>LIMITS.MAX_SHELL_VERTICES||stats.potentialSegmentPairs>LIMITS.MAX_SEGMENT_PAIRS)return fail('over-budget','The whole request requires '+stats.shellVertices.toLocaleString()+' shell vertices and up to '+stats.potentialSegmentPairs.toLocaleString()+' segment-pair comparisons; limits are '+LIMITS.MAX_SHELL_VERTICES.toLocaleString()+' and '+LIMITS.MAX_SEGMENT_PAIRS.toLocaleString()+'. Narrow the visible shell range or use the same-grain hypothesis. No partial scan was run.');
+      await yieldControl();if(shouldCancel())return cancelled();
+      const prediction=P.build(E,F,{nodes,template,mode,rootSpeed:parameters.rootSpeed,localSpeed:parameters.localSpeed,origin:phaseOrigin,instances:1,includeShells:source==='descendant',curveSet:source==='construction'?paths:null});
+      if(!prediction.ok)return fail('prediction-rejected',prediction.reason||'The complete prediction request was rejected.');
+      if(prediction.frames.length!==frames)return fail('invalid-prediction','Prediction sample count changed after preflight. No scan was run.');
+      let lastTime=-Infinity;for(const frame of prediction.frames){if(!Number.isFinite(frame.offsetSeconds)||frame.offsetSeconds<0||frame.offsetSeconds<lastTime||(source==='construction'&&!Number.isFinite(frame.localAngle)))return fail('invalid-prediction','Calculated frame times and construction phases must be finite; times must be nonnegative and nondecreasing.');lastTime=frame.offsetSeconds;}
+      if(shouldCancel())return cancelled();
+      const pointContext={source,instanceScale,template,constructionScope,constructionRuleVersion:metadata.constructionRuleVersion};
+      let maxCoordinate=0;
+      const shells=groups.map(group=>{
+        const bounds=newBounds(),curves=group.curves.map(record=>{
+          const points=[],curveBounds=newBounds(),curveSegments=[];
+          for(const frame of prediction.frames){const point=curvePoint(E,F,pointContext,frame,record,{construction:C});for(const v of point)maxCoordinate=Math.max(maxCoordinate,Math.abs(v));extend(bounds,point);extend(curveBounds,point);points.push(point);}
+          for(let index=0;index<points.length-1;index++)curveSegments.push({index,start:points[index],end:points[index+1],time0:prediction.frames[index].offsetSeconds,time1:prediction.frames[index+1].offsetSeconds,bounds:extend(extend(newBounds(),points[index]),points[index+1])});
+          return{...record,points,bounds:curveBounds,segments:curveSegments};
+        });
+        return{...group,bounds,curves};
+      });
+      const numericAllowance=LIMITS.NUMERIC_EPSILON_MULTIPLIER*Number.EPSILON*Math.max(1,maxCoordinate),epsilon=tolerance+numericAllowance;
+      if(!Number.isFinite(epsilon))return fail('numerical-range','The effective numerical threshold is outside finite range.');
+      metadata={...metadata,numericAllowance,epsilon};
+      Object.assign(stats,{maxCoordinate,shellAABBRejected:0,curveAABBRejected:0,segmentAABBRejected:0,segmentComparisons:0,initialPointComparisons:0,candidateCount:0});
+      const receipts=[];let checkedSegments=0,workChecks=0;
+      await yieldControl();if(shouldCancel())return cancelled();
+      for(let ai=0;ai<shells.length;ai++)for(let bi=ai+1;bi<shells.length;bi++){
+        if(++workChecks%4096===0){await yieldControl();if(shouldCancel())return cancelled();}
+        const shellA=shells[ai],shellB=shells[bi];
+        if(sameGrain&&shellA.level!==shellB.level)continue;
+        if(separated(shellA.bounds,shellB.bounds,epsilon)){stats.shellAABBRejected++;continue;}
+        let initialWitness=null,best=null,candidateCount=0;
+        function makeWitness(a,b,sa,sb,hit,timeA,timeB){return{shellA:shellA.address,shellB:shellB.address,addressA:a.address,addressB:b.address,pointA:hit.pointA.slice(),pointB:hit.pointB.slice(),timeA,timeB,segmentA:sa,segmentB:sb,u:hit.u,v:hit.v,distance:hit.distance};}
+        for(const a of shellA.curves)for(const b of shellB.curves){
+          if(++workChecks%4096===0){await yieldControl();if(shouldCancel())return cancelled();}
+          stats.initialPointComparisons++;const initialDistance=separation(a.points[0],b.points[0]);
+          if(initialDistance<=epsilon){const witness=makeWitness(a,b,0,0,{pointA:a.points[0],pointB:b.points[0],u:0,v:0,distance:initialDistance},0,0);if(witnessOrder(witness,initialWitness)<0)initialWitness=witness;}
+          if(separated(a.bounds,b.bounds,epsilon)){stats.curveAABBRejected++;continue;}
+          for(const sa of a.segments)for(const sb of b.segments){
+            checkedSegments++;
+            if(++workChecks%4096===0){await yieldControl();if(shouldCancel())return cancelled();}
+            if(separated(sa.bounds,sb.bounds,epsilon)){stats.segmentAABBRejected++;continue;}
+            stats.segmentComparisons++;const hit=closestSegments(sa.start,sa.end,sb.start,sb.end);
+            if(hit.distance>epsilon)continue;
+            candidateCount++;stats.candidateCount++;
+            const timeA=sa.time0+(sa.time1-sa.time0)*hit.u,timeB=sb.time0+(sb.time1-sb.time0)*hit.v,witness=makeWitness(a,b,sa.index,sb.index,hit,timeA,timeB);
+            if(witnessOrder(witness,best)<0)best=witness;
+          }
+        }
+        const selected=initialWitness||best;
+        if(selected)receipts.push({...selected,initialOverlap:!!initialWitness,candidateCount,source,mode,grainLevelA:shellA.level,grainLevelB:shellB.level,tolerance,numericAllowance});
+      }
+      if(shouldCancel())return cancelled();
+      stats.workChecks=workChecks;stats.segmentAABBChecks=checkedSegments;stats.receiptCount=receipts.length;
+      return{ok:true,complete:true,...metadata,admission,...(source==='construction'?{constructionScope}:{}),prediction,template,nodes,shells,receipts,stats,scope};
+    }catch(error){return fail('invalid-or-numerical-input',error instanceof Error?error.message:String(error));}
+  }
+  return Object.freeze({inspect,captureConstruction,curvePoint,closestSegments,LIMITS});
+})();
+
+</script>
+<script id="run-replay-engine">
+'use strict';
+// Immutable run starts and isolated analytic replay. No access to the live UI/model.
+const CubeRunReplay = (() => {
+  function freeze(value){if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
+  function capture(data){return freeze(JSON.parse(JSON.stringify(data)));}
+  function frame(E,snapshot,nodes,time){
+    if(!Number.isFinite(time)||time<0)throw Error('Replay time must be finite and nonnegative.');
+    const rootAngle=snapshot.origin.rootAngle+snapshot.parameters.rootSpeed*Math.PI/180*time;
+    const localAngle=snapshot.origin.localAngle+snapshot.parameters.localSpeed*Math.PI/180*time;
+    if(!Number.isFinite(rootAngle)||!Number.isFinite(localAngle))throw Error('Replay phase is outside finite numerical range.');
+    const world=E.transforms(nodes,snapshot.mode==='parent'?0:rootAngle,localAngle);
+    return{time,rootAngle,localAngle,world};
+  }
+  return Object.freeze({capture,frame});
+})();
+
+</script>
 <script id="view-engine">
 'use strict';
 // Camera math is separate from the addressed relation. Pixel pan offsets preserve a
@@ -468,7 +759,7 @@ const CubeView = (() => {
   function modelDepth(){return nodes.length?Math.max(...nodes.map(node=>node.level)):state.depth;}
   function proposal(){return{childCount:state.childCount,ratio:state.ratio,rootAngle:state.rootAngle,localAngle:state.localAngle,rootSpeed:state.rootSpeed,localSpeed:state.localSpeed,filterAddress:state.filterAddress,shellFrom:state.shellFrom,shellTo:state.depth,instances:$('show-inner').checked?2:1};}
   function applyModel(intent,continuous=false){const next=proposal();if(!model)model=CubeFIR.create(E,next,{sourceURL:'https://acidfang.github.io/score-ledger-store/recursive-cubes/',directionRuleVersion:E.directionRuleVersion,baselineVersion:'2026-10-17-centre-paths-9',baselineSHA256:'48063feb99be602d6bf5e097940bf8418012444c42370bfbacbeeffcef004ba2'});else model.apply({changes:next,intent,time:simTime,continuous});nodes=model.nodes;world=model.reconstruct();return world;}
-  function requestDraw(){dirty=true;}
+  function requestDraw(){dirty=true;contactRefreshSources();}
   function syncPlay(){const button=$('play');button.textContent=state.running?'Pause':'Play';button.setAttribute('aria-pressed',String(state.running));$('motion-state').textContent=(state.running?'Model running':'Model paused')+(state.observerMode==='parent'?' · with parent':' · world view');$('live-dot').style.opacity=state.running?'1':'.35';}
   function rememberDraft(){if(inputAddress===null)return;const text=$('centre-value').value;if(text!==(values.get(inputAddress)||''))drafts.set(inputAddress,text);else drafts.delete(inputAddress);}
   function syncTarget(){rememberDraft();const address=targetAddress();inputAddress=address;$('selection-boundary').hidden=!state.pendingSelection;$('selection-boundary').textContent=state.pendingSelection?'Retained selection '+state.pendingSelection+' is outside this view. Showing '+state.selected+' until it is rendered again.':'';$('address').textContent=address;$('centre-value').value=drafts.has(address)?drafts.get(address):(values.get(address)||'');$('input-status').textContent=drafts.has(address)?'Unsubmitted draft retained for this address.':values.has(address)?'Filled: '+values.get(address):'The address exists before input. No value assigned.';requestDraw();}
@@ -549,7 +840,7 @@ const CubeView = (() => {
     let remaining=seconds;while(remaining>1e-10){const part=Math.min(remaining,TRAIL_INTERVAL-trailAccumulator);state.rootAngle=(state.rootAngle+state.rootSpeed*Math.PI/180*part)%(Math.PI*2);state.localAngle=(state.localAngle+state.localSpeed*Math.PI/180*part)%(Math.PI*2);if(state.observerMode==='parent')state.observerAngle=(state.observerAngle+state.observerSpeed*Math.PI/180*part)%(Math.PI*2);simTime+=part;trailAccumulator+=part;remaining-=part;if(trailAccumulator>=TRAIL_INTERVAL-1e-10){applyModel('Sample current model',true);sampleTrail();trailAccumulator=0;}}applyModel('Advance model time',true);requestDraw();
   }
 
-  function tick(time){const elapsed=lastTime?Math.min((time-lastTime)/1000,.1):0;lastTime=time;if(state.running&&!document.hidden)advance(elapsed);if(dirty&&time-lastPaint>=1000/30){draw();dirty=false;lastPaint=time;}frameId=requestAnimationFrame(tick);}
+  function tick(time){const elapsed=lastTime?Math.min((time-lastTime)/1000,.1):0;lastTime=time;if(state.running&&!document.hidden)advance(elapsed);contactTick(elapsed,time);if(dirty&&time-lastPaint>=1000/30){draw();dirty=false;lastPaint=time;}frameId=requestAnimationFrame(tick);}
   function fit(){state.focus=false;state.cameraExtent=bounds();state.cameraTarget=[0,0,0];state.zoom=1;state.panX=0;state.panY=0;state.yaw=.63;state.pitch=.38;requestDraw();}
   $('play').addEventListener('click',()=>{state.running=!state.running;syncPlay();});$('step').addEventListener('click',()=>{state.running=false;syncPlay();advance(1/30);});$('reset').addEventListener('click',()=>{state.rootAngle=0;state.localAngle=0;state.observerAngle=0;simTime=0;archives.length=0;applyModel('Reset motion');invalidateCalculated();clearTrails();requestDraw();});
   $('show-rotation').addEventListener('click',()=>{$('show-shells').checked=true;$('show-trails').checked=true;if(state.grainMode){state.grainExtraShells=true;syncGrain();}$('rotation-status').textContent='Motion shells enabled for every visible centre. Each path belongs to a real direct-descendant address; the centre filter and marker count are unchanged.';requestDraw();});
@@ -711,6 +1002,87 @@ const CubeView = (() => {
     ctx.setLineDash([]);$('shell-pattern-status').textContent=drawn?drawn.toLocaleString()+' observed descendant-address shell curves across displayed instances; no extra markers. '+(minimum===maximum?maximum:minimum+'–'+maximum)+' retained sample times per curve are drawn (uniform temporal thinning within a '+SHELL_VERTEX_BUDGET.toLocaleString()+'-vertex budget).'+(missing?' '+missing+' older samples lack recorded frames and are omitted.':''):'Observed shells are collecting sample-time frames. Calculated paths are separately labelled and may already be shown.';
   }
 
+  // One independent inspection is retained. It never becomes the live model.
+  let contactRecord=null,contactSerial=0,contactBusy=false,contactWorkToken=0,contactLastPaint=0;
+  const contactReplay={time:0,playing:false};
+  let contactSourceUserChoice='',contactSourceCache='';
+  const contactSourceLabels={descendant:'N-selected descendant shell paths',construction:'Cube construction-centre paths · experiment'};
+  function contactRefreshSources(){
+    const descendant=extraShellPathsAdmitted(),construction=$('show-construction').checked,eligible=[descendant?'descendant':'',construction?'construction':''].filter(Boolean);if(contactSourceUserChoice&&!eligible.includes(contactSourceUserChoice))contactSourceUserChoice='';const key=[descendant,construction,contactSourceUserChoice].join('/');if(key===contactSourceCache)return;contactSourceCache=key;
+    $('contact-source-descendant').disabled=!descendant;$('contact-source-construction').disabled=!construction;
+    $('contact-source').value=eligible.length===1?eligible[0]:eligible.includes(contactSourceUserChoice)?contactSourceUserChoice:'';
+    $('contact-source-status').textContent=eligible.length===0?'Neither path layer is enabled. Enable a path layer explicitly before inspecting.':eligible.length===1?'Only '+contactSourceLabels[eligible[0]]+' is admitted, so it is selected.':'Both path layers are enabled. Choose one analysis source for this run; their members are never combined.';
+  }
+  function contactResolveSource(){contactRefreshSources();const source=$('contact-source').value;if(!source)throw Error(extraShellPathsAdmitted()||$('show-construction').checked?'Both path layers are enabled. Choose one analysis source before inspection.':'No eligible path source: additional descendant shell paths and the construction experiment are both OFF.');return source;}
+  function contactName(address,snapshot){return snapshot.instance?'root::inner/'+address:address;}
+  function contactNumber(value){return Number.isFinite(value)?Number(value.toPrecision(7)).toString():'unavailable';}
+  function contactSelected(){return contactRecord?.result.receipts[Number($('contact-event').value)]||null;}
+  function contactAdmission(source=$('contact-source').value||'descendant'){
+    if(source==='construction'){const enabled=$('show-construction').checked,scope=enabled?currentConstructionScope():null;return{enabled,source:'current explicitly displayed construction-centre paths; current geometry only',showConstruction:enabled,parentAddresses:scope?scope.carriers.map(carrier=>carrier.address):[],curveAddresses:scope?scope.curves.map(curve=>curve.address):[],constructionScope:scope?CubeContacts.captureConstruction(scope):null,emptyReason:'Cube construction-centre paths are OFF. Enable their separate experiment checkbox before inspection; orientation-only references alone do not admit construction paths.'};}
+    if(source!=='descendant')throw Error('Choose one supported analysis source.');
+    const enabled=extraShellPathsAdmitted(),parents=enabled?shellParents(activeShellTemplate).map(({parent})=>parent.address):[];
+    return{enabled,source:'current observed-shell parent filter; current geometry only',showShells:$('show-shells').checked,grainMode:state.grainMode,grainExtraShells:state.grainExtraShells,parentAddresses:parents,curveAddresses:parents.flatMap(address=>Array.from({length:state.childCount},(_,i)=>address+'/C'+(i+1))),emptyReason:state.grainMode&&!state.grainExtraShells?'Resolved grain admits only parent/immediate-child centre paths. Additional descendant shell paths are OFF; use its explicit checkbox or Show motion shells before inspection.':'Motion-shell paths are OFF. Enable Motion shells before inspection. Inactive geometry and centre-only paths are not inspected.'};
+  }
+  function contactSnapshot(){
+    const source=contactResolveSource(),admission=contactAdmission(source);
+    return CubeRunReplay.capture({format:'recursive-centres-contact-run-v2',id:'inspection/'+(++contactSerial),createdAt:new Date().toISOString(),sourceVersion:VERSION,sourceBaselineSHA256:'78fd0fc35a3b44d449ccf5120d31969946313b9a612af5137ccc3c59a7001848',source,directionRuleVersion:E.directionRuleVersion,constructionRuleVersion:source==='construction'?CubeConstruction.ruleVersion:null,includeLineage:source==='construction'?$('show-lineage-reference').checked:null,admission,orientationTicks:$('show-orientation').checked,lineageReferences:$('show-lineage-reference').checked,algorithm:'sampled-path-contact-v2',parameters:model.parameters,origin:{rootAngle:state.rootAngle,localAngle:state.localAngle,time:simTime},firPhase:model.phase,mode:state.observerMode,instance:state.instance,instanceScale:state.instance?activeInnerScale:1,sameGrain:$('contact-same-grain').checked,tolerance:Number($('contact-tolerance').value),selected:state.selected,pendingFilterAddress:state.pendingFilterAddress||null,pendingSelection:state.pendingSelection||null,addressedState:{values:Array.from(values),drafts:Array.from(drafts),currentInput:{address:inputAddress,text:$('centre-value').value}},sourceAddresses:nodes.map(n=>({address:n.address,parent:n.parent<0?null:nodes[n.parent].address,level:n.level,role:n.visible?'displayed':'dependency-only'})),initialWorld:world.map(n=>({address:n.address,centre:n.centre.slice(),rotation:n.rotation.slice()}))});
+  }
+  function contactSetTime(time,playing=false){if(!contactRecord)return;contactReplay.time=Math.max(0,Math.min(contactRecord.result.prediction.duration,time));contactReplay.playing=playing&&contactRecord.result.prediction.duration>0;$('contact-play').textContent=contactReplay.playing?'Pause replay':'Play replay';drawContactReplay();}
+  function contactTick(elapsed,time){if(!contactRecord||!contactReplay.playing||document.hidden)return;const duration=contactRecord.result.prediction.duration;contactReplay.time=Math.min(duration,contactReplay.time+elapsed);if(time-contactLastPaint>=1000/30||contactReplay.time>=duration){drawContactReplay();contactLastPaint=time;}if(contactReplay.time>=duration){contactReplay.playing=false;$('contact-play').textContent='Play replay';}}
+  function contactUpdateWitness(){
+    if(!contactRecord)return;const {snapshot,result}=contactRecord,receipt=contactSelected();
+    $('contact-visit-a').disabled=!receipt;$('contact-visit-b').disabled=!receipt;
+    $('contact-witness').textContent=receipt?(receipt.initialOverlap?'Already within the contact tolerance at inspection start. ':'Sampled path-locus candidate; no impact time assigned. ')+contactName(receipt.addressA,snapshot)+' at +'+contactNumber(receipt.timeA)+' s; '+contactName(receipt.addressB,snapshot)+' at +'+contactNumber(receipt.timeB)+' s. Sampled separation '+contactNumber(receipt.distance)+'. One grouped record for this path-group pair.':'No sampled-path candidate within this complete finite scope and numerical tolerance. This does not prove that continuous curves or untested addresses never touch.';
+    drawContactReplay();
+  }
+  function drawContactReplay(){
+    if(!contactRecord)return;const canvas=$('contact-preview'),context=canvas.getContext('2d');if(!context){$('contact-replay-phase').textContent='Replay canvas is unavailable; the run and receipts can still be exported.';return;}
+    const {snapshot,result}=contactRecord,receipt=contactSelected(),duration=result.prediction.duration;
+    const replay=CubeRunReplay.frame(E,snapshot,result.nodes,contactReplay.time),factor=snapshot.instanceScale,replaySample={positions:Float64Array.from(replay.world.flatMap(node=>node.centre)),rotations:CubeFIR.captureFrames(replay.world),localAngle:replay.localAngle};
+    const point=p=>p.map(v=>v*factor);
+    let extent=contactRecord.extent;
+    const view=V.camera({yaw:.63,pitch:.38,zoom:1,panX:0,panY:0,width:600,height:440,extent:Math.max(.03,extent),target:[0,0,0]}),project=p=>V.project(view,p);
+    context.clearRect(0,0,600,440);context.fillStyle='#101917';context.fillRect(0,0,600,440);
+    function stroke(path,colour,width=1){context.beginPath();let connected=false;for(const p of path){const q=project(p);if(!q){connected=false;continue;}if(connected)context.lineTo(q.x,q.y);else context.moveTo(q.x,q.y);connected=true;}context.strokeStyle=colour;context.lineWidth=width;context.stroke();}
+    function dot(p,r,colour){const q=project(p);if(!q)return;context.beginPath();context.arc(q.x,q.y,r,0,2*Math.PI);context.fillStyle=colour;context.fill();}
+    context.setLineDash([3,4]);for(const shell of result.shells)for(const curve of shell.curves){const activeA=receipt&&curve.address===receipt.addressA,activeB=receipt&&curve.address===receipt.addressB;stroke(curve.points,activeA?'#edc27baa':activeB?'#eca8acaa':'#8ba9973a',activeA||activeB?2:1);}context.setLineDash([]);
+    for(const node of replay.world)if(node.visible){
+      if(snapshot.orientationTicks&&snapshot.parameters.childCount<=2){const colour='rgba('+E.colour(node,result.nodes).join(',')+',.9)';context.setLineDash([]);stroke([point(node.centre),point(E.point(node,[.22,0,0]))],colour,1.8);context.setLineDash([3,4]);stroke([point(node.centre),point(E.point(node,[0,0,.14]))],colour,1);context.setLineDash([]);}
+      dot(point(node.centre),node.address===snapshot.selected?5:3,'#9ee9bd');
+    }
+    if(snapshot.lineageReferences&&snapshot.parameters.childCount<=2){
+      const references=lineageFrameReferences(replay.world,snapshot.parameters.filterAddress,snapshot.parameters.childCount,snapshot.parameters.ratio,replay.localAngle);
+      for(const reference of references){const node=reference.node,colour='rgba('+E.colour(node,result.nodes).join(',')+',.95)';if(!(snapshot.orientationTicks&&reference.alreadyVisible)){context.setLineDash([]);stroke([point(node.centre),point(E.point(node,[.22,0,0]))],colour,1.8);context.setLineDash([3,4]);stroke([point(node.centre),point(E.point(node,[0,0,.14]))],colour,1);context.setLineDash([]);}const p=project(point(node.centre));if(p){context.fillStyle=colour;context.font='10px system-ui';context.fillText('frame ref',p.x+6,p.y-6);}}
+    }
+    if(snapshot.source==='construction')for(const shell of result.shells)for(const curve of shell.curves){const p=CubeContacts.curvePoint(E,CubeFIR,result,replaySample,curve,{construction:CubeConstruction});dot(p,2,'rgba('+curve.descriptor.colour.join(',')+',.8)');}
+    if(receipt){dot(receipt.pointA,6,'#edc27b');dot(receipt.pointB,4,'#eca8ac');for(const shell of result.shells)for(const curve of shell.curves)if(curve.address===receipt.addressA||curve.address===receipt.addressB){const p=CubeContacts.curvePoint(E,CubeFIR,result,replaySample,curve,{construction:CubeConstruction});dot(p,4,curve.address===receipt.addressA?'#ffe2a1':'#ffc6ca');}}
+    $('contact-time').value=String(duration?1000*contactReplay.time/duration:0);$('contact-time-value').textContent='+'+contactNumber(contactReplay.time)+' s / '+contactNumber(duration)+' s';
+    $('contact-replay-phase').textContent='Frozen '+contactSourceLabels[snapshot.source]+' · '+(snapshot.mode==='parent'?'parent-relative':'World')+' frame · root phase '+contactNumber(replay.rootAngle)+' rad · local phase '+contactNumber(replay.localAngle)+' rad. These phases are evaluated directly from the saved start and rates.';
+  }
+  function contactCommit(snapshot,result){
+    let extent=.001;for(const shell of result.shells)for(const curve of shell.curves)for(const p of curve.points)extent=Math.max(extent,Math.hypot(...p));contactRecord={snapshot,result,extent:extent*1.12};contactReplay.time=0;contactReplay.playing=false;$('contact-result').hidden=false;$('contact-play').textContent='Play replay';$('contact-play').disabled=result.prediction.duration===0;$('contact-time').disabled=result.prediction.duration===0;
+    const list=$('contact-event');list.replaceChildren();result.receipts.forEach((receipt,i)=>{const option=document.createElement('option');option.value=String(i);option.textContent=contactName(receipt.shellA,snapshot)+' ↔ '+contactName(receipt.shellB,snapshot)+(receipt.initialOverlap?' · present at start':' · path candidate');list.appendChild(option);});list.disabled=!result.receipts.length;list.value=result.receipts.length?'0':'';
+    $('contact-status').textContent=result.stats.shellPairs===0?'No eligible path-group pair to compare. The snapshot is retained for replay; admit two parents/carriers at a matching addressed depth, or uncheck the same-generation test.':'Complete sampled-geometry check of '+contactSourceLabels[snapshot.source]+': '+result.receipts.length+' flagged path-group candidate'+(result.receipts.length===1?'':'s')+'. '+(result.receipts.some(r=>r.initialOverlap)?'Some sampled geometry is within tolerance at the saved start; no first impact is claimed.':'No impact or shedding action is assigned.');
+    $('contact-scope').textContent='Saved '+snapshot.id+' · '+contactSourceLabels[snapshot.source]+' · '+(snapshot.instance?'inner instance':'whole instance')+' · saved N='+snapshot.parameters.childCount+', ratio '+contactNumber(snapshot.parameters.ratio)+', root '+contactNumber(snapshot.parameters.rootSpeed)+'°/s, local '+contactNumber(snapshot.parameters.localSpeed)+'°/s · '+snapshot.parameters.filterAddress+(snapshot.pendingFilterAddress?' (saved pending domain '+snapshot.pendingFilterAddress+' is outside saved N and is excluded)':'')+' · visible outward generations '+snapshot.parameters.shellFrom+'–'+snapshot.parameters.shellTo+' · '+(snapshot.mode==='parent'?'parent-relative':'World')+' frame. '+result.shells.length+' path groups, '+result.stats.shellPairs+' eligible group pairs, '+result.shells.reduce((n,s)=>n+s.curves.length,0)+' actual source curves; '+result.prediction.sampleCount+' samples per curve over '+contactNumber(result.prediction.duration)+' s ('+result.prediction.label+'). '+(snapshot.sameGrain?'Only equal absolute parent/carrier address depths compared.':'All retained group generations compared.')+' Only this frozen current-layer admission is tested; inactive geometry and the other analysis source are excluded. Numerical tolerance '+contactNumber(snapshot.tolerance)+' root units + rounding allowance '+contactNumber(result.numericAllowance)+'. Future rates held constant; frame and scope never follow later live changes.';
+    contactUpdateWitness();
+  }
+  $('contact-inspect').addEventListener('click',async()=>{
+    if(contactBusy)return;contactRefreshSources();let snapshot;try{if(!$('contact-tolerance').value.trim())throw Error('Enter a numerical tolerance from 0 to 0.01.');snapshot=contactSnapshot();}catch(error){$('contact-status').textContent='Inspection not started: '+error.message+' The previous retained run, if any, is unchanged.';return;}const token=++contactWorkToken;contactBusy=true;$('contact-inspect').disabled=true;$('contact-cancel').disabled=false;$('contact-status').textContent='Checking the frozen finite request. Any previous retained run stays available until this succeeds.';
+    try{const result=await CubeContacts.inspect(E,CubeFIR,CubePredictions,snapshot,{construction:CubeConstruction,shouldCancel:()=>token!==contactWorkToken,yieldControl:()=>new Promise(resolve=>setTimeout(resolve,0))});if(token!==contactWorkToken)return;if(!result.ok){$('contact-status').textContent='No new scan retained: '+result.reason+' The previous retained run, if any, is unchanged.';return;}contactCommit(snapshot,result);}catch(error){if(token===contactWorkToken)$('contact-status').textContent='Inspection failed without replacing the retained run: '+error.message;}finally{if(token===contactWorkToken){contactBusy=false;$('contact-inspect').disabled=false;$('contact-cancel').disabled=true;}}
+  });
+  $('contact-cancel').addEventListener('click',()=>{if(!contactBusy)return;contactWorkToken++;contactBusy=false;$('contact-inspect').disabled=false;$('contact-cancel').disabled=true;$('contact-status').textContent='Inspection cancelled. No partial result was retained; the previous completed run, if any, is unchanged.';});
+  $('contact-event').addEventListener('change',()=>{contactReplay.playing=false;$('contact-play').textContent='Play replay';contactUpdateWitness();});
+  $('contact-time').addEventListener('input',()=>{if(contactRecord)contactSetTime(contactRecord.result.prediction.duration*(Number($('contact-time').value)/1000));});
+  $('contact-restart').addEventListener('click',()=>contactSetTime(0));
+  $('contact-play').addEventListener('click',()=>{if(!contactRecord)return;if(contactReplay.time>=contactRecord.result.prediction.duration)contactReplay.time=0;contactSetTime(contactReplay.time,!contactReplay.playing);});
+  $('contact-visit-a').addEventListener('click',()=>{const receipt=contactSelected();if(receipt)contactSetTime(receipt.timeA);});
+  $('contact-visit-b').addEventListener('click',()=>{const receipt=contactSelected();if(receipt)contactSetTime(receipt.timeB);});
+  $('contact-export').addEventListener('click',()=>{if(!contactRecord)return;const {snapshot,result}=contactRecord,data={format:'recursive-centres-contact-export-v2',snapshot,analysis:{complete:result.complete,provenance:'Numerical check of calculated sampled polylines; no physical event asserted.',source:snapshot.source,sourceLabel:contactSourceLabels[snapshot.source],directionRuleVersion:snapshot.directionRuleVersion,constructionRuleVersion:snapshot.constructionRuleVersion,mode:snapshot.mode,sameGrain:snapshot.sameGrain,grainDefinition:'equal absolute parent/carrier address depth within the selected instance',witnessSelection:'Initial-time overlap preferred; otherwise deterministic ordering of both witness times and addresses. Not a global nearest approach or physical impact time.',continuousCurveError:'Not estimated; only the saved finite sampled polylines were checked.',initialOverlapDefinition:'At inspection start, at least one source-curve pair has separation no greater than tolerance plus numericAllowance; exact zero is not asserted.',tolerance:snapshot.tolerance,numericAllowance:result.numericAllowance,horizon:{seconds:result.prediction.duration,closed:result.prediction.closed,stationary:result.prediction.stationary,sampleCount:result.prediction.sampleCount,label:result.prediction.label},scope:result.scope,stats:result.stats,receipts:result.receipts}};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='recursive-centres-inspected-run.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+
+  $('contact-source').addEventListener('change',()=>{contactSourceUserChoice=$('contact-source').value;contactSourceCache='';contactRefreshSources();});
+  $('contact-inspector').addEventListener('toggle',contactRefreshSources);
+  contactRefreshSources();
+
   $('centre-value').addEventListener('input',rememberDraft);
   $('fill-form').addEventListener('submit',event=>{event.preventDefault();const value=$('centre-value').value;if(!value.trim()){$('input-status').textContent='Enter a value to fill this address.';return;}values.set(targetAddress(),value);drafts.delete(targetAddress());$('filled-count').textContent=String(values.size);$('input-status').textContent='Filled: '+value;requestDraw();});
   const pointers=new Map();let gesture=null;
@@ -726,11 +1098,11 @@ const CubeView = (() => {
   if(typeof ResizeObserver!=='undefined')new ResizeObserver(resize).observe($('stage'));else window.addEventListener('resize',resize);
   function setPanel(open){$('control-panel').hidden=!open;$('panel-toggle').setAttribute('aria-expanded',String(open));$('panel-toggle').textContent=open?'Close controls':'Controls';}
   $('panel-toggle').addEventListener('click',()=>setPanel($('control-panel').hidden));document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('control-panel').hidden){setPanel(false);$('panel-toggle').focus();}});
-  const VERSION='2026-10-17-centre-paths-17-filter-recovery',SETTINGS_KEY='recursive-cubes-settings-v1';let updateTimer=0,checkingUpdate=false;
+  const VERSION='2026-10-17-centre-paths-18-contact',SETTINGS_KEY='recursive-cubes-settings-v1';let updateTimer=0,checkingUpdate=false;
   const toggleIds=['show-shells','show-calculated','show-trails','show-history','show-emphasis','show-inner','show-field','show-reference','show-links','show-axes','show-orientation','show-lineage-reference','show-construction'];
   function saveSettings(){try{sessionStorage.setItem(SETTINGS_KEY,JSON.stringify({historyOverlayOptIn:inactiveHistoryOptIn,state,toggles:Object.fromEntries(toggleIds.map(id=>[id,$(id).checked]))}));return true;}catch{return false;}}
   function restoreSettings(){try{const saved=JSON.parse(sessionStorage.getItem(SETTINGS_KEY)||'null');if(!saved)return;const v=saved.state||{};if(typeof v.filterAddress==='string')state.filterAddress=v.filterAddress;if(Number.isInteger(v.shellFrom))state.shellFrom=v.shellFrom;const ranges={childCount:[1,200],depth:[0,8],ratio:[.3,1],rootSpeed:[-60,60],localSpeed:[-90,90],rootAngle:[-7,7],localAngle:[-7,7],yaw:[-10000,10000],pitch:[-1.45,1.45],zoom:[.3,7],panX:[-100000,100000],panY:[-100000,100000],instance:[0,1],cameraExtent:[.000001,100000],observerSpeed:[-60,60],observerAngle:[-7,7]};if(v.observerMode==='parent'||v.observerMode==='world')state.observerMode=v.observerMode;if(Array.isArray(v.cameraTarget)&&v.cameraTarget.length===3&&v.cameraTarget.every(x=>Number.isFinite(x)&&Math.abs(x)<=100000))state.cameraTarget=v.cameraTarget.slice();for(const [key,[lo,hi]] of Object.entries(ranges)){if(Number.isFinite(v[key])&&v[key]>=lo&&v[key]<=hi)state[key]=v[key];}state.childCount=Math.round(state.childCount);state.depth=Math.round(state.depth);state.instance=Math.round(state.instance);if(!Number.isFinite(v.childCount)&&v.arrangement==='tetra')state.childCount=4;if(typeof v.selected==='string'){const oldNames={'+X':'C1','-X':'C2','+Y':'C3','-Y':'C4','+Z':'C5','-Z':'C6',T1:'C1',T2:'C2',T3:'C3',T4:'C4'};v.selected=v.selected.split('/').map((part,i)=>i?(oldNames[part]||part):part).join('/');}if(typeof v.selected==='string'&&/^root(?:\/C(?:[1-9]|[1-9][0-9]|1[0-9][0-9]|200)){0,72}$/.test(v.selected))state.selected=v.selected;state.pendingFilterAddress=typeof v.pendingFilterAddress==='string'&&/^root(?:\/C(?:[1-9]|[1-9][0-9]|1[0-9][0-9]|200)){0,64}$/.test(v.pendingFilterAddress)?v.pendingFilterAddress:null;if(typeof v.pendingSelection==='string'&&/^root(?:\/C(?:[1-9]|[1-9][0-9]|1[0-9][0-9]|200)){0,72}$/.test(v.pendingSelection))state.pendingSelection=v.pendingSelection;for(const key of ['running','focus','grainMode','grainExtraShells'])if(typeof v[key]==='boolean')state[key]=v[key];for(const id of toggleIds)if(id!=='show-history'&&typeof saved.toggles?.[id]==='boolean')$(id).checked=saved.toggles[id];inactiveHistoryOptIn=saved.historyOverlayOptIn===true;$('show-history').checked=inactiveHistoryOptIn&&saved.toggles?.['show-history']===true;if(state.instance)$('show-inner').checked=true;}catch{/* Invalid saved display settings do not change the model. */}}
-  async function checkVersion(){if(checkingUpdate||document.hidden||!/^https?:$/.test(location.protocol))return;checkingUpdate=true;try{const response=await fetch(location.href,{cache:'no-store',credentials:'same-origin'});if(!response.ok)return;const source=await response.text(),match=source.match(/<meta name="model-version" content="([^"]+)"/);if(!match||match[1]===VERSION)return;rememberDraft();if(values.size||drafts.size||$('centre-value').value.trim()){$('update-status').textContent='A published update is ready. Reload keeps display settings but clears your entered values and drafts.';$('reload-update').hidden=false;}else if(saveSettings())location.reload();else{$('update-status').textContent='A published update is ready. This browser could not preserve display settings; reload when ready.';$('reload-update').hidden=false;}}catch{/* Offline or unavailable updates leave the running page intact. */}finally{checkingUpdate=false;}}
+  async function checkVersion(){if(checkingUpdate||document.hidden||!/^https?:$/.test(location.protocol))return;checkingUpdate=true;try{const response=await fetch(location.href,{cache:'no-store',credentials:'same-origin'});if(!response.ok)return;const source=await response.text(),match=source.match(/<meta name="model-version" content="([^"]+)"/);if(!match||match[1]===VERSION)return;rememberDraft();if(values.size||drafts.size||$('centre-value').value.trim()||contactRecord||contactBusy){$('update-status').textContent='A published update is ready. Reload keeps display settings but clears entered values, drafts and the retained inspection.';$('reload-update').hidden=false;}else if(saveSettings())location.reload();else{$('update-status').textContent='A published update is ready. This browser could not preserve display settings; reload when ready.';$('reload-update').hidden=false;}}catch{/* Offline or unavailable updates leave the running page intact. */}finally{checkingUpdate=false;}}
   function startUpdates(){if(!updateTimer)updateTimer=setInterval(checkVersion,60000);}
   $('reload-update').addEventListener('click',()=>{saveSettings();location.reload();});window.addEventListener('pagehide',()=>{saveSettings();clearInterval(updateTimer);updateTimer=0;});window.addEventListener('pageshow',event=>{if(event.persisted)startUpdates();});
   restoreSettings();$('child-count').value=String(state.childCount);['depth','ratio'].forEach(id=>$(id).value=String(state[id]));['root','local'].forEach(kind=>{$(kind+'-speed').value=String(state[kind+'Speed']);$(kind+'-speed-value').textContent=state[kind+'Speed']+'°/s';});
