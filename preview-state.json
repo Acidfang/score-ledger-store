@@ -49,5 +49,30 @@
   "ui": {
     "playerSelectionLabel": "Select players",
     "progress": "Debug mode isolates test captures · Viewer identity is shown in each frame"
+  },
+  "truthResolution": {
+    "contract": "native-field/field-relations.js#resolveAllFilterTruth",
+    "status": "AVAILABLE_NOT_WIRED_TO_VIEWER",
+    "origin": "preview/first-frame",
+    "filters": [
+      "game",
+      "player",
+      "starting-points",
+      "matches",
+      "legs",
+      "checkouts",
+      "scoring",
+      "efficiency",
+      "phases",
+      "history",
+      "field-relations",
+      "recursive-fracture",
+      "field-derivation",
+      "models",
+      "rendering"
+    ],
+    "rule": "Observation ⋈ Derivation ⋈ Reproducibility",
+    "missing": "UNRESOLVED",
+    "boundary": "Consumer call sites and runtime replay not verified; no results asserted"
   }
 }
