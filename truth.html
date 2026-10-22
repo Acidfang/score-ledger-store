@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Score Ledger · Triad for Truth</title>
+<title>Score Ledger · Triad for Truth</title><style>html,body{margin:0;height:100%;overflow:hidden}#score-frame{position:fixed;inset:0;width:100%;height:100%;border:0}#truth-panel{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);overflow:auto;box-sizing:border-box;background:#0b1017f5;box-shadow:-8px 0 30px #0009;z-index:2;padding:20px}#truth-panel[hidden]{display:none}#truth-toggle{position:fixed;top:12px;right:12px;z-index:3;padding:12px;background:#18374a;color:white;border:1px solid #91d6ff;border-radius:8px}#truth-panel h1{margin-top:45px}@media(max-width:600px){#truth-panel{width:100%}}</style>
 <style>body{background:#0b1017;color:#eaf2fa;font:16px system-ui;margin:auto;max-width:850px;padding:24px}h1{font-size:2rem}h2{font-size:1.2rem}label{display:block;margin:15px 0}textarea,input{display:block;box-sizing:border-box;width:100%;padding:12px;background:#172230;color:white;border:1px solid #526578;border-radius:6px}button{padding:12px;margin:8px 8px 8px 0;background:#254f6c;color:white;border:1px solid #7aa2c0;border-radius:6px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#14202b;padding:16px}small{color:#b8c9d8}a{color:#91d6ff}</style>
-<h1>Triad for Truth</h1><p><strong>Observation ⋈ Derivation ⋈ Reproducibility</strong></p>
+<iframe id="score-frame" src="./" title="Canonical Score Ledger"></iframe><button id="truth-toggle" type="button" aria-controls="truth-panel" aria-expanded="true">Close Truth Triad</button><section id="truth-panel"><h1>Triad for Truth</h1><p><strong>Observation ⋈ Derivation ⋈ Reproducibility</strong></p>
 <p>Authority is not evidence. Observation is the origin. Reproducibility is the test.</p>
 <p>This interface evaluates exact deterministic claims. A matching replay verifies only the stated claim under the stated conditions; it does not establish universal truth.</p>
 <a href="./">← Score Ledger</a>
@@ -12,7 +12,8 @@
 <label>Expected derived result (exact text)<textarea id="expected" rows="2"></textarea></label>
 <label>Assumptions (explicit, or 'none')<textarea id="assumptions" rows="2">none</textarea></label>
 <h2>Reproducibility</h2><button id="verify">Derive and reproduce independently</button><button id="download">Download last receipt</button><pre id="receipt" aria-live="polite">No test executed.</pre>
-<script>
+</section><script>
+const panel=document.getElementById("truth-panel"),toggle=document.getElementById("truth-toggle");toggle.onclick=()=>{const show=panel.hidden;panel.hidden=!show;toggle.textContent=show?"Close Truth Triad":"Open Truth Triad";toggle.setAttribute("aria-expanded",String(show));};
 'use strict';
 const $=id=>document.getElementById(id);
 let last=null;
