@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Score Ledger · Triad for Truth</title>
+<style>body{background:#0b1017;color:#eaf2fa;font:16px system-ui;margin:auto;max-width:850px;padding:24px}h1{font-size:2rem}h2{font-size:1.2rem}label{display:block;margin:15px 0}textarea,input{display:block;box-sizing:border-box;width:100%;padding:12px;background:#172230;color:white;border:1px solid #526578;border-radius:6px}button{padding:12px;margin:8px 8px 8px 0;background:#254f6c;color:white;border:1px solid #7aa2c0;border-radius:6px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#14202b;padding:16px}small{color:#b8c9d8}a{color:#91d6ff}</style>
+<h1>Triad for Truth</h1><p><strong>Observation ⋈ Derivation ⋈ Reproducibility</strong></p>
+<p>Authority is not evidence. Observation is the origin. Reproducibility is the test.</p>
+<p>This interface evaluates exact deterministic claims. A matching replay verifies only the stated claim under the stated conditions; it does not establish universal truth.</p>
+<a href="./">← Score Ledger</a>
+<h2>Observation</h2><label>Source / observation address<input id="source" placeholder="e.g. darts/leg/1/throw/1"></label>
+<label>Observed value (exact text)<textarea id="observed" rows="2" placeholder="e.g. 60"></textarea></label>
+<h2>Derivation</h2><label>Explicit rule (choose operation)<select id="rule"><option value="identity">Identity: output equals input</option><option value="sum">Sum: comma-separated exact integers</option><option value="reverse">Reverse characters</option></select></label>
+<label>Expected derived result (exact text)<textarea id="expected" rows="2"></textarea></label>
+<label>Assumptions (explicit, or 'none')<textarea id="assumptions" rows="2">none</textarea></label>
+<h2>Reproducibility</h2><button id="verify">Derive and reproduce independently</button><button id="download">Download last receipt</button><pre id="receipt" aria-live="polite">No test executed.</pre>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+let last=null;
+function derive(input,rule){
+ if(rule==='identity')return input;
+ if(rule==='reverse')return [...input].reverse().join('');
+ if(rule==='sum'){
+  const parts=input.split(',').map(s=>s.trim());
+  if(!parts.length||parts.some(s=>!/^[-+]?\d+$/.test(s)))throw Error('Sum requires comma-separated integers');
+  return parts.reduce((a,b)=>a+BigInt(b),0n).toString();
+ }
+ throw Error('Unknown rule');
+}
+function reproduce(input,rule){
+ if(rule==='identity')return input.slice(0);
+ if(rule==='reverse'){let out='';const chars=Array.from(input);for(let i=chars.length-1;i>=0;i--)out+=chars[i];return out;}
+ if(rule==='sum'){const tokens=input.split(',');let value=0n;for(const token of tokens){if(!/^[-+]?\d+$/.test(token.trim()))throw Error('Invalid integer');value+=BigInt(token.trim());}return String(value);}
+ throw Error('Unknown rule');
+}
+$('verify').onclick=()=>{
+ const source=$('source').value.trim(),input=$('observed').value,expected=$('expected').value,rule=$('rule').value,assumptions=$('assumptions').value.trim();
+ const receipt={schema:'score-ledger/truth-triad/v1',timestamp:new Date().toISOString(),source,observation:input,rule,expected,assumptions,derived:null,reproduced:null,status:'UNVERIFIED',difference:null};
+ try{
+  if(!source||!assumptions||expected==='')throw Error('Source, assumptions and expected result must be explicitly supplied');
+  receipt.derived=derive(input,rule);receipt.reproduced=reproduce(input,rule);
+  const equal=receipt.derived===receipt.reproduced&&receipt.derived===expected;
+  receipt.status=equal?'VERIFIED_WITHIN_TESTED_BOUNDARY':'DIFFERENCE';
+  if(!equal)receipt.difference={expected,derived:receipt.derived,reproduced:receipt.reproduced};
+ }catch(e){receipt.difference={error:String(e.message||e)};}
+ last=receipt;$('receipt').textContent=JSON.stringify(receipt,null,2);
+};
+$('download').onclick=()=>{if(!last)return;const url=URL.createObjectURL(new Blob([JSON.stringify(last,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='truth-receipt.json';a.click();URL.revokeObjectURL(url);};
+</script></html>
