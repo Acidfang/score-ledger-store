@@ -28,3 +28,39 @@ export function resolveFilterTruth({address,source,observation,derive,reproduce,
  }catch(error){receipt.difference={error:String(error?.message??error)};}
  return receipt;
 }
+
+/**
+ * Resolve every declared filter address without inventing observations.
+ * Caller supplies evidence by filter key; missing evidence stays unresolved.
+ * This is a filter-wide admission layer, not a claim that UI consumers invoke it.
+ */
+export const truthFilterKeys=Object.freeze([
+ 'game','player','starting-points','matches','legs','checkouts',
+ 'scoring','efficiency','phases','history','field-relations',
+ 'recursive-fracture','field-derivation','models','rendering'
+]);
+export function resolveAllFilterTruth({root='preview/first-frame',source,evidence={}}={}){
+ if(typeof root!=='string'||!root.trim())throw Error('Root address required');
+ if(typeof source!=='string'||!source.trim())throw Error('Source required');
+ const receipts={};
+ for(const key of truthFilterKeys){
+  const entry=evidence[key];
+  const address=root+'/'+key;
+  if(!entry){
+   receipts[key]={address,source,observation:null,assumptions:[],expected:null,
+    derived:null,reproduced:null,status:'UNRESOLVED',
+    difference:'NO_SOURCE_BOUND_OBSERVATION',relation:'OBSERVATION_DERIVATION_REPRODUCIBILITY'};
+   continue;
+  }
+  receipts[key]=resolveFilterTruth({
+   address,source:entry.source??source,observation:entry.observation,
+   assumptions:entry.assumptions,derive:entry.derive,
+   reproduce:entry.reproduce,expected:entry.expected
+  });
+ }
+ return {root,source,receipts,coverage:truthFilterKeys.length,
+  verified:Object.values(receipts).filter(r=>r.status==='REPRODUCED_WITHIN_STATED_BOUNDARY').length,
+  unresolved:Object.values(receipts).filter(r=>r.status==='UNRESOLVED').length,
+  differences:Object.values(receipts).filter(r=>r.status==='DIFFERENCE').length,
+  boundary:'A shared admission contract; consumer integration and live execution require separate receipts.'};
+}
