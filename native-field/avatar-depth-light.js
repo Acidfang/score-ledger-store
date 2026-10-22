@@ -83,3 +83,33 @@ export function resolveViewerProjection(viewer,avatar,models=[],activeAddress=nu
   assumptions:['Euclidean viewer coordinates','Spherical model basis','Active view lock','Display-only visibility floor'],
   boundary:'Requires existing renderer to consume output; spherical UV and live visual result not verified'};
 }
+
+/**
+ * Draw the avatar's visible emitted light into an existing 2D canvas.
+ * The same projected source position feeds the shared model-light calculations.
+ * Call once per frame after the scene and before foreground interaction marks.
+ * This draws a luminous halo and core; it does not simulate volumetric shadows.
+ */
+export function drawAvatarEmitter(ctx,avatar,options={}){
+ if(!ctx||typeof ctx.createRadialGradient!=='function')throw Error('Canvas 2D context required');
+ const state=projectAvatarLight(avatar,options);
+ if(state.status!=='PROJECTED'||!state.light.enabled)return state;
+ const {x,y}=state.screen;
+ const radius=Math.max(1,state.light.radius);
+ const intensity=Math.max(0,Math.min(1,state.light.intensity));
+ ctx.save();
+ try{
+  ctx.globalCompositeOperation='screen';
+  const halo=ctx.createRadialGradient(x,y,0,x,y,radius);
+  halo.addColorStop(0,'rgba(255,245,205,'+(0.7*intensity)+')');
+  halo.addColorStop(0.12,'rgba(255,209,117,'+(0.45*intensity)+')');
+  halo.addColorStop(0.42,'rgba(255,171,78,'+(0.16*intensity)+')');
+  halo.addColorStop(1,'rgba(255,171,78,0)');
+  ctx.fillStyle=halo;
+  ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='rgba(255,250,226,'+intensity+')';
+  ctx.beginPath();ctx.arc(x,y,Math.max(2,state.screen.scale*3),0,Math.PI*2);ctx.fill();
+ }finally{ctx.restore();}
+ return {...state,visibleEmitterDrawn:true,
+  boundary:'Visible 2D glow only; renderer must call per frame; occlusion and physical volumetric lighting not implemented'};
+}
