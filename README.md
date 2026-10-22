@@ -30,3 +30,8 @@ A label/address is an identity even if its value range is a singleton. The range
 ## Recursive centre-path relation
 
 [Open the interactive centre-path page](https://acidfang.github.io/score-ledger-store/recursive-cubes/) to follow actual addressed centre trajectories with a repeated 1–118 child-count control, spherical field guides, inherited frames and colours, and one finer same-pattern instance inside the primary centre. Changing the count retains indexed identities and separates previous path geometry within explicit memory limits. The page preserves the canonical viewer and source data. [Source and continuation notes](recursive-cubes/continuation.md) explain the even-spread approximation, checks and unresolved segment-boundary surfaces.
+
+
+## Triad for Truth
+
+[Open the executable Triad for Truth page](https://acidfang.github.io/score-ledger-store/truth.html). Observation ⋈ Derivation ⋈ Reproducibility. It records explicit assumptions, independently replays a bounded deterministic derivation and exports a JSON receipt with differences. This is a separate page linked to the canonical viewer; it does not modify darts scoring or establish universal truth.
