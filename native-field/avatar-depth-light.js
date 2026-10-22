@@ -61,3 +61,25 @@ export function resolveSharedModelLighting(avatar,models=[],options={}){
   assumptions:['Shared Euclidean coordinates','Point source','Inverse-quadratic-like attenuation','Lambert diffuse if normal provided'],
   boundary:'Pure source calculation; canonical renderer bindings, shadows, occlusion and live device output remain unverified'};
 }
+
+export function resolveViewerProjection(viewer,avatar,models=[],activeAddress=null){
+ const light=resolveSharedModelLighting(avatar,models);
+ const lights=new Map(light.models.map(m=>[m.address,m]));
+ const projected=models.map(model=>{
+  const p=model.position, address=model.address;
+  if(!p||![p.x,p.y,p.z].every(Number.isFinite))return {address,status:'UNRESOLVED_POSITION'};
+  const delta={x:viewer.x-p.x,y:viewer.y-p.y,z:viewer.z-p.z};
+  const distance=Math.hypot(delta.x,delta.y,delta.z);
+  if(!distance)return {address,status:'UNRESOLVED_VIEW'};
+  const direction={x:delta.x/distance,y:delta.y/distance,z:delta.z/distance};
+  const physical=lights.get(address)?.intensity??null;
+  const active=address===activeAddress;
+  return {address,geometry:'SPHERE',viewLocked:active,viewDirection:direction,
+   physicalIntensity:physical,
+   displayIntensity:physical===null?null:Math.max(physical,active?0.18:0),
+   displayCompensationEmitsLight:false,status:'PROJECTED'};
+ });
+ return {field:'SHARED_3D',triad:['LIGHT','SURFACE','VIEWER'],models:projected,
+  assumptions:['Euclidean viewer coordinates','Spherical model basis','Active view lock','Display-only visibility floor'],
+  boundary:'Requires existing renderer to consume output; spherical UV and live visual result not verified'};
+}
