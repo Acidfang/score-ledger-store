@@ -23,3 +23,41 @@ export function projectAvatarLight(state={},options={}){
    intensity:Math.max(0,intensity),kind:'AVATAR_POINT_LIGHT'},
   boundary:'Renderer integration, light falloff, occlusion and device performance remain unverified'};
 }
+
+/**
+ * Resolve lighting for all addressed models in one shared 3D field.
+ * Assumptions (explicit): Euclidean world coordinates; point emitter at avatar;
+ * inverse-quadratic-like attenuation 1/(1+(distance/radius)^2);
+ * optional Lambert diffuse response from supplied surface normals.
+ * Missing model coordinates/normals remain unresolved, never invented.
+ */
+export function resolveSharedModelLighting(avatar,models=[],options={}){
+ const projected=projectAvatarLight(avatar,options);
+ if(!Array.isArray(models))throw Error('Models must be an array');
+ const radius=projected.light?.radius??0;
+ const light=projected.light;
+ const lit=models.map(model=>{
+  const address=model?.address;
+  if(typeof address!=='string'||!address)return {address:null,status:'UNRESOLVED_MODEL_ADDRESS'};
+  const position=model.position;
+  if(!position||![position.x,position.y,position.z].every(v=>typeof v==='number'&&Number.isFinite(v)))
+   return {address,status:'UNRESOLVED_MODEL_POSITION'};
+  if(projected.status!=='PROJECTED')return {address,status:'UNRESOLVED_LIGHT_POSITION'};
+  const dx=avatar.x-position.x,dy=avatar.y-position.y,dz=(avatar.z??0)-position.z;
+  const distance=Math.hypot(dx,dy,dz);
+  const worldRadius=Number(options.lightRadius??avatarDepthDefaults.lightRadius);
+  const attenuation=light.enabled&&worldRadius>0?1/(1+(distance/worldRadius)**2):0;
+  const normal=model.normal;
+  let diffuse=null;
+  if(normal&&[normal.x,normal.y,normal.z].every(v=>typeof v==='number'&&Number.isFinite(v))){
+   const norm=Math.hypot(normal.x,normal.y,normal.z);
+   diffuse=norm&&distance?Math.max(0,(normal.x*dx+normal.y*dy+normal.z*dz)/(norm*distance)):null;
+  }
+  return {address,status:diffuse===null?'ATTENUATION_RESOLVED_NORMAL_UNRESOLVED':'LIGHT_RESPONSE_RESOLVED',
+   distance,attenuation,intensity:attenuation*light.intensity,
+   diffuse,shadedIntensity:diffuse===null?null:attenuation*light.intensity*diffuse};
+ });
+ return {field:'SHARED_3D',emitter:'AVATAR',light:light??null,models:lit,
+  assumptions:['Shared Euclidean coordinates','Point source','Inverse-quadratic-like attenuation','Lambert diffuse if normal provided'],
+  boundary:'Pure source calculation; canonical renderer bindings, shadows, occlusion and live device output remain unverified'};
+}
